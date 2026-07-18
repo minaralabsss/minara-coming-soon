@@ -1,0 +1,81 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        bg: "#FFFFFF",
+        text: "#111111",
+        secondary: "#666666",
+        accent: "#8B0000",
+      },
+      fontFamily: {
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+        ],
+      },
+      fontSize: {
+        xs: ["12px", { lineHeight: "16px" }],
+        sm: ["14px", { lineHeight: "20px" }],
+        base: ["16px", { lineHeight: "24px" }],
+        lg: ["18px", { lineHeight: "28px" }],
+        xl: ["20px", { lineHeight: "28px" }],
+        "2xl": ["24px", { lineHeight: "32px" }],
+        "3xl": ["30px", { lineHeight: "36px" }],
+        "4xl": ["36px", { lineHeight: "44px" }],
+        "5xl": ["48px", { lineHeight: "56px" }],
+      },
+      spacing: {
+        0: "0",
+        1: "4px",
+        2: "8px",
+        3: "12px",
+        4: "16px",
+        5: "20px",
+        6: "24px",
+        7: "28px",
+        8: "32px",
+        10: "40px",
+        12: "48px",
+        14: "56px",
+        16: "64px",
+        20: "80px",
+        24: "96px",
+        28: "112px",
+        32: "128px",
+        36: "144px",
+        40: "160px",
+      },
+      opacity: {
+        0: "0",
+        5: "0.05",
+        10: "0.1",
+        20: "0.2",
+        30: "0.3",
+        40: "0.4",
+        50: "0.5",
+        60: "0.6",
+        70: "0.7",
+        75: "0.75",
+        80: "0.8",
+        90: "0.9",
+        95: "0.95",
+        100: "1",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
