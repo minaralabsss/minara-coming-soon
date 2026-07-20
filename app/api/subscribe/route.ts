@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
+    console.log("LOOPS_API_KEY exists:", !!process.env.LOOPS_API_KEY);
+
     const { email } = await request.json();
 
     if (!email) {
@@ -24,10 +26,10 @@ export async function POST(request: Request) {
 
     const data = await response.json();
 
-    if (
-      response.ok ||
-      data.message?.toLowerCase().includes("already")
-    ) {
+    console.log("Loops status:", response.status);
+    console.log("Loops response:", data);
+
+    if (response.ok) {
       return NextResponse.json({
         success: true,
       });
@@ -35,6 +37,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
+        success: false,
         message: data.message || "Failed to subscribe.",
       },
       {
@@ -46,6 +49,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
+        success: false,
         message: "Internal server error.",
       },
       {
