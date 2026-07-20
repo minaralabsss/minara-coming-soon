@@ -31,21 +31,42 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
 
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      });
 
-    setIsLoading(false);
-    setIsSubmitted(true);
-    setEmail("");
+      const data = await response.json();
 
-    if (onSuccess) {
-      onSuccess();
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Subscription failed.");
+      }
+
+      setIsSubmitted(true);
+      setEmail("");
+
+      if (onSuccess) {
+        onSuccess();
+      }
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
     }
-
-    // Reset success state after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
   };
 
   if (isSubmitted) {
@@ -63,6 +84,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
         >
           <CheckCircle2 className="w-6 h-6 text-accent" strokeWidth={1.5} />
         </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,6 +93,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
         >
           Thank you for subscribing.
         </motion.p>
+
         <motion.p
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,7 +133,6 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           <motion.p
             initial={{ opacity: 0, y: -2 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
             className="text-sm text-accent"
           >
             {error}
@@ -118,15 +140,11 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
         )}
 
         <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          whileHover={{ backgroundColor: "#7a0000" }}
-          whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={isLoading}
+          whileHover={{ backgroundColor: "#7a0000" }}
+          whileTap={{ scale: 0.98 }}
           className="px-6 py-3 bg-accent text-white text-base font-medium rounded-none transition-colors duration-200 disabled:opacity-50"
-          aria-label="Notify me"
         >
           {isLoading ? "Subscribing..." : "Notify Me"}
         </motion.button>
