@@ -132,8 +132,6 @@ export async function POST(
       );
     }
 
-    const data = await loopsResponse.json();
-
     // Success response
     return NextResponse.json(
       {

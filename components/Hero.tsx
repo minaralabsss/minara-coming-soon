@@ -35,7 +35,7 @@ export default function Hero() {
     >
       {/* Label */}
       <motion.div variants={itemVariants}>
-        <span className="text-xs tracking-widest uppercase text-secondary font-medium">
+        <span className="text-xs tracking-widest uppercase text-text-secondary font-medium">
           Minara Labs
         </span>
       </motion.div>
@@ -53,7 +53,7 @@ export default function Hero() {
       {/* Supporting Text */}
       <motion.p
         variants={itemVariants}
-        className="text-base sm:text-lg text-center text-secondary max-w-md leading-relaxed"
+        className="text-base sm:text-lg text-center text-text-secondary max-w-md leading-relaxed"
       >
         Thoughtfully engineered wellness devices designed to elevate everyday
         rituals.
@@ -62,7 +62,7 @@ export default function Hero() {
       {/* Secondary Text */}
       <motion.p
         variants={itemVariants}
-        className="text-sm text-center text-secondary max-w-sm leading-relaxed"
+        className="text-sm text-center text-text-secondary max-w-sm leading-relaxed"
       >
         Our first collection is currently being prepared. Launching soon.
       </motion.p>
