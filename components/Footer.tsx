@@ -37,7 +37,7 @@ export default function Footer() {
               longevity.
             </p>
             <p className="text-xs text-text-muted">
-              Crafted in Saudi Arabia
+              Designed in Saudi Arabia
             </p>
           </div>
 

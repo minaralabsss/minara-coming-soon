@@ -93,7 +93,7 @@ export default function ComingSoonGate() {
           className="text-center space-y-3"
         >
           <p className="text-xs uppercase tracking-wider text-text-muted">
-            Crafted in Saudi Arabia
+            Designed in Saudi Arabia
           </p>
           <p className="text-xs text-text-muted leading-relaxed max-w-sm">
             Engineered with precision. Designed for longevity. Built to last.

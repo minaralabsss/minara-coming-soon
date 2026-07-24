@@ -88,7 +88,7 @@ export async function POST(
 
     // Call Loops API
     const loopsResponse = await fetch(
-      "https://api.loops.so/v1/contacts/create",
+      "https://app.loops.so/api/v1/contacts/create",
       {
         method: "POST",
         headers: {
