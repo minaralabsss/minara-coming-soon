@@ -15,14 +15,15 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
   const { width, height } = sizes[size];
 
   return (
-    <div className={`flex items-center justify-center ${className}`}>
+    <div className={`flex items-center justify-center w-fit ${className}`}>
       <Image
         src="/logo.png"
         alt="Minara Labs"
         width={width}
         height={height}
         priority
-        quality={90}
+        quality={100}
+        style={{ width: 'auto', height: 'auto' }}
         className="object-contain"
       />
     </div>

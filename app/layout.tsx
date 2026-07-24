@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://minaralabs.shop"),
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
