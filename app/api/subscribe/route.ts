@@ -80,7 +80,7 @@ export async function POST(
       return NextResponse.json(
         {
           success: false,
-          message: "Server configuration error",
+          message: "Email service not configured. Please set LOOPS_API_KEY in Vercel environment variables.",
         },
         { status: 500 }
       );

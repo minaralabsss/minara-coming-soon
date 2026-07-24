@@ -9,20 +9,21 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
   const sizes = {
     sm: { width: 32, height: 32 },
     md: { width: 48, height: 48 },
-    lg: { width: 64, height: 64 },
+    lg: { width: 80, height: 80 },
   };
 
   const { width, height } = sizes[size];
 
   return (
-    <div className={`flex items-center ${className}`}>
+    <div className={`flex items-center justify-center ${className}`}>
       <Image
         src="/logo.png"
         alt="Minara Labs"
         width={width}
         height={height}
         priority
-        className="h-auto w-auto"
+        quality={90}
+        className="object-contain"
       />
     </div>
   );

@@ -68,7 +68,7 @@ export default function ComingSoonGate() {
         </motion.p>
 
         {/* Email Form */}
-        <motion.div variants={itemVariants} className="w-full">
+        <motion.div variants={itemVariants} className="w-full flex justify-center">
           <EmailForm />
         </motion.div>
 
