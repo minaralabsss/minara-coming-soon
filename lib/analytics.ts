@@ -17,7 +17,7 @@ export const initializeAnalytics = (): void => {
 /**
  * Track page view (placeholder for future implementation)
  */
-export const trackPageView = (path: string): void => {
+export const trackPageView = (_path: string): void => {
   if (process.env.NODE_ENV === "production") {
     // Track page view
   }
@@ -27,8 +27,8 @@ export const trackPageView = (path: string): void => {
  * Track event (placeholder for future implementation)
  */
 export const trackEvent = (
-  eventName: string,
-  eventData?: Record<string, unknown>
+  _eventName: string,
+  _eventData?: Record<string, unknown>
 ): void => {
   if (process.env.NODE_ENV === "production") {
     // Track custom event
@@ -38,7 +38,7 @@ export const trackEvent = (
 /**
  * Track email subscription (placeholder for future implementation)
  */
-export const trackEmailSubscription = (email: string): void => {
+export const trackEmailSubscription = (_email: string): void => {
   if (process.env.NODE_ENV === "production") {
     // Track email subscription event
   }
