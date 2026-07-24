@@ -1,14 +1,12 @@
 import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   // Add security headers
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+  const response = NextResponse.next();
+  response.headers.set("x-pathname", request.nextUrl.pathname);
 
-  return {
-    status: 200,
-    headers: requestHeaders,
-  };
+  return response;
 }
 
 export const config = {
