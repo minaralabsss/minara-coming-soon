@@ -2,38 +2,35 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Minara Labs — Premium Wellness Technology",
+  title: "Minara Labs — Precision Light for Living Well",
   description:
-    "Thoughtfully engineered wellness devices designed to elevate everyday rituals.",
-  keywords: "wellness, technology, beauty, health, devices, red light therapy",
-  authors: [{ name: "Minara Labs" }],
+    "Advanced red light therapy panels engineered with scientific precision to optimize your wellness. Discover the future of therapeutic light technology.",
+  keywords:
+    "red light therapy, wellness technology, therapeutic light, health optimization, light therapy panel, wellness innovation",
+  authors: [{ name: "Minara Labs", url: "https://minaralabs.shop" }],
   creator: "Minara Labs",
   publisher: "Minara Labs",
-  robots: "index, follow",
+  robots: "index, follow, max-image-preview:large",
   openGraph: {
     type: "website",
     url: "https://minaralabs.shop",
-    title: "Minara Labs — Premium Wellness Technology",
+    title: "Minara Labs — Precision Light for Living Well",
     description:
-      "Thoughtfully engineered wellness devices designed to elevate everyday rituals.",
+      "Experience advanced red light therapy engineered with scientific precision.",
     siteName: "Minara Labs",
-    images: [
-      {
-        url: "https://minaralabs.shop/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Minara Labs",
-      },
-    ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Minara Labs — Premium Wellness Technology",
-    description:
-      "Thoughtfully engineered wellness devices designed to elevate everyday rituals.",
-    images: ["https://minaralabs.shop/og-image.jpg"],
+    title: "Minara Labs",
+    description: "Precision light technology for advanced wellness",
+    creator: "@minaralabs",
   },
   metadataBase: new URL("https://minaralabs.shop"),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -46,15 +43,10 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#ffffff" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          href="/apple-touch-icon.png"
-          sizes="180x180"
-        />
+        <meta name="theme-color" content="#FAF8F6" />
+        <link rel="canonical" href="https://minaralabs.shop" />
       </head>
-      <body className="bg-white text-text antialiased">{children}</body>
+      <body className="bg-bg text-text antialiased">{children}</body>
     </html>
   );
 }
