@@ -23,8 +23,6 @@ export default function Navigation() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    let rafId: number;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
