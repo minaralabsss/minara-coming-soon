@@ -1,41 +1,66 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import EmailForm from "./EmailForm";
+
+const DISMISS_KEY = "minara_waitlist_dismissed";
 
 interface ComingSoonGateProps {
   onEmailSubmitted?: () => void;
 }
 
-export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps) {
-  const [isOpen, setIsOpen] = useState(true);
+export default function ComingSoonGate({
+  onEmailSubmitted,
+}: ComingSoonGateProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
+  // Appear once the page has settled. Never again in this session.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem(DISMISS_KEY)) return;
+
+    const timer = setTimeout(() => setIsOpen(true), 900);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const close = useCallback(() => {
+    setIsOpen(false);
+    try {
+      sessionStorage.setItem(DISMISS_KEY, "true");
+    } catch {
+      // sessionStorage unavailable — dismissal is still honoured for this view
+    }
+  }, []);
+
+  // Escape to dismiss, and hold the page still while open.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen, close]);
+
+  const handleSuccess = () => {
+    onEmailSubmitted?.();
+    try {
+      sessionStorage.setItem(DISMISS_KEY, "true");
+    } catch {
+      // no-op
+    }
+    setTimeout(() => setIsOpen(false), 2200);
   };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.4, 0, 0.2, 1],
-      },
-    },
-  };
-
-  if (!isOpen) return null;
 
   return (
     <AnimatePresence>
@@ -44,101 +69,70 @@ export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50"
-          onClick={() => setIsOpen(false)}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          onClick={close}
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-text/25 px-4 py-10 backdrop-blur-[2px]"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="waitlist-heading"
         >
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 12 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+            className="relative w-full max-w-lg rounded-sm bg-bg px-8 py-16 sm:px-16 sm:py-20"
           >
-            {/* Close Button */}
             <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-text transition-colors z-10"
+              onClick={close}
               aria-label="Close"
+              className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center text-text-muted transition-colors duration-500 hover:text-text"
             >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M15 5L5 15M5 5L15 15" />
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                aria-hidden="true"
+              >
+                <path d="M12 4L4 12M4 4l8 8" />
               </svg>
             </button>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="w-full flex flex-col items-center gap-12 sm:gap-14 lg:gap-16 p-8 sm:p-12"
-            >
-              {/* Logo */}
-              <motion.div variants={itemVariants}>
-                <Logo size="lg" />
-              </motion.div>
+            <div className="flex flex-col items-center text-center">
+              <Logo size="md" />
 
-              {/* Main Heading */}
-              <motion.div variants={itemVariants} className="text-center space-y-4">
-                <h1 className="text-4xl sm:text-5xl font-light text-text leading-tight">
-                  Precision Light
-                  <br />
-                  for Living Well
-                </h1>
-              </motion.div>
+              <p className="mt-12 text-xs uppercase tracking-[0.25em] text-text-muted">
+                Minara — 2026
+              </p>
 
-              {/* Subheading */}
-              <motion.p
-                variants={itemVariants}
-                className="text-base sm:text-lg text-center text-text-secondary max-w-md leading-relaxed font-light"
+              <h2
+                id="waitlist-heading"
+                className="mt-6 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl"
               >
-                Introducing advanced red light therapy technology, engineered with
-                scientific precision to optimize your wellness.
-              </motion.p>
+                Join the
+                <br />
+                First Release
+              </h2>
 
-              {/* Tagline */}
-              <motion.p
-                variants={itemVariants}
-                className="text-sm text-center text-text-muted max-w-sm leading-relaxed uppercase tracking-wider"
-              >
-                Launching in {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-              </motion.p>
+              <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
+                Be among the first to experience Minara. Receive launch updates,
+                early access, and exclusive product announcements.
+              </p>
 
-              {/* Email Form */}
-              <motion.div variants={itemVariants} className="w-full flex justify-center">
-                <EmailForm onSuccess={() => {
-                  setIsOpen(false);
-                  onEmailSubmitted?.();
-                }} />
-              </motion.div>
+              <div className="mt-12 w-full">
+                <EmailForm onSuccess={handleSuccess} />
+              </div>
 
-              {/* Footer Text */}
-              <motion.p
-                variants={itemVariants}
-                className="text-xs text-center text-text-muted max-w-sm"
-              >
-                Be among the first to experience the future of precision wellness
-                technology.
-              </motion.p>
+              <div className="mt-14 h-px w-10 bg-divider" />
 
-              {/* Divider Line */}
-              <motion.div
-                variants={itemVariants}
-                className="w-12 h-px bg-border"
-              />
-
-              {/* Trust Statement */}
-              <motion.div
-                variants={itemVariants}
-                className="text-center space-y-3"
-              >
-                <p className="text-xs uppercase tracking-wider text-text-muted">
-                  Designed in Saudi Arabia
-                </p>
-                <p className="text-xs text-text-muted leading-relaxed max-w-sm">
-                  Engineered with precision. Designed for longevity. Built to last.
-                </p>
-              </motion.div>
-            </motion.div>
+              <p className="mt-10 text-xs uppercase tracking-[0.2em] text-text-muted">
+                Designed in Saudi Arabia
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       )}
