@@ -29,8 +29,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-sm uppercase tracking-wider text-text font-medium">
-              Minara Labs
+            <h3 className="text-sm tracking-wider text-text font-medium">
+              minara labs
             </h3>
             <p className="text-sm text-text-secondary leading-relaxed font-light">
               Precision light technology engineered for optimal wellness and
@@ -105,7 +105,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-xs text-text-muted text-center sm:text-left">
-            © {currentYear} Minara Labs. All rights reserved. Engineered in Saudi Arabia.
+            © {currentYear} minara labs. All rights reserved. Engineered in Saudi Arabia.
           </p>
 
           {/* Social & Legal */}

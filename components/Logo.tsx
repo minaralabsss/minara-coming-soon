@@ -17,7 +17,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
   return (
     <img
       src="/logo.png"
-      alt="Minara Labs"
+      alt="minara labs"
       width={Math.round(height * 2.548)}
       height={height}
       className={`block w-auto ${className}`}

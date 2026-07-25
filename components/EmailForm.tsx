@@ -84,7 +84,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           className="text-center"
         >
           <p className="text-lg font-light text-text mb-1">
-            Welcome to Minara Labs
+            Welcome to minara labs
           </p>
           <p className="text-sm text-text-secondary">
             Check your email for exclusive updates

@@ -104,8 +104,8 @@ export default function ComingSoonGate({
             <div className="flex flex-col items-center text-center">
               <Logo size="md" />
 
-              <p className="mt-12 text-xs uppercase tracking-[0.25em] text-text-muted">
-                Minara — 2026
+              <p className="mt-12 text-xs lowercase tracking-[0.25em] text-text-muted">
+                minara labs — 2026
               </p>
 
               <h2
@@ -118,7 +118,7 @@ export default function ComingSoonGate({
               </h2>
 
               <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
-                Be among the first to experience Minara. Receive launch updates,
+                Be among the first to experience minara. Receive launch updates,
                 early access, and exclusive product announcements.
               </p>
 

@@ -36,7 +36,7 @@ export default function Hero() {
       {/* Label */}
       <motion.div variants={itemVariants}>
         <span className="text-xs tracking-widest uppercase text-text-secondary font-medium">
-          Minara Labs
+          minara labs
         </span>
       </motion.div>
 

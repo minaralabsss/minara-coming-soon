@@ -58,7 +58,7 @@ export default function MainPage() {
           animate="visible"
           className="flex w-full max-w-4xl flex-col items-center text-center"
         >
-          <Eyebrow>Minara — First Release</Eyebrow>
+          <Eyebrow>minara labs — first release</Eyebrow>
 
           <motion.h1
             variants={rise}
@@ -85,7 +85,7 @@ export default function MainPage() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm bg-divider sm:max-w-md">
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-xs uppercase tracking-[0.25em] text-text-muted">
-                  Minara Panel
+                  minara panel
                 </span>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function MainPage() {
             variants={rise}
             className="mt-12 text-2xl font-light leading-[1.5] tracking-[-0.01em] sm:text-3xl lg:text-4xl"
           >
-            Most wellness devices are appliances. Minara was drawn as an
+            Most wellness devices are appliances. minara was drawn as an
             instrument — one you would leave in the open rather than in a
             drawer.
           </motion.p>
@@ -365,7 +365,7 @@ export default function MainPage() {
             className="mt-24 max-w-2xl text-xs font-light leading-relaxed text-text-muted"
           >
             Red light therapy is a wellness practice, not a medical treatment.
-            Minara is not intended to diagnose, treat or cure any condition.
+            minara is not intended to diagnose, treat or cure any condition.
             Speak with a healthcare professional about your own circumstances.
           </motion.p>
         </motion.div>
