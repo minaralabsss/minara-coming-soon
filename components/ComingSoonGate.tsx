@@ -59,7 +59,6 @@ export default function ComingSoonGate({
     } catch {
       // no-op
     }
-    setTimeout(() => setIsOpen(false), 4500);
   };
 
   return (
@@ -126,6 +125,13 @@ export default function ComingSoonGate({
               <div className="mt-12 w-full">
                 <EmailForm onSuccess={handleSuccess} />
               </div>
+
+              <button
+                onClick={close}
+                className="mt-14 border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
+              >
+                Continue to site
+              </button>
 
               <div className="mt-14 h-px w-10 bg-divider" />
 

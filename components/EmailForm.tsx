@@ -55,11 +55,6 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
       if (onSuccess) {
         onSuccess();
       }
-
-      // Reset success state after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
     } catch (err) {
       console.error("Subscription error:", err);
       setError("Something went wrong. Please try again later.");
