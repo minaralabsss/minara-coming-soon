@@ -94,73 +94,73 @@ export default function MainPage() {
       <section className="px-4 py-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-light text-center mb-16">
-            Comprehensive Wellness Benefits
+            What You'll Notice
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Benefit 1 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">→</span>
+                <span className="text-white text-2xl">⚡</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Cellular Energy</h3>
+              <h3 className="text-xl font-medium mb-3">More Energy</h3>
               <p className="text-text-muted">
-                Stimulates mitochondrial function and ATP production for enhanced cellular energy.
+                Feel more energized throughout the day. Your cells produce more of the energy they need to function.
               </p>
             </div>
 
             {/* Benefit 2 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">◯</span>
+                <span className="text-white text-2xl">💪</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Recovery & Healing</h3>
+              <h3 className="text-xl font-medium mb-3">Faster Recovery</h3>
               <p className="text-text-muted">
-                Supports natural healing processes and reduces recovery time post-exercise.
+                Bounce back quicker from workouts and daily activity. Feel less sore and ready to go sooner.
               </p>
             </div>
 
             {/* Benefit 3 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">✦</span>
+                <span className="text-white text-2xl">✨</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Skin & Anti-Aging</h3>
+              <h3 className="text-xl font-medium mb-3">Glowing Skin</h3>
               <p className="text-text-muted">
-                Promotes collagen production and improves skin tone and elasticity naturally.
+                Notice healthier-looking skin with improved tone and texture. Support your skin naturally.
               </p>
             </div>
 
             {/* Benefit 4 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">⚡</span>
+                <span className="text-white text-2xl">🏃</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Performance</h3>
+              <h3 className="text-xl font-medium mb-3">Better Performance</h3>
               <p className="text-text-muted">
-                Enhances athletic performance, endurance, and muscle development naturally.
+                Enhance your athletic abilities and endurance. Push harder and achieve more in your workouts.
               </p>
             </div>
 
             {/* Benefit 5 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">◆</span>
+                <span className="text-white text-2xl">😴</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Sleep Quality</h3>
+              <h3 className="text-xl font-medium mb-3">Better Sleep</h3>
               <p className="text-text-muted">
-                Optimizes circadian rhythm for improved sleep and natural rest cycles.
+                Fall asleep easier and sleep deeper. Wake up more refreshed and ready to tackle the day.
               </p>
             </div>
 
             {/* Benefit 6 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">☀</span>
+                <span className="text-white text-2xl">😊</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Mood & Vitality</h3>
+              <h3 className="text-xl font-medium mb-3">Improved Mood</h3>
               <p className="text-text-muted">
-                Supports mood regulation and overall vitality through light therapy benefits.
+                Feel better overall. Support your natural mood and mental clarity with consistent use.
               </p>
             </div>
           </div>
