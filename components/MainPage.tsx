@@ -80,15 +80,19 @@ export default function MainPage() {
           {/* Product stage */}
           <motion.div
             variants={rise}
-            className="mt-20 w-full max-w-2xl sm:mt-24"
+            className="mt-16 w-full sm:mt-20"
           >
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-sm bg-divider sm:max-w-md">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-xs uppercase tracking-[0.25em] text-text-muted">
-                  minara panel
-                </span>
-              </div>
-            </div>
+            <picture>
+              <source srcSet="/product-hero.webp" type="image/webp" />
+              <img
+                src="/product-hero.png"
+                alt="minara red light therapy panel, three-quarter view with emitters illuminated"
+                width={1068}
+                height={1600}
+                decoding="async"
+                className="mx-auto h-auto max-h-[54vh] w-auto object-contain sm:max-h-[60vh]"
+              />
+            </picture>
           </motion.div>
 
           <motion.div variants={rise} className="mt-16 sm:mt-20">

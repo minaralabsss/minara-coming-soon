@@ -56,6 +56,30 @@ function Frame({
   );
 }
 
+/** The finished render. WebP with a PNG fallback. */
+function ProductRender({
+  className = "",
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <picture>
+      <source srcSet="/product-hero.webp" type="image/webp" />
+      <img
+        src="/product-hero.png"
+        alt="minara red light therapy panel, three-quarter view with emitters illuminated"
+        width={1068}
+        height={1600}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        className={`h-auto w-full object-contain ${className}`}
+      />
+    </picture>
+  );
+}
+
 const wavelengths = [
   {
     nm: "630",
@@ -144,46 +168,55 @@ export default function ProductPageContent() {
       {/* ——— Hero product ——— */}
       <section
         ref={heroRef}
-        className="flex min-h-[92vh] flex-col items-center justify-center px-6 pb-28 pt-24 sm:pb-36 sm:pt-32"
+        className="flex min-h-[92vh] items-center px-6 pb-28 pt-28 sm:pb-36 sm:pt-32"
       >
         <motion.div
           style={{ y: heroShift, opacity: heroFade }}
           variants={stagger}
           initial="hidden"
           animate="visible"
-          className="flex w-full max-w-5xl flex-col items-center text-center"
+          className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12"
         >
-          <Eyebrow>The Panel</Eyebrow>
-
-          <motion.h1
+          {/* The object leads */}
+          <motion.div
             variants={rise}
-            className="mt-10 max-w-3xl text-5xl font-light leading-[1.06] tracking-[-0.03em] sm:text-6xl lg:text-7xl"
+            className="order-1 lg:order-2 lg:col-span-7 lg:col-start-6"
           >
-            One instrument.
-            <br />
-            Six wavelengths.
-          </motion.h1>
-
-          <motion.p
-            variants={rise}
-            className="mt-10 max-w-md text-base font-light leading-relaxed text-text-secondary sm:text-lg"
-          >
-            Seventy emitters behind a steel body, holding a measured output for
-            the length of every session.
-          </motion.p>
-
-          <motion.div variants={rise} className="mt-20 w-full sm:mt-24">
-            <Frame label="Hero render — full panel, three-quarter view" ratio="aspect-[16/10]" />
+            <ProductRender
+              priority
+              className="mx-auto max-h-[62vh] w-auto lg:max-h-[74vh]"
+            />
           </motion.div>
 
-          <motion.div variants={rise} className="mt-16 sm:mt-20">
-            <Link
-              href="/support"
-              className="border-b border-text pb-1 text-sm tracking-wide transition-opacity duration-500 hover:opacity-50"
+          <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:col-span-5 lg:items-start lg:text-left">
+            <Eyebrow>The Panel</Eyebrow>
+
+            <motion.h1
+              variants={rise}
+              className="mt-8 text-5xl font-light leading-[1.06] tracking-[-0.03em] sm:text-6xl"
             >
-              Request early access
-            </Link>
-          </motion.div>
+              One instrument.
+              <br />
+              Six wavelengths.
+            </motion.h1>
+
+            <motion.p
+              variants={rise}
+              className="mt-8 max-w-sm text-base font-light leading-relaxed text-text-secondary sm:text-lg"
+            >
+              Seventy emitters behind a steel body, holding a measured output
+              for the length of every session.
+            </motion.p>
+
+            <motion.div variants={rise} className="mt-12">
+              <Link
+                href="/support"
+                className="border-b border-text pb-1 text-sm tracking-wide transition-opacity duration-500 hover:opacity-50"
+              >
+                Request early access
+              </Link>
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
