@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Science Behind Red Light — Minara Labs",
+  title: "Science & Technology — Minara Labs",
   description:
-    "Explore the peer-reviewed science supporting red light therapy. Mitochondrial optimization, cellular energy production, and proven wellness benefits.",
+    "Explore the peer-reviewed science and advanced engineering behind Minara's red light therapy panels. Wavelengths, technology, and proven wellness benefits.",
 };
 
 export default function SciencePage() {
@@ -17,16 +17,15 @@ export default function SciencePage() {
       <section className="pt-20 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24 bg-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-text leading-tight max-w-3xl">
-            The Science of Therapeutic Light
+            Science & Technology
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-text-secondary max-w-2xl font-light leading-relaxed">
-            Red light therapy is backed by decades of peer-reviewed research. Discover
-            how specific wavelengths optimize cellular mitochondrial function.
+            Red light therapy backed by 40+ years of peer-reviewed research. Advanced engineering optimized for therapeutic efficacy.
           </p>
         </div>
       </section>
 
-      {/* Mitochondrial Function */}
+      {/* The Science Section */}
       <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-text mb-12">
@@ -181,21 +180,80 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Advanced Engineering */}
       <section className="py-16 sm:py-20 lg:py-24 bg-bg border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-text mb-12 lg:mb-16">
+            Advanced Engineering & Design
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">Precision Optics</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                30° lens angle optimized for therapeutic coverage without excessive
+                divergence. Each LED precisely positioned for uniform irradiance.
+              </p>
+            </div>
+
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">70 High-Efficiency LEDs</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                Premium LEDs selected for consistency, longevity, and spectral purity.
+                Distributed across all wavelengths for comprehensive coverage.
+              </p>
+            </div>
+
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">Thermal Management</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                SPCC steel construction for superior heat dissipation. Operates reliably
+                in -20°C to 50°C environments. 50,000+ hour lifespan.
+              </p>
+            </div>
+
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">Zero EMF Emissions</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                Engineered specifically to eliminate EMF. No electromagnetic field
+                interference. Safe for continuous use.
+              </p>
+            </div>
+
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">Power Efficiency</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                350W LED power with only 120W ±10% actual consumption. Advanced power
+                management for 24/7 operational reliability.
+              </p>
+            </div>
+
+            <div className="space-y-4 p-8 border border-border rounded-lg">
+              <h3 className="text-lg font-medium text-text">Global Compatibility</h3>
+              <p className="text-base text-text-secondary leading-relaxed font-light">
+                AC100-240V, 50/60Hz input. IP20 protection rating. Works seamlessly
+                worldwide.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-light text-text mb-6">
-            Science-Backed Wellness
+            Science-Backed Engineering
           </h2>
           <p className="text-lg text-text-secondary mb-8 font-light leading-relaxed">
             Minara is built on 40+ years of peer-reviewed red light therapy research.
-            Every specification optimized for proven benefits.
+            Every specification engineered for proven benefits.
           </p>
           <a
-            href="/contact"
+            href="/support"
             className="inline-block px-8 py-4 bg-accent text-bg font-medium hover:bg-accent-light transition-colors duration-300"
           >
-            Explore More
+            Learn More
           </a>
         </div>
       </section>

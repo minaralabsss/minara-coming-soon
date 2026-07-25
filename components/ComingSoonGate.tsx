@@ -1,6 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import EmailForm from "./EmailForm";
 
@@ -9,6 +10,8 @@ interface ComingSoonGateProps {
 }
 
 export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps) {
+  const [isOpen, setIsOpen] = useState(true);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,84 +35,113 @@ export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps
     },
   };
 
+  if (!isOpen) return null;
+
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center px-4 py-16 sm:py-20 lg:py-24">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="w-full max-w-2xl flex flex-col items-center gap-12 sm:gap-14 lg:gap-16"
-      >
-        {/* Logo */}
-        <motion.div variants={itemVariants}>
-          <Logo size="lg" />
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.div variants={itemVariants} className="text-center space-y-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-text leading-tight">
-            Precision Light
-            <br />
-            for Living Well
-          </h1>
-        </motion.div>
-
-        {/* Subheading */}
-        <motion.p
-          variants={itemVariants}
-          className="text-base sm:text-lg text-center text-text-secondary max-w-md leading-relaxed font-light"
-        >
-          Introducing advanced red light therapy technology, engineered with
-          scientific precision to optimize your wellness.
-        </motion.p>
-
-        {/* Tagline */}
-        <motion.p
-          variants={itemVariants}
-          className="text-sm text-center text-text-muted max-w-sm leading-relaxed uppercase tracking-wider"
-        >
-          Launching in {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-        </motion.p>
-
-        {/* Email Form */}
-        <motion.div variants={itemVariants} className="w-full flex justify-center">
-          <EmailForm onSuccess={onEmailSubmitted} />
-        </motion.div>
-
-        {/* Footer Text */}
-        <motion.p
-          variants={itemVariants}
-          className="text-xs text-center text-text-muted max-w-sm"
-        >
-          Be among the first to experience the future of precision wellness
-          technology.
-        </motion.p>
-
-        {/* Divider Line */}
+    <AnimatePresence>
+      {isOpen && (
         <motion.div
-          variants={itemVariants}
-          className="w-12 h-px bg-border"
-        />
-
-        {/* Trust Statement */}
-        <motion.div
-          variants={itemVariants}
-          className="text-center space-y-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50"
+          onClick={() => setIsOpen(false)}
         >
-          <p className="text-xs uppercase tracking-wider text-text-muted">
-            Designed in Saudi Arabia
-          </p>
-          <p className="text-xs text-text-muted leading-relaxed max-w-sm">
-            Engineered with precision. Designed for longevity. Built to last.
-          </p>
-        </motion.div>
-      </motion.div>
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-text-secondary hover:text-text transition-colors z-10"
+              aria-label="Close"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M15 5L5 15M5 5L15 15" />
+              </svg>
+            </button>
 
-      {/* Background decorative element */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent opacity-[0.02] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent opacity-[0.02] rounded-full blur-3xl" />
-      </div>
-    </div>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="w-full flex flex-col items-center gap-12 sm:gap-14 lg:gap-16 p-8 sm:p-12"
+            >
+              {/* Logo */}
+              <motion.div variants={itemVariants}>
+                <Logo size="lg" />
+              </motion.div>
+
+              {/* Main Heading */}
+              <motion.div variants={itemVariants} className="text-center space-y-4">
+                <h1 className="text-4xl sm:text-5xl font-light text-text leading-tight">
+                  Precision Light
+                  <br />
+                  for Living Well
+                </h1>
+              </motion.div>
+
+              {/* Subheading */}
+              <motion.p
+                variants={itemVariants}
+                className="text-base sm:text-lg text-center text-text-secondary max-w-md leading-relaxed font-light"
+              >
+                Introducing advanced red light therapy technology, engineered with
+                scientific precision to optimize your wellness.
+              </motion.p>
+
+              {/* Tagline */}
+              <motion.p
+                variants={itemVariants}
+                className="text-sm text-center text-text-muted max-w-sm leading-relaxed uppercase tracking-wider"
+              >
+                Launching in {new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+              </motion.p>
+
+              {/* Email Form */}
+              <motion.div variants={itemVariants} className="w-full flex justify-center">
+                <EmailForm onSuccess={() => {
+                  onEmailSubmitted?.();
+                  setTimeout(() => setIsOpen(false), 2000);
+                }} />
+              </motion.div>
+
+              {/* Footer Text */}
+              <motion.p
+                variants={itemVariants}
+                className="text-xs text-center text-text-muted max-w-sm"
+              >
+                Be among the first to experience the future of precision wellness
+                technology.
+              </motion.p>
+
+              {/* Divider Line */}
+              <motion.div
+                variants={itemVariants}
+                className="w-12 h-px bg-border"
+              />
+
+              {/* Trust Statement */}
+              <motion.div
+                variants={itemVariants}
+                className="text-center space-y-3"
+              >
+                <p className="text-xs uppercase tracking-wider text-text-muted">
+                  Designed in Saudi Arabia
+                </p>
+                <p className="text-xs text-text-muted leading-relaxed max-w-sm">
+                  Engineered with precision. Designed for longevity. Built to last.
+                </p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

@@ -9,12 +9,9 @@ import Logo from "./Logo";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/product", label: "Product" },
-  { href: "/technology", label: "Technology" },
   { href: "/science", label: "Science" },
-  { href: "/journal", label: "Journal" },
   { href: "/about", label: "About" },
   { href: "/support", label: "Support" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation() {
@@ -79,7 +76,7 @@ export default function Navigation() {
             {/* CTA Button */}
             <div className="hidden lg:block">
               <Link
-                href="/contact"
+                href="/support"
                 className="px-6 py-2.5 bg-accent text-bg text-sm font-medium hover:bg-accent-light transition-colors duration-300"
               >
                 Get in Touch
@@ -123,7 +120,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/support"
               onClick={() => setIsOpen(false)}
               className="mt-4 px-4 py-3 bg-accent text-bg text-sm font-medium text-center rounded hover:bg-accent-light transition-colors duration-300"
             >
