@@ -1,5 +1,5 @@
-import ComingSoonGate from "@/components/ComingSoonGate";
+import PageWrapper from "@/components/PageWrapper";
 
 export default function Home() {
-  return <ComingSoonGate />;
+  return <PageWrapper />;
 }

@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 import Logo from "./Logo";
 import EmailForm from "./EmailForm";
 
-export default function ComingSoonGate() {
+interface ComingSoonGateProps {
+  onEmailSubmitted?: () => void;
+}
+
+export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,7 +73,7 @@ export default function ComingSoonGate() {
 
         {/* Email Form */}
         <motion.div variants={itemVariants} className="w-full flex justify-center">
-          <EmailForm />
+          <EmailForm onSuccess={onEmailSubmitted} />
         </motion.div>
 
         {/* Footer Text */}
