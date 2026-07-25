@@ -106,8 +106,8 @@ export default function ComingSoonGate({ onEmailSubmitted }: ComingSoonGateProps
               {/* Email Form */}
               <motion.div variants={itemVariants} className="w-full flex justify-center">
                 <EmailForm onSuccess={() => {
+                  setIsOpen(false);
                   onEmailSubmitted?.();
-                  setTimeout(() => setIsOpen(false), 2000);
                 }} />
               </motion.div>
 

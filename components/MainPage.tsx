@@ -94,7 +94,7 @@ export default function MainPage() {
       <section className="px-4 py-20 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-light text-center mb-16">
-            What You'll Notice
+            Proven Benefits for Your Wellness
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -103,9 +103,9 @@ export default function MainPage() {
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">⚡</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">More Energy</h3>
+              <h3 className="text-xl font-medium mb-3">Enhanced Energy Production</h3>
               <p className="text-text-muted">
-                Feel more energized throughout the day. Your cells produce more of the energy they need to function.
+                Light wavelengths optimize how your cells generate energy, helping you feel more vitalized and alert throughout the day.
               </p>
             </div>
 
@@ -114,9 +114,9 @@ export default function MainPage() {
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">💪</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Faster Recovery</h3>
+              <h3 className="text-xl font-medium mb-3">Accelerated Recovery</h3>
               <p className="text-text-muted">
-                Bounce back quicker from workouts and daily activity. Feel less sore and ready to go sooner.
+                Supports your body's natural recovery processes, reducing inflammation and soreness after physical activity or exertion.
               </p>
             </div>
 
@@ -125,9 +125,9 @@ export default function MainPage() {
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">✨</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Glowing Skin</h3>
+              <h3 className="text-xl font-medium mb-3">Skin Health & Renewal</h3>
               <p className="text-text-muted">
-                Notice healthier-looking skin with improved tone and texture. Support your skin naturally.
+                Stimulates collagen production and cellular renewal, supporting natural radiance and skin elasticity over time.
               </p>
             </div>
 
@@ -136,9 +136,9 @@ export default function MainPage() {
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">🏃</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Better Performance</h3>
+              <h3 className="text-xl font-medium mb-3">Athletic Performance</h3>
               <p className="text-text-muted">
-                Enhance your athletic abilities and endurance. Push harder and achieve more in your workouts.
+                Enhances muscle function and endurance, supporting better workout results and physical resilience.
               </p>
             </div>
 
@@ -147,20 +147,20 @@ export default function MainPage() {
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl">😴</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Better Sleep</h3>
+              <h3 className="text-xl font-medium mb-3">Sleep Quality Optimization</h3>
               <p className="text-text-muted">
-                Fall asleep easier and sleep deeper. Wake up more refreshed and ready to tackle the day.
+                Regulates your body's natural sleep-wake cycle, supporting deeper, more restorative sleep patterns.
               </p>
             </div>
 
             {/* Benefit 6 */}
             <div className="text-center">
               <div className="w-16 h-16 bg-black rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-white text-2xl">😊</span>
+                <span className="text-white text-2xl">🧠</span>
               </div>
-              <h3 className="text-xl font-medium mb-3">Improved Mood</h3>
+              <h3 className="text-xl font-medium mb-3">Cognitive & Mood Support</h3>
               <p className="text-text-muted">
-                Feel better overall. Support your natural mood and mental clarity with consistent use.
+                Promotes mental clarity and emotional balance through evidence-based light therapy mechanisms.
               </p>
             </div>
           </div>

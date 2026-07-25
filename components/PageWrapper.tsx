@@ -32,9 +32,10 @@ export default function PageWrapper() {
     );
   }
 
-  return isUnlocked ? (
-    <MainPage />
-  ) : (
-    <ComingSoonGate onEmailSubmitted={handleEmailSubmitted} />
+  return (
+    <>
+      <MainPage />
+      {!isUnlocked && <ComingSoonGate onEmailSubmitted={handleEmailSubmitted} />}
+    </>
   );
 }
