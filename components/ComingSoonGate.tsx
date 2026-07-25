@@ -59,7 +59,7 @@ export default function ComingSoonGate({
     } catch {
       // no-op
     }
-    setTimeout(() => setIsOpen(false), 2200);
+    setTimeout(() => setIsOpen(false), 4500);
   };
 
   return (
@@ -69,7 +69,7 @@ export default function ComingSoonGate({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           onClick={close}
           className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-text/25 px-4 py-10 backdrop-blur-[2px]"
           role="dialog"
@@ -80,7 +80,7 @@ export default function ComingSoonGate({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-lg rounded-sm bg-bg px-8 py-16 sm:px-16 sm:py-20"
           >
