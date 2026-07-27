@@ -120,10 +120,10 @@ export default function SupportPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:hello@minaralabs.shop"
+                  href="mailto:minaralabs@gmail.com"
                   className="text-lg text-text hover:text-accent transition-colors duration-300"
                 >
-                  hello@minaralabs.shop
+                  minaralabs@gmail.com
                 </a>
               </div>
 
@@ -133,7 +133,7 @@ export default function SupportPage() {
                 </h3>
                 <p className="text-lg text-text">Saudi Arabia</p>
                 <p className="text-sm text-text-secondary mt-1">
-                  Engineered and designed locally
+                  Designed in Saudi Arabia
                 </p>
               </div>
 

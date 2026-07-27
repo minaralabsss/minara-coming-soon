@@ -3,118 +3,116 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Science & Technology",
+  title: "Science",
   description:
-    "Explore the peer-reviewed science and advanced engineering behind minara's red light therapy panels. Wavelengths, technology, and proven wellness benefits.",
+    "How red light stimulates collagen production and softens fine lines. The peer-reviewed evidence behind minara's wavelength selection.",
 };
+
+function Frame({ label, ratio = "aspect-[4/3]" }: { label: string; ratio?: string }) {
+  return (
+    <div className={`relative w-full overflow-hidden rounded-sm bg-divider ${ratio}`}>
+      <div className="absolute inset-0 flex items-center justify-center px-6">
+        <span className="text-center text-xs uppercase tracking-[0.25em] text-text-muted">
+          {label}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function SciencePage() {
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen bg-bg text-text">
       <Navigation />
 
-      {/* Hero */}
-      <section className="pt-20 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24 bg-bg">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-text leading-tight max-w-3xl">
-            Science & Technology
+      <section className="px-6 pb-24 pt-24 sm:pb-32 sm:pt-32">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+            The science
+          </p>
+          <h1 className="mt-10 max-w-3xl text-4xl font-light leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+            How light rebuilds
+            <br />
+            what time takes down
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-text-secondary max-w-2xl font-light leading-relaxed">
-            Red light therapy backed by 40+ years of peer-reviewed research. Advanced engineering optimized for therapeutic efficacy.
+          <p className="mt-10 max-w-xl text-base font-light leading-relaxed text-text-secondary sm:text-lg">
+            Fine lines are a structural change. Understanding why is the fastest
+            route to understanding what red light can and cannot do about them.
           </p>
         </div>
       </section>
 
-      {/* The Science Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-text mb-12">
-            Cellular Energy at the Mitochondrial Level
-          </h2>
-
-          <div className="space-y-8 sm:space-y-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4">
-                <h3 className="text-lg font-medium text-text">Cytochrome C Oxidase Activation</h3>
-                <p className="text-base text-text-secondary leading-relaxed font-light">
-                  Red and near-infrared wavelengths (630-810nm) penetrate tissue to reach
-                  mitochondria. They stimulate Cytochrome C Oxidase, a crucial enzyme in
-                  ATP production, enhancing cellular energy output.
-                </p>
-              </div>
-              <div className="relative aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
-                <p className="text-text-muted text-center font-light text-sm px-4">
-                  Mitochondrial Optimization Process
-                </p>
-              </div>
+      {/* Collagen */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-6">
+            <h2 className="text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl">
+              Collagen, and why
+              <br />
+              it stops arriving
+            </h2>
+            <div className="mt-10 space-y-6 text-base font-light leading-relaxed text-text-secondary">
+              <p>
+                Collagen is the protein that gives skin its density, and elastin
+                is what lets it return to shape. Both are produced by fibroblasts
+                living in the dermis, the layer beneath the surface you can see.
+              </p>
+              <p>
+                From the mid-twenties onward, fibroblast output falls by roughly
+                one percent a year. The dermis thins, loses its scaffolding, and
+                the skin above begins to fold along the lines your expressions
+                use most. Those folds stop springing back. That is a wrinkle.
+              </p>
+              <p>
+                Anything applied to the surface is working several layers above
+                where the problem is. That is not a criticism of skincare, it is
+                a description of where it can reach.
+              </p>
             </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="relative aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center order-2 lg:order-1">
-                <p className="text-text-muted text-center font-light text-sm px-4">
-                  Cellular ATP Production
-                </p>
-              </div>
-              <div className="space-y-4 order-1 lg:order-2">
-                <h3 className="text-lg font-medium text-text">ATP Production Increase</h3>
-                <p className="text-base text-text-secondary leading-relaxed font-light">
-                  Studies show red light therapy can increase ATP production by up to 40%.
-                  More cellular energy means better recovery, reduced inflammation, and
-                  improved overall wellness.
-                </p>
-              </div>
-            </div>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <Frame label="Dermal structure — diagram" ratio="aspect-[4/5]" />
           </div>
         </div>
       </section>
 
-      {/* Research Areas */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-bg border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-light text-text mb-12">
-            Areas of Active Research
-          </h2>
+      {/* Mechanism */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+              Mechanism
+            </p>
+            <h2 className="mt-10 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              Red light reaches
+              <br />
+              the layer that matters
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="mt-20 grid grid-cols-1 gap-x-16 gap-y-14 sm:grid-cols-3">
             {[
               {
-                title: "Skin Health",
-                description:
-                  "Collagen production, elasticity, and wound healing improvement",
+                index: "01",
+                title: "Absorption",
+                body: "Red light at 630 and 660 nanometres passes through the epidermis and is absorbed by cytochrome c oxidase, an enzyme in the energy-producing structures of the cell.",
               },
               {
-                title: "Recovery & Performance",
-                description: "Muscle recovery, reduced soreness, athletic performance",
+                index: "02",
+                title: "Energy",
+                body: "That absorption increases the cell's available energy. Fibroblasts are metabolically expensive cells, and collagen synthesis is one of the first things they scale back when energy is short.",
               },
               {
-                title: "Mitochondrial Function",
-                description:
-                  "Energy production, oxidative stress reduction, cellular health",
+                index: "03",
+                title: "Synthesis",
+                body: "With more energy available, fibroblasts increase production of collagen and elastin. Dermal density rises, and the skin above regains some of its ability to resist and recover from folding.",
               },
-              {
-                title: "Inflammation",
-                description:
-                  "Reduced systemic inflammation, joint health, mobility support",
-              },
-              {
-                title: "Neurological Health",
-                description: "Cognitive function, neuroprotection, brain health",
-              },
-              {
-                title: "Sleep & Circadian Rhythm",
-                description:
-                  "Sleep quality improvement, circadian rhythm regulation",
-              },
-            ].map((area, idx) => (
-              <div
-                key={idx}
-                className="p-8 border border-border rounded-lg hover:border-text-muted transition-colors duration-300"
-              >
-                <h3 className="text-base font-medium text-text mb-3">
-                  {area.title}
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed font-light">
-                  {area.description}
+            ].map((s) => (
+              <div key={s.index} className="border-t border-divider pt-8">
+                <p className="text-xs tracking-[0.2em] text-text-muted">{s.index}</p>
+                <h3 className="mt-6 text-xl font-light tracking-[-0.01em]">{s.title}</h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">
+                  {s.body}
                 </p>
               </div>
             ))}
@@ -122,139 +120,74 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* Wavelength Science */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-light text-text mb-12">
-            Why Our Wavelength Selection Matters
-          </h2>
-
-          <div className="space-y-8">
-            <p className="text-lg text-text-secondary leading-relaxed font-light max-w-3xl">
-              Every wavelength in the minara panel was selected based on clinical evidence.
-              This multi-wavelength approach provides comprehensive benefits across the
-              visible and near-infrared spectrum.
+      {/* Results — reserved for minara's own documented outcomes */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+              Results
             </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              <div className="p-6 bg-bg border border-border rounded-lg">
-                <p className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2">
-                  Visible Red
-                </p>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  630nm & 660nm wavelengths peak at skin penetration and stimulate
-                  cytochrome c oxidase optimally
-                </p>
-              </div>
-
-              <div className="p-6 bg-bg border border-border rounded-lg">
-                <p className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2">
-                  Near-Infrared
-                </p>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  810nm & 850nm penetrate deeper into tissue and bones, maximizing
-                  mitochondrial stimulation
-                </p>
-              </div>
-
-              <div className="p-6 bg-bg border border-border rounded-lg">
-                <p className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2">
-                  Far-Infrared
-                </p>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  940nm & 1060nm provide thermal benefits and extended spectrum coverage
-                </p>
-              </div>
-
-              <div className="p-6 bg-bg border border-border rounded-lg">
-                <p className="text-xs uppercase tracking-wider text-text-muted font-medium mb-2">
-                  The Synergy
-                </p>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  Together, these wavelengths create a comprehensive therapeutic experience
-                  unmatched by single-wavelength devices
-                </p>
-              </div>
-            </div>
+            <h2 className="mt-10 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl">
+              Documented over
+              <br />
+              twelve weeks
+            </h2>
+            <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">
+              Photographed under fixed lighting, at a fixed distance, without
+              retouching. Published here once our own participants complete the
+              full protocol.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Advanced Engineering */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-bg border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-text mb-12 lg:mb-16">
-            Advanced Engineering & Design
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">Precision Optics</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                30° lens angle optimized for therapeutic coverage without excessive
-                divergence. Each LED precisely positioned for uniform irradiance.
-              </p>
-            </div>
-
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">70 High-Efficiency LEDs</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                Premium LEDs selected for consistency, longevity, and spectral purity.
-                Distributed across all wavelengths for comprehensive coverage.
-              </p>
-            </div>
-
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">Thermal Management</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                SPCC steel construction for superior heat dissipation. Operates reliably
-                in -20°C to 50°C environments. 50,000+ hour lifespan.
-              </p>
-            </div>
-
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">Zero EMF Emissions</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                Engineered specifically to eliminate EMF. No electromagnetic field
-                interference. Safe for continuous use.
-              </p>
-            </div>
-
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">Power Efficiency</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                350W LED power with only 120W ±10% actual consumption. Advanced power
-                management for 24/7 operational reliability.
-              </p>
-            </div>
-
-            <div className="space-y-4 p-8 border border-border rounded-lg">
-              <h3 className="text-lg font-medium text-text">Global Compatibility</h3>
-              <p className="text-base text-text-secondary leading-relaxed font-light">
-                AC100-240V, 50/60Hz input. IP20 protection rating. Works seamlessly
-                worldwide.
-              </p>
-            </div>
+          <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {["Week 0 — baseline", "Week 4", "Week 8", "Week 12"].map((l) => (
+              <Frame key={l} label={l} ratio="aspect-[3/4]" />
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-light text-text mb-6">
-            Science-Backed Engineering
-          </h2>
-          <p className="text-lg text-text-secondary mb-8 font-light leading-relaxed">
-            minara is built on 40+ years of peer-reviewed red light therapy research.
-            Every specification engineered for proven benefits.
+          <p className="mt-12 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
+            Results vary between individuals. Published protocols generally run
+            three to five sessions per week across eight to twelve weeks before
+            a visible difference is recorded.
           </p>
-          <a
-            href="/support"
-            className="inline-block px-8 py-4 bg-accent text-bg font-medium hover:bg-accent-light transition-colors duration-300"
-          >
-            Learn More
-          </a>
+        </div>
+      </section>
+
+      {/* Wavelengths */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+              Why these wavelengths
+            </p>
+            <h2 className="mt-10 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl">
+              Depth is the
+              <br />
+              whole argument
+            </h2>
+          </div>
+
+          <div className="mt-16 border-t border-divider">
+            {[
+              ["630 nm", "Surface and upper dermis. The band most closely associated with tone, texture and collagen activity."],
+              ["660 nm", "Reaches the fibroblast layer directly. The most studied wavelength for skin outcomes."],
+              ["810 nm", "Deep soft tissue. Where the recovery and inflammation literature concentrates."],
+              ["850 nm", "Denser tissue and joints, beyond the reach of visible red."],
+              ["940 nm", "Extends the delivered spectrum with gentle thermal effect at depth."],
+              ["1060 nm", "The panel's upper boundary. Broadens coverage rather than concentrating it."],
+            ].map(([nm, note]) => (
+              <div key={nm} className="grid grid-cols-1 gap-3 border-b border-divider py-8 sm:grid-cols-12 sm:gap-8">
+                <p className="text-2xl font-light tracking-[-0.02em] sm:col-span-3 sm:text-3xl">{nm}</p>
+                <p className="text-sm font-light leading-relaxed text-text-secondary sm:col-span-9">{note}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-16 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
+            Red light therapy is a wellness practice, not a medical treatment.
+            minara is not intended to diagnose, treat or cure any condition.
+            Speak with a healthcare professional about your own circumstances.
+          </p>
         </div>
       </section>
 

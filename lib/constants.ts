@@ -1,7 +1,7 @@
 /**
  * Brand and company constants
  */
-export const COMPANY_NAME = "Minara Labs";
+export const COMPANY_NAME = "minara labs";
 export const COMPANY_DOMAIN = "minaralabs.shop";
 export const COMPANY_URL = `https://${COMPANY_DOMAIN}`;
 

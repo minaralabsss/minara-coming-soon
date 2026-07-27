@@ -1,8 +1,12 @@
-export { default as Hero } from "./Hero";
 export { default as EmailForm } from "./EmailForm";
 export { default as Logo } from "./Logo";
 export { default as Navigation } from "./Navigation";
-export { default as ComingSoonGate } from "./ComingSoonGate";
-export { default as ProductSpecs } from "./ProductSpecs";
 export { default as Footer } from "./Footer";
+export { default as ComingSoonGate } from "./ComingSoonGate";
+export { default as MainPage } from "./MainPage";
+export { default as PageWrapper } from "./PageWrapper";
 export { default as ProductPageContent } from "./ProductPageContent";
+export { default as PanelDetail } from "./PanelDetail";
+export { default as AddToCart } from "./AddToCart";
+export { default as CartDrawer } from "./CartDrawer";
+export { CartProvider, useCart } from "./CartContext";

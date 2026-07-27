@@ -1,135 +1,91 @@
 import Link from "next/link";
-import { Mail, Linkedin } from "lucide-react";
+import Logo from "./Logo";
 
-const footerLinks = {
-  Product: [
-    { label: "Red Light Panel", href: "/product" },
-    { label: "Specifications", href: "/product#specs" },
-    { label: "Technology", href: "/technology" },
-  ],
-  Explore: [
-    { label: "Science", href: "/science" },
-    { label: "Journal", href: "/journal" },
-    { label: "About Us", href: "/about" },
-  ],
-  Support: [
-    { label: "Contact", href: "/contact" },
-    { label: "Support", href: "/support" },
-    { label: "FAQ", href: "/support#faq" },
-  ],
-};
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/product", label: "Product" },
+  { href: "/science", label: "Science" },
+  { href: "/about", label: "About" },
+  { href: "/support", label: "Support" },
+];
+
+const socials = [
+  { href: "https://instagram.com/minaralabs", label: "Instagram", handle: "@minaralabs" },
+  { href: "https://tiktok.com/@minaralabs", label: "TikTok", handle: "@minaralabs" },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-bg-dark border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <h3 className="text-sm tracking-wider text-text font-medium">
-              minara labs
-            </h3>
-            <p className="text-sm text-text-secondary leading-relaxed font-light">
-              Precision light technology engineered for optimal wellness and
-              longevity.
-            </p>
-            <p className="text-xs text-text-muted">
-              Designed in Saudi Arabia
+    <footer className="border-t border-divider bg-bg px-6 py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+          <div className="lg:col-span-2">
+            <Logo size="md" />
+            <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
+              Precision light technology, designed in Saudi Arabia for the way
+              modern skin and modern lives are actually lived.
             </p>
           </div>
 
-          {/* Product Links */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-wider text-text-muted font-medium">
-              Product
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.Product.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-secondary hover:text-text transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Explore Links */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-wider text-text-muted font-medium">
+          <div>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
               Explore
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.Explore.map((link) => (
-                <li key={link.href}>
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {navLinks.map((l) => (
+                <li key={l.href}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-text-secondary hover:text-text transition-colors duration-300"
+                    href={l.href}
+                    className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                   >
-                    {link.label}
+                    {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Support Links */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-wider text-text-muted font-medium">
-              Support
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.Support.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-secondary hover:text-text transition-colors duration-300"
+          <div>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
+              Connect
+            </h3>
+            <ul className="mt-6 space-y-3">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                   >
-                    {link.label}
-                  </Link>
+                    {s.label}
+                    <span className="ml-2 text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
+                      {s.handle}
+                    </span>
+                  </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="mailto:minaralabs@gmail.com"
+                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                >
+                  minaralabs@gmail.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-border my-8 sm:my-12" />
-
-        {/* Bottom Footer */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-xs text-text-muted text-center sm:text-left">
-            © {currentYear} minara labs. All rights reserved. Engineered in Saudi Arabia.
+        <div className="mt-20 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs font-light text-text-muted">
+            © {year} minara labs. All rights reserved. Designed in Saudi Arabia.
           </p>
-
-          {/* Social & Legal */}
-          <div className="flex items-center gap-6">
-            <Link
-              href="mailto:hello@minaralabs.shop"
-              className="inline-flex items-center gap-2 text-xs text-text-secondary hover:text-text transition-colors duration-300"
-              aria-label="Email"
-            >
-              <Mail size={14} />
-              <span className="hidden sm:inline">Contact</span>
-            </Link>
-
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-text-secondary hover:text-text transition-colors duration-300"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={14} />
-              <span className="hidden sm:inline">LinkedIn</span>
-            </a>
-          </div>
+          <p className="text-xs font-light text-text-muted">
+            A wellness practice, not a medical treatment.
+          </p>
         </div>
       </div>
     </footer>
