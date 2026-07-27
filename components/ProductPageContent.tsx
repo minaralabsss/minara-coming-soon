@@ -70,7 +70,7 @@ function ProductRender({
       <img
         src="/product-hero.png"
         alt="minara red light therapy panel, three-quarter view with emitters illuminated"
-        width={1068}
+        width={976}
         height={1600}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
@@ -159,7 +159,6 @@ export default function ProductPageContent() {
     offset: ["start start", "end start"],
   });
   const heroShift = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const heroFade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <div className="min-h-screen bg-bg text-text">
@@ -171,7 +170,7 @@ export default function ProductPageContent() {
         className="flex min-h-[92vh] items-center px-6 pb-28 pt-28 sm:pb-36 sm:pt-32"
       >
         <motion.div
-          style={{ y: heroShift, opacity: heroFade }}
+          style={{ y: heroShift }}
           variants={stagger}
           initial="hidden"
           animate="visible"

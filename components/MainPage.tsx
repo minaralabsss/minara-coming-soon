@@ -40,7 +40,6 @@ export default function MainPage() {
     offset: ["start start", "end start"],
   });
   const heroShift = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const heroFade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <div className="min-h-screen bg-bg text-text">
@@ -52,7 +51,7 @@ export default function MainPage() {
         className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 pb-32 pt-24 sm:pb-40 sm:pt-32"
       >
         <motion.div
-          style={{ y: heroShift, opacity: heroFade }}
+          style={{ y: heroShift }}
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -87,7 +86,7 @@ export default function MainPage() {
               <img
                 src="/product-hero.png"
                 alt="minara red light therapy panel, three-quarter view with emitters illuminated"
-                width={1068}
+                width={976}
                 height={1600}
                 decoding="async"
                 className="mx-auto h-auto max-h-[54vh] w-auto object-contain sm:max-h-[60vh]"
