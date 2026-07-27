@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Science & Technology — Minara Labs",
+  title: "Science & Technology",
   description:
-    "Explore the peer-reviewed science and advanced engineering behind Minara's red light therapy panels. Wavelengths, technology, and proven wellness benefits.",
+    "Explore the peer-reviewed science and advanced engineering behind minara's red light therapy panels. Wavelengths, technology, and proven wellness benefits.",
 };
 
 export default function SciencePage() {
@@ -131,7 +131,7 @@ export default function SciencePage() {
 
           <div className="space-y-8">
             <p className="text-lg text-text-secondary leading-relaxed font-light max-w-3xl">
-              Every wavelength in the Minara panel was selected based on clinical evidence.
+              Every wavelength in the minara panel was selected based on clinical evidence.
               This multi-wavelength approach provides comprehensive benefits across the
               visible and near-infrared spectrum.
             </p>
@@ -246,7 +246,7 @@ export default function SciencePage() {
             Science-Backed Engineering
           </h2>
           <p className="text-lg text-text-secondary mb-8 font-light leading-relaxed">
-            Minara is built on 40+ years of peer-reviewed red light therapy research.
+            minara is built on 40+ years of peer-reviewed red light therapy research.
             Every specification engineered for proven benefits.
           </p>
           <a

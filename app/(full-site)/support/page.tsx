@@ -3,8 +3,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Support & Contact — Minara Labs",
-  description: "Get support, ask questions, or contact the Minara Labs team about red light therapy.",
+  title: "Support & Contact",
+  description: "Get support, ask questions, or contact the minara labs team about red light therapy.",
 };
 
 export default function SupportPage() {
@@ -15,7 +15,7 @@ export default function SupportPage() {
         "Red light therapy uses specific wavelengths of light to stimulate mitochondrial function and increase ATP (cellular energy) production. Our panel uses six clinically-proven wavelengths (630nm to 1060nm) to deliver comprehensive benefits.",
     },
     {
-      question: "How long should I use the Minara panel each day?",
+      question: "How long should I use the minara panel each day?",
       answer:
         "Recommended usage is 15-30 minutes per day, depending on distance and personal wellness goals. Most users see optimal results with consistent daily use. Consult with your healthcare provider for personalized recommendations.",
     },
@@ -27,27 +27,27 @@ export default function SupportPage() {
     {
       question: "What distance should I be from the panel?",
       answer:
-        "The Minara panel is calibrated for optimal results at 0-12 inches from your skin. At 0 inches, you receive 220 mW/cm² (±10%) of therapeutic light. Adjust based on your comfort level and specific wellness goals.",
+        "The minara panel is calibrated for optimal results at 0-12 inches from your skin. At 0 inches, you receive 220 mW/cm² (±10%) of therapeutic light. Adjust based on your comfort level and specific wellness goals.",
     },
     {
       question: "Can I use it on any body part?",
       answer:
-        "Yes. The Minara panel can be used on face, skin, joints, and muscle groups. The multi-wavelength spectrum (630nm-1060nm) penetrates various tissue depths, making it suitable for different applications.",
+        "Yes. The minara panel can be used on face, skin, joints, and muscle groups. The multi-wavelength spectrum (630nm-1060nm) penetrates various tissue depths, making it suitable for different applications.",
     },
     {
-      question: "How many wavelengths does the Minara panel use?",
+      question: "How many wavelengths does the minara panel use?",
       answer:
         "Six clinically-proven wavelengths: 630nm (red), 660nm (deep red), 810nm (NIR), 850nm (NIR), 940nm (far-infrared), and 1060nm (far-infrared). This spectrum provides comprehensive coverage for optimal therapeutic benefits.",
     },
     {
       question: "What is the lifespan of the LEDs?",
       answer:
-        "The Minara panel is rated for 50,000+ hours of operation. That's over 5 years of 24/7 continuous use. Premium SPCC steel construction ensures superior thermal management and longevity.",
+        "The minara panel is rated for 50,000+ hours of operation. That's over 5 years of 24/7 continuous use. Premium SPCC steel construction ensures superior thermal management and longevity.",
     },
     {
       question: "Is it compatible with international outlets?",
       answer:
-        "Yes. The Minara panel accepts AC100-240V input at 50/60Hz, making it compatible with electrical systems worldwide.",
+        "Yes. The minara panel accepts AC100-240V input at 50/60Hz, making it compatible with electrical systems worldwide.",
     },
     {
       question: "What does IP20 protection mean?",
@@ -55,9 +55,9 @@ export default function SupportPage() {
         "IP20 means the panel is protected from solid objects larger than 12.5mm and requires protection from water spray. It's suitable for indoor wellness use in dry environments.",
     },
     {
-      question: "Can I see the Minara panel before purchasing?",
+      question: "Can I see the minara panel before purchasing?",
       answer:
-        "The Minara panel is currently in a pre-launch phase. Join our early access waitlist to be among the first to experience it and receive special founder pricing.",
+        "The minara panel is currently in a pre-launch phase. Join our early access waitlist to be among the first to experience it and receive special founder pricing.",
     },
   ];
 

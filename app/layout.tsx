@@ -2,34 +2,42 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Minara Labs — Precision Light for Living Well",
+  title: {
+    default: "minara labs",
+    // Sub-pages read "<page> — minara labs"; the home page reads just the brand.
+    template: "%s — minara labs",
+  },
   description:
     "Advanced red light therapy panels engineered with scientific precision to optimize your wellness. Discover the future of therapeutic light technology.",
   keywords:
     "red light therapy, wellness technology, therapeutic light, health optimization, light therapy panel, wellness innovation",
-  authors: [{ name: "Minara Labs", url: "https://minaralabs.shop" }],
-  creator: "Minara Labs",
-  publisher: "Minara Labs",
+  authors: [{ name: "minara labs", url: "https://minaralabs.shop" }],
+  creator: "minara labs",
+  publisher: "minara labs",
   robots: "index, follow, max-image-preview:large",
   openGraph: {
     type: "website",
     url: "https://minaralabs.shop",
-    title: "Minara Labs — Precision Light for Living Well",
+    title: "minara labs",
     description:
       "Experience advanced red light therapy engineered with scientific precision.",
-    siteName: "Minara Labs",
+    siteName: "minara labs",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Minara Labs",
+    title: "minara labs",
     description: "Precision light technology for advanced wellness",
     creator: "@minaralabs",
   },
   metadataBase: new URL("https://minaralabs.shop"),
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
   },
 };
 

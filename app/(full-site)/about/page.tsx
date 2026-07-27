@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Minara Labs — Engineering Precision Wellness",
+  title: "About",
   description:
-    "Learn about Minara Labs. We're engineering premium red light therapy technology for optimal wellness. Crafted in Saudi Arabia.",
+    "Learn about minara labs. We're engineering premium red light therapy technology for optimal wellness. Crafted in Saudi Arabia.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
             Precision Light for Living Well
           </h1>
           <p className="mt-6 text-lg sm:text-xl text-text-secondary max-w-2xl font-light leading-relaxed">
-            Minara Labs is dedicated to advancing wellness through scientifically-engineered
+            minara labs is dedicated to advancing wellness through scientifically-engineered
             red light therapy technology.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 engineering, we create products that deliver measurable, science-backed benefits.
               </p>
               <p className="text-base sm:text-lg text-text-secondary leading-relaxed font-light">
-                Every product from Minara Labs is engineered with one goal: to help people
+                Every product from minara labs is engineered with one goal: to help people
                 live better, feel stronger, and age more gracefully.
               </p>
             </div>
@@ -109,11 +109,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Minara */}
+      {/* Why minara */}
       <section className="py-16 sm:py-20 lg:py-24 bg-bg-dark border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-text mb-12">
-            Why Choose Minara
+            Why Choose minara
           </h2>
 
           <div className="space-y-6">
@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-bg border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-light text-text mb-6">
-            Join the Minara Movement
+            Join the minara Movement
           </h2>
           <p className="text-lg text-text-secondary mb-8 font-light leading-relaxed">
             Be part of the future of precision wellness technology.
