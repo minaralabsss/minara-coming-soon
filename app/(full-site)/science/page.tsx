@@ -120,12 +120,103 @@ export default function SciencePage() {
         </div>
       </section>
 
-      {/* Results — reserved for minara's own documented outcomes */}
+      {/* Evidence — published trials, cited */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
-              Results
+              The evidence
+            </p>
+            <h2 className="mt-10 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              What the controlled
+              <br />
+              trials actually found
+            </h2>
+            <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">
+              These are independent studies of red light on facial skin, not
+              minara&rsquo;s own. They are cited because the wavelengths and
+              protocols overlap with ours, and because you should be able to
+              check the claims yourself.
+            </p>
+          </div>
+
+          <div className="mt-20 space-y-px border-t border-divider">
+            {[
+              {
+                headline: "Dermal density rose 47.7% over twelve weeks",
+                detail:
+                  "Twenty women used a 630 nm device delivering 15.6 J/cm² for twelve minutes, twice weekly. Ultrasound measured dermal density rising 26.4% at 28 days, 41% at 56 days and 47.7% at 84 days. Crow's feet depth fell 38.3% and surface roughness 23.8% over the same period. Measurements taken 14 and 28 days after treatment stopped showed the gains held.",
+                cite: "Couturaud V, Le Fur M, Pelletier M, Granotier F. Reverse skin aging signs by red light photobiomodulation. Skin Research and Technology, 2023.",
+                href: "https://onlinelibrary.wiley.com/doi/full/10.1111/srt.13391",
+                ref: "doi:10.1111/srt.13391",
+              },
+              {
+                headline: "Collagen density confirmed by ultrasound, not by opinion",
+                detail:
+                  "A randomised controlled trial of 136 volunteers across four groups, treated twice weekly for 30 sessions. Outcomes were measured by blinded evaluation of clinical photography, ultrasonographic collagen density and computerised digital profilometry. Treated groups showed significant improvement in complexion, skin roughness and intradermal collagen density against controls.",
+                cite: "Wunsch A, Matuschka K. A controlled trial to determine the efficacy of red and near-infrared light treatment. Photomedicine and Laser Surgery, 2014;32(2):93–100.",
+                href: "https://pubmed.ncbi.nlm.nih.gov/24286286/",
+                ref: "PMID 24286286",
+              },
+              {
+                headline: "86.2% improved against a sham device they could not tell apart",
+                detail:
+                  "A multi-centre, randomised, double-blind, sham-controlled trial of a home-use 630 nm and 850 nm device over sixteen weeks. Neither participants nor the independent raters scoring the photographs knew which device was active. Independent raters recorded improvement in 86.2% of the treated group, against the sham control.",
+                cite: "Park J, et al. Clinical study to evaluate the efficacy and safety of a home-used LED and IRED mask for crow's feet: a multi-center, randomized, double-blind, sham-controlled study. 2025.",
+                href: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11835066/",
+                ref: "PMC11835066",
+              },
+              {
+                headline: "31% more type-1 procollagen at 660 nanometres",
+                detail:
+                  "Pulsed 660 nm light applied to tissue-engineered human skin raised type-1 procollagen production by 31%, with the laboratory finding carried through to a single-blinded split-face clinical study where each participant served as their own control.",
+                cite: "Barolet D, Roberge CJ, Auger FA, Boucher A, Germain L. Regulation of skin collagen metabolism in vitro using a pulsed 660 nm LED light source. Journal of Investigative Dermatology, 2009;129(12):2751–2759.",
+                href: "https://pubmed.ncbi.nlm.nih.gov/19587687/",
+                ref: "J Invest Dermatol 2009",
+              },
+            ].map((e, i) => (
+              <div
+                key={e.headline}
+                className="grid grid-cols-1 gap-6 border-b border-divider py-12 lg:grid-cols-12 lg:gap-12"
+              >
+                <p className="text-xs tracking-[0.2em] text-text-muted lg:col-span-1">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="text-xl font-light leading-snug tracking-[-0.01em] lg:col-span-5 lg:pr-8">
+                  {e.headline}
+                </h3>
+                <div className="lg:col-span-6">
+                  <p className="text-sm font-light leading-relaxed text-text-secondary">
+                    {e.detail}
+                  </p>
+                  <a
+                    href={e.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 block text-xs font-light leading-relaxed text-text-muted underline-offset-4 transition-colors duration-300 hover:text-text hover:underline"
+                  >
+                    {e.cite} <span className="whitespace-nowrap">[{e.ref}]</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-14 max-w-3xl text-xs font-light leading-relaxed text-text-muted">
+            These trials trialled other manufacturers&rsquo; devices. They are
+            evidence for the mechanism and for the wavelength range minara
+            operates in. They are not measurements of the minara panel, and the
+            figures above should not be read as results you will obtain from it.
+          </p>
+        </div>
+      </section>
+
+      {/* minara's own documented outcomes */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+              Our own results
             </p>
             <h2 className="mt-10 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl">
               Documented over
@@ -135,7 +226,8 @@ export default function SciencePage() {
             <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">
               Photographed under fixed lighting, at a fixed distance, without
               retouching. Published here once our own participants complete the
-              full protocol.
+              full protocol. We would rather show you nothing than show you
+              somebody else&rsquo;s face.
             </p>
           </div>
 
@@ -147,8 +239,8 @@ export default function SciencePage() {
 
           <p className="mt-12 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
             Results vary between individuals. Published protocols generally run
-            three to five sessions per week across eight to twelve weeks before
-            a visible difference is recorded.
+            two to five sessions per week across eight to twelve weeks before a
+            visible difference is recorded.
           </p>
         </div>
       </section>
