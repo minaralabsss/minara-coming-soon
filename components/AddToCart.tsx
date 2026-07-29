@@ -31,6 +31,7 @@ export default function AddToCart({
           name: product.name,
           price: product.price,
           currency: product.currency,
+          variantId: product.variantId,
         })
       }
       className={`${base} ${skin} ${className}`}

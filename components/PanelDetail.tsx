@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -182,6 +183,21 @@ export default function PanelDetail() {
               First release, 2026. Designed in Saudi Arabia. Ships worldwide on
               AC 100–240 V, so no adapter is required.
             </p>
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-divider pt-8">
+              <Link
+                href="/policies/returns"
+                className="text-xs uppercase tracking-[0.15em] text-text-muted underline-offset-4 transition-colors duration-300 hover:text-text hover:underline"
+              >
+                7-day returns
+              </Link>
+              <Link
+                href="/policies/warranty"
+                className="text-xs uppercase tracking-[0.15em] text-text-muted underline-offset-4 transition-colors duration-300 hover:text-text hover:underline"
+              >
+                1-year warranty
+              </Link>
+            </div>
           </div>
         </div>
       </section>

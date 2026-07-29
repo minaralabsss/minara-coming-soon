@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-divider bg-bg px-6 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-2">
             <Logo size="md" />
             <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
@@ -44,6 +44,38 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
+              Policies
+            </h3>
+            <ul className="mt-6 space-y-3">
+              <li>
+                <Link
+                  href="/policies/returns"
+                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                >
+                  Returns
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/policies/warranty"
+                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                >
+                  Warranty
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/ar/policies/returns"
+                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                >
+                  العربية
+                </Link>
+              </li>
             </ul>
           </div>
 

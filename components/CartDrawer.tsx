@@ -6,7 +6,8 @@ import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
 
 export default function CartDrawer() {
-  const { lines, subtotal, isOpen, close, setQuantity, remove } = useCart();
+  const { lines, subtotal, currency, isOpen, isSyncing, checkoutUrl, close, setQuantity, remove } =
+    useCart();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -19,8 +20,6 @@ export default function CartDrawer() {
       window.removeEventListener("keydown", onKey);
     };
   }, [isOpen, close]);
-
-  const currency = lines[0]?.currency ?? "SAR";
 
   return (
     <AnimatePresence>
@@ -119,19 +118,20 @@ export default function CartDrawer() {
               </div>
 
               <a
-                href="mailto:minaralabs@gmail.com?subject=Order%20enquiry"
+                href={checkoutUrl ?? "mailto:minaralabs@gmail.com?subject=Order%20enquiry"}
                 className={`block w-full py-4 text-center text-sm tracking-wide transition-opacity duration-500 ${
-                  lines.length
+                  lines.length && !isSyncing
                     ? "bg-text text-bg hover:opacity-80"
                     : "pointer-events-none bg-divider text-text-muted"
                 }`}
               >
-                Complete order
+                {isSyncing ? "Updating…" : checkoutUrl ? "Checkout" : "Complete order"}
               </a>
 
               <p className="text-center text-xs font-light leading-relaxed text-text-muted">
-                Card checkout arrives with the first release. Until then an order
-                enquiry reaches us directly.
+                {checkoutUrl
+                  ? "Taxes and shipping calculated at checkout."
+                  : "Card checkout arrives with the first release. Until then an order enquiry reaches us directly."}
               </p>
             </footer>
           </motion.aside>

@@ -6,13 +6,15 @@ export type Product = {
   price: number;
   currency: string;
   status: "available" | "waitlist" | "development";
+  /** gid://shopify/ProductVariant/... Set via env once the product exists in Shopify. */
+  variantId?: string;
   image: string;
   imageWebp?: string;
   summary: string;
 };
 
-// TODO — set the real retail figure before launch. This is a placeholder.
-export const PANEL_PRICE = 4900;
+// Retail, VAT-inclusive as required for consumer display in KSA.
+export const PANEL_PRICE = 1000;
 
 export const products: Product[] = [
   {
@@ -22,6 +24,7 @@ export const products: Product[] = [
     price: PANEL_PRICE,
     currency: "SAR",
     status: "available",
+    variantId: process.env.NEXT_PUBLIC_SHOPIFY_PANEL_VARIANT_ID,
     image: "/product-hero.png",
     imageWebp: "/product-hero.webp",
     summary:
