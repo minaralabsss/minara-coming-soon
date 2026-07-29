@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import EmailForm from "./EmailForm";
+import { useLocale } from "@/lib/useLocale";
+import { t } from "@/content/site";
 
 const DISMISS_KEY = "minara_waitlist_dismissed";
 
@@ -15,6 +17,9 @@ export default function ComingSoonGate({
   onEmailSubmitted,
 }: ComingSoonGateProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
+  const c = t(locale).modal;
+  const dir = t(locale).dir;
 
   // Appear once the page has settled. Never again in this session.
   useEffect(() => {
@@ -81,12 +86,13 @@ export default function ComingSoonGate({
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg rounded-sm bg-bg px-8 py-16 sm:px-16 sm:py-20"
+            dir={dir}
+            className={`relative w-full max-w-lg rounded-sm bg-bg px-8 py-16 sm:px-16 sm:py-20 ${locale === "ar" ? "font-arabic" : ""}`}
           >
             <button
               onClick={close}
-              aria-label="Close"
-              className="absolute right-6 top-6 flex h-8 w-8 items-center justify-center text-text-muted transition-colors duration-500 hover:text-text"
+              aria-label={c.close}
+              className="absolute end-6 top-6 flex h-8 w-8 items-center justify-center text-text-muted transition-colors duration-500 hover:text-text"
             >
               <svg
                 width="16"
@@ -105,21 +111,20 @@ export default function ComingSoonGate({
               <Logo size="md" />
 
               <p className="mt-12 text-xs lowercase tracking-[0.25em] text-text-muted">
-                minara labs — 2026
+                {c.eyebrow}
               </p>
 
               <h2
                 id="waitlist-heading"
                 className="mt-6 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl"
               >
-                Join the
-                <br />
-                First Release
+                {c.title.split('\n').map((l, i) => (
+                  <span key={i} className="block">{l}</span>
+                ))}
               </h2>
 
               <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
-                Be among the first to experience minara. Receive launch updates,
-                early access, and exclusive product announcements.
+{c.body}
               </p>
 
               <div className="mt-12 w-full">
@@ -130,13 +135,13 @@ export default function ComingSoonGate({
                 onClick={close}
                 className="mt-14 border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
               >
-                Continue to site
+                {c.continue}
               </button>
 
               <div className="mt-14 h-px w-10 bg-divider" />
 
               <p className="mt-10 text-xs uppercase tracking-[0.2em] text-text-muted">
-                Designed in Saudi Arabia
+                {c.origin}
               </p>
             </div>
           </motion.div>

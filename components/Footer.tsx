@@ -1,13 +1,10 @@
-import Link from "next/link";
-import Logo from "./Logo";
+"use client";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/product", label: "Product" },
-  { href: "/science", label: "Science" },
-  { href: "/about", label: "About" },
-  { href: "/support", label: "Support" },
-];
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Logo from "./Logo";
+import { localeFromPath, localeHref } from "@/lib/locale";
+import { t } from "@/content/site";
 
 const socials = [
   { href: "https://instagram.com/minaralabs", label: "Instagram", handle: "@minaralabs" },
@@ -15,29 +12,35 @@ const socials = [
 ];
 
 export default function Footer() {
+  const locale = localeFromPath(usePathname() ?? "/");
+  const c = t(locale);
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-divider bg-bg px-6 py-20 sm:py-24">
+    <footer
+      dir={c.dir}
+      className={`border-t border-divider bg-bg px-6 py-20 sm:py-24 ${
+        locale === "ar" ? "font-arabic" : ""
+      }`}
+    >
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-12">
           <div className="lg:col-span-2">
             <Logo size="md" />
             <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
-              Precision light technology, designed in Saudi Arabia for the way
-              modern skin and modern lives are actually lived.
+              {c.footer.blurb}
             </p>
           </div>
 
           <div>
             <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
-              Explore
+              {c.footer.explore}
             </h3>
             <ul className="mt-6 space-y-3">
-              {navLinks.map((l) => (
+              {c.nav.links.map((l) => (
                 <li key={l.href}>
                   <Link
-                    href={l.href}
+                    href={localeHref(l.href, locale)}
                     className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                   >
                     {l.label}
@@ -49,31 +52,23 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
-              Policies
+              {c.footer.policies}
             </h3>
             <ul className="mt-6 space-y-3">
               <li>
                 <Link
-                  href="/policies/returns"
+                  href={localeHref("/policies/returns", locale)}
                   className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                 >
-                  Returns
+                  {c.footer.returns}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/policies/warranty"
+                  href={localeHref("/policies/warranty", locale)}
                   className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                 >
-                  Warranty
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ar/policies/returns"
-                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
-                >
-                  العربية
+                  {c.footer.warranty}
                 </Link>
               </li>
             </ul>
@@ -81,7 +76,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">
-              Connect
+              {c.footer.connect}
             </h3>
             <ul className="mt-6 space-y-3">
               {socials.map((s) => (
@@ -90,10 +85,11 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                    dir="ltr"
+                    className="group inline-block text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                   >
                     {s.label}
-                    <span className="ml-2 text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
+                    <span className="ms-2 text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
                       {s.handle}
                     </span>
                   </a>
@@ -102,7 +98,8 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:minaralabs@gmail.com"
-                  className="text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                  dir="ltr"
+                  className="inline-block text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                 >
                   minaralabs@gmail.com
                 </a>
@@ -113,10 +110,10 @@ export default function Footer() {
 
         <div className="mt-20 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-light text-text-muted">
-            © {year} minara labs. All rights reserved. Designed in Saudi Arabia.
+            © {year} minara labs. {c.footer.rights}
           </p>
           <p className="text-xs font-light text-text-muted">
-            A wellness practice, not a medical treatment.
+            {c.footer.disclaimerShort}
           </p>
         </div>
       </div>

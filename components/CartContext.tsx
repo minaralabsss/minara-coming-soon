@@ -8,15 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import {
-  shopifyConfigured,
-  createCart,
-  getCart,
-  addLine,
-  updateLine,
-  removeLine,
-  type ShopifyCart,
-} from "@/lib/shopify";
+import { PANEL_CURRENCY } from "@/lib/products";
 
 export type CartLine = {
   slug: string;
@@ -24,18 +16,9 @@ export type CartLine = {
   price: number;
   currency: string;
   quantity: number;
-  /** Shopify cart line id. Absent in local mode. */
-  lineId?: string;
 };
 
-type AddInput = {
-  slug: string;
-  name: string;
-  price: number;
-  currency: string;
-  /** gid://shopify/ProductVariant/... — required for Shopify mode */
-  variantId?: string;
-};
+type AddInput = Omit<CartLine, "quantity">;
 
 type CartValue = {
   lines: CartLine[];
@@ -43,8 +26,12 @@ type CartValue = {
   subtotal: number;
   currency: string;
   isOpen: boolean;
+  /** True while a checkout session is being created. */
   isSyncing: boolean;
-  /** Shopify hosted checkout. Null in local mode. */
+  /**
+   * Hosted checkout URL from the payment gateway.
+   * Null until a gateway is wired — see the Moyasar seam below.
+   */
   checkoutUrl: string | null;
   add: (item: AddInput, quantity?: number) => void;
   setQuantity: (slug: string, quantity: number) => void;
@@ -53,156 +40,79 @@ type CartValue = {
   close: () => void;
 };
 
-const LOCAL_KEY = "minara_cart";
-const CART_ID_KEY = "minara_shopify_cart_id";
-
+const STORAGE_KEY = "minara_cart";
 const CartContext = createContext<CartValue | null>(null);
-
-function fromShopify(cart: ShopifyCart): CartLine[] {
-  return cart.lines.map((l) => ({
-    slug: l.handle || l.merchandiseId,
-    name: l.title,
-    price: l.price,
-    currency: l.currency,
-    quantity: l.quantity,
-    lineId: l.id,
-  }));
-}
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [isSyncing, setIsSyncing] = useState(false);
   const [hydrated, setHydrated] = useState(false);
-  const [cartId, setCartId] = useState<string | null>(null);
-  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
-  const [shopifySubtotal, setShopifySubtotal] = useState<number | null>(null);
-  const [shopifyCurrency, setShopifyCurrency] = useState<string | null>(null);
 
-  const applyCart = useCallback((cart: ShopifyCart) => {
-    setLines(fromShopify(cart));
-    setCheckoutUrl(cart.checkoutUrl);
-    setShopifySubtotal(cart.subtotal);
-    setShopifyCurrency(cart.currency);
+  /* --------------------------------------------------------------
+   * MOYASAR SEAM
+   *
+   * Checkout is not wired yet. When the Moyasar account exists:
+   *   1. POST the cart to /api/checkout
+   *   2. That route creates a Moyasar payment and returns its URL
+   *   3. setIsSyncing(true) around the call, setCheckoutUrl(url) after
+   *
+   * CartDrawer already renders all three states, so nothing there
+   * needs to change. Required: MOYASAR_SECRET_KEY on the server, and
+   * a CR plus Maroof registration before Moyasar will onboard you.
+   * ------------------------------------------------------------- */
+  const [isSyncing] = useState(false);
+  const [checkoutUrl] = useState<string | null>(null);
+
+  useEffect(() => {
     try {
-      localStorage.setItem(CART_ID_KEY, cart.id);
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setLines(JSON.parse(raw));
     } catch {
-      /* no-op */
+      /* corrupt or unavailable storage — start empty */
     }
-    setCartId(cart.id);
+    setHydrated(true);
   }, []);
 
-  /* ---- restore ---- */
   useEffect(() => {
-    (async () => {
-      if (shopifyConfigured) {
-        try {
-          const saved = localStorage.getItem(CART_ID_KEY);
-          if (saved) {
-            const cart = await getCart(saved);
-            // A completed or expired cart returns null. Start fresh.
-            if (cart) applyCart(cart);
-            else localStorage.removeItem(CART_ID_KEY);
-          }
-        } catch {
-          /* fall through to an empty cart */
-        }
-      } else {
-        try {
-          const raw = localStorage.getItem(LOCAL_KEY);
-          if (raw) setLines(JSON.parse(raw));
-        } catch {
-          /* no-op */
-        }
-      }
-      setHydrated(true);
-    })();
-  }, [applyCart]);
-
-  /* ---- persist, local mode only ---- */
-  useEffect(() => {
-    if (!hydrated || shopifyConfigured) return;
+    if (!hydrated) return;
     try {
-      localStorage.setItem(LOCAL_KEY, JSON.stringify(lines));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(lines));
     } catch {
       /* no-op */
     }
   }, [lines, hydrated]);
 
-  const add = useCallback(
-    async (item: AddInput, quantity = 1) => {
-      setIsOpen(true);
-
-      if (shopifyConfigured && item.variantId) {
-        setIsSyncing(true);
-        try {
-          const cart = cartId
-            ? await addLine(cartId, item.variantId, quantity)
-            : await createCart(item.variantId, quantity);
-          applyCart(cart);
-        } catch (err) {
-          console.error("Shopify add failed", err);
-        } finally {
-          setIsSyncing(false);
-        }
-        return;
+  const add = useCallback((item: AddInput, quantity = 1) => {
+    setLines((prev) => {
+      const existing = prev.find((l) => l.slug === item.slug);
+      if (existing) {
+        return prev.map((l) =>
+          l.slug === item.slug ? { ...l, quantity: l.quantity + quantity } : l
+        );
       }
+      return [...prev, { ...item, quantity }];
+    });
+    setIsOpen(true);
+  }, []);
 
-      setLines((prev) => {
-        const existing = prev.find((l) => l.slug === item.slug);
-        if (existing) {
-          return prev.map((l) =>
-            l.slug === item.slug ? { ...l, quantity: l.quantity + quantity } : l
-          );
-        }
-        return [...prev, { ...item, quantity }];
-      });
-    },
-    [cartId, applyCart]
-  );
+  const setQuantity = useCallback((slug: string, quantity: number) => {
+    setLines((prev) =>
+      quantity <= 0
+        ? prev.filter((l) => l.slug !== slug)
+        : prev.map((l) => (l.slug === slug ? { ...l, quantity } : l))
+    );
+  }, []);
 
-  const setQuantity = useCallback(
-    async (slug: string, quantity: number) => {
-      const line = lines.find((l) => l.slug === slug);
-
-      if (shopifyConfigured && cartId && line?.lineId) {
-        setIsSyncing(true);
-        try {
-          const cart =
-            quantity <= 0
-              ? await removeLine(cartId, line.lineId)
-              : await updateLine(cartId, line.lineId, quantity);
-          applyCart(cart);
-        } catch (err) {
-          console.error("Shopify update failed", err);
-        } finally {
-          setIsSyncing(false);
-        }
-        return;
-      }
-
-      setLines((prev) =>
-        quantity <= 0
-          ? prev.filter((l) => l.slug !== slug)
-          : prev.map((l) => (l.slug === slug ? { ...l, quantity } : l))
-      );
-    },
-    [lines, cartId, applyCart]
-  );
-
-  const remove = useCallback(
-    (slug: string) => setQuantity(slug, 0),
-    [setQuantity]
-  );
+  const remove = useCallback((slug: string) => {
+    setLines((prev) => prev.filter((l) => l.slug !== slug));
+  }, []);
 
   const value = useMemo<CartValue>(
     () => ({
       lines,
       count: lines.reduce((n, l) => n + l.quantity, 0),
-      subtotal:
-        shopifySubtotal ??
-        lines.reduce((n, l) => n + l.price * l.quantity, 0),
-      currency: shopifyCurrency ?? lines[0]?.currency ?? "SAR",
+      subtotal: lines.reduce((n, l) => n + l.price * l.quantity, 0),
+      currency: lines[0]?.currency ?? PANEL_CURRENCY,
       isOpen,
       isSyncing,
       checkoutUrl,
@@ -212,17 +122,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       open: () => setIsOpen(true),
       close: () => setIsOpen(false),
     }),
-    [
-      lines,
-      isOpen,
-      isSyncing,
-      checkoutUrl,
-      shopifySubtotal,
-      shopifyCurrency,
-      add,
-      setQuantity,
-      remove,
-    ]
+    [lines, isOpen, isSyncing, checkoutUrl, add, setQuantity, remove]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

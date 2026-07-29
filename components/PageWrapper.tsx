@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import MainPage from "@/components/MainPage";
+import type { Locale } from "@/lib/locale";
 
-export default function PageWrapper() {
+export default function PageWrapper({ locale = "en" }: { locale?: Locale }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -20,7 +21,7 @@ export default function PageWrapper() {
 
   return (
     <>
-      <MainPage />
+      <MainPage locale={locale} />
       {hasMounted && !isUnlocked && (
         <ComingSoonGate onEmailSubmitted={handleEmailSubmitted} />
       )}

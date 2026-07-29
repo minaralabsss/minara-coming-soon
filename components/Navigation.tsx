@@ -5,14 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { useCart } from "./CartContext";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/product", label: "Product" },
-  { href: "/science", label: "Science" },
-  { href: "/about", label: "About" },
-  { href: "/support", label: "Support" },
-];
+import { localeFromPath, localeHref, swapLocale } from "@/lib/locale";
+import { t } from "@/content/site";
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -21,23 +15,39 @@ function isActive(pathname: string, href: string) {
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() ?? "/";
+  const locale = localeFromPath(pathname);
+  const c = t(locale);
   const { count, open } = useCart();
 
+  const other = locale === "en" ? "ar" : "en";
+  const altPath = swapLocale(pathname, other);
+  // Compare against the path with any /ar prefix removed.
+  const bare = pathname === "/ar" ? "/" : pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
+
   return (
-    <nav className="sticky top-0 z-40 border-b border-divider bg-bg/90 backdrop-blur-sm">
+    <nav
+      dir={c.dir}
+      className={`sticky top-0 z-40 border-b border-divider bg-bg/90 backdrop-blur-sm ${
+        locale === "ar" ? "font-arabic" : ""
+      }`}
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-20 items-center justify-between">
-          <Link href="/" aria-label="minara labs — home" className="flex items-center">
+          <Link
+            href={localeHref("/", locale)}
+            aria-label={c.nav.home}
+            className="flex items-center"
+          >
             <Logo size="md" />
           </Link>
 
           <div className="hidden items-center gap-9 lg:flex">
-            {navLinks.map((link) => {
-              const active = isActive(pathname, link.href);
+            {c.nav.links.map((link) => {
+              const active = isActive(bare, link.href);
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={localeHref(link.href, locale)}
                   aria-current={active ? "page" : undefined}
                   className={`text-sm transition-colors duration-300 ${
                     active
@@ -51,10 +61,36 @@ export default function Navigation() {
             })}
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
+            {/* Language switch */}
+            <Link
+              href={altPath}
+              lang={other}
+              hrefLang={other}
+              aria-label={c.nav.switchLabel}
+              className="flex h-9 items-center gap-2 rounded-full border border-divider px-4 text-xs tracking-wide text-text-secondary transition-colors duration-300 hover:border-text hover:text-text"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.1"
+                aria-hidden="true"
+              >
+                <circle cx="8" cy="8" r="6.4" />
+                <path d="M1.6 8h12.8" />
+                <path d="M8 1.6a10 10 0 0 1 0 12.8a10 10 0 0 1 0-12.8" />
+              </svg>
+              <span className={other === "ar" ? "font-arabic" : ""}>
+                {c.nav.switchTo}
+              </span>
+            </Link>
+
             <button
               onClick={open}
-              aria-label={`Open cart${count ? `, ${count} item${count > 1 ? "s" : ""}` : ""}`}
+              aria-label={c.nav.cart}
               className="relative flex h-10 w-10 items-center justify-center text-text transition-opacity duration-300 hover:opacity-60"
             >
               <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -62,7 +98,7 @@ export default function Navigation() {
                 <path d="M7.25 6V4.6a2.75 2.75 0 0 1 5.5 0V6" />
               </svg>
               {count > 0 && (
-                <span className="absolute right-0 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-text px-1 text-[10px] font-medium leading-none text-bg">
+                <span className="absolute end-0 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-text px-1 text-[10px] font-medium leading-none text-bg">
                   {count}
                 </span>
               )}
@@ -70,7 +106,7 @@ export default function Navigation() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+              aria-label={c.nav.menu}
               aria-expanded={isOpen}
               className="flex h-10 w-10 items-center justify-center lg:hidden"
             >
@@ -90,12 +126,12 @@ export default function Navigation() {
 
         {isOpen && (
           <div className="flex flex-col gap-1 border-t border-divider py-6 lg:hidden">
-            {navLinks.map((link) => {
-              const active = isActive(pathname, link.href);
+            {c.nav.links.map((link) => {
+              const active = isActive(bare, link.href);
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={localeHref(link.href, locale)}
                   onClick={() => setIsOpen(false)}
                   aria-current={active ? "page" : undefined}
                   className={`py-3 text-sm transition-colors duration-300 ${

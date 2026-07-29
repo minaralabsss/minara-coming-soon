@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
+import { useLocale } from "@/lib/useLocale";
+import { t } from "@/content/site";
 
 export default function CartDrawer() {
   const { lines, subtotal, currency, isOpen, isSyncing, checkoutUrl, close, setQuantity, remove } =
@@ -33,23 +35,24 @@ export default function CartDrawer() {
           className="fixed inset-0 z-[60] bg-text/25"
           role="dialog"
           aria-modal="true"
-          aria-label="Cart"
+          aria-label={c.title}
         >
           <motion.aside
-            initial={{ x: "100%" }}
+            initial={{ x: dir === "rtl" ? "-100%" : "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            exit={{ x: dir === "rtl" ? "-100%" : "100%" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-bg"
+            dir={dir}
+            className={`absolute top-0 flex h-full w-full max-w-md flex-col bg-bg ${dir === "rtl" ? "left-0 font-arabic" : "right-0"}`}
           >
             <header className="flex items-center justify-between px-8 py-8">
               <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
-                Cart
+                {c.title}
               </p>
               <button
                 onClick={close}
-                aria-label="Close cart"
+                aria-label={c.close}
                 className="flex h-8 w-8 items-center justify-center text-text-muted transition-colors duration-500 hover:text-text"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1">
@@ -61,7 +64,7 @@ export default function CartDrawer() {
             <div className="flex-1 overflow-y-auto px-8">
               {lines.length === 0 ? (
                 <p className="py-20 text-center text-sm font-light text-text-muted">
-                  Your cart is empty.
+                  {c.empty}
                 </p>
               ) : (
                 <ul className="divide-y divide-divider border-y border-divider">
@@ -97,7 +100,7 @@ export default function CartDrawer() {
                             onClick={() => remove(l.slug)}
                             className="text-xs uppercase tracking-[0.15em] text-text-muted underline-offset-4 transition-colors hover:text-text hover:underline"
                           >
-                            Remove
+                            {c.remove}
                           </button>
                         </div>
                       </div>
@@ -110,7 +113,7 @@ export default function CartDrawer() {
             <footer className="space-y-6 px-8 py-10">
               <div className="flex items-baseline justify-between">
                 <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
-                  Subtotal
+                  {c.subtotal}
                 </span>
                 <span className="text-lg font-light">
                   {formatPrice(subtotal, currency)}
@@ -125,13 +128,11 @@ export default function CartDrawer() {
                     : "pointer-events-none bg-divider text-text-muted"
                 }`}
               >
-                {isSyncing ? "Updating…" : checkoutUrl ? "Checkout" : "Complete order"}
+                {isSyncing ? c.updating : checkoutUrl ? c.checkoutReady : c.checkout}
               </a>
 
               <p className="text-center text-xs font-light leading-relaxed text-text-muted">
-                {checkoutUrl
-                  ? "Taxes and shipping calculated at checkout."
-                  : "Card checkout arrives with the first release. Until then an order enquiry reaches us directly."}
+{checkoutUrl ? c.taxNote : c.note}
               </p>
             </footer>
           </motion.aside>

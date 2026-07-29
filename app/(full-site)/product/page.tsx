@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Precision light therapy instruments from minara labs. Designed in Saudi Arabia for collagen support, facial rejuvenation and recovery.",
 };
 
-export default function ProductPage() {
-  return <ProductPageContent />;
+export default function Page() {
+  return <ProductPageContent locale="en" />;
 }

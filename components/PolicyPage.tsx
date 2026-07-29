@@ -26,8 +26,8 @@ export default function PolicyPage({
 }: {
   policy: Policy;
   locale: Locale;
-  /** Same page, other language. */
-  altHref: string;
+  /** Kept for the route files; the nav now owns language switching. */
+  altHref?: string;
   /** The other policy page, same language. */
   siblings: { href: string; label: string }[];
 }) {
@@ -48,13 +48,7 @@ export default function PolicyPage({
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
               {policy.eyebrow}
             </p>
-            <Link
-              href={altHref}
-              aria-label={t.otherLabel}
-              className="border-b border-divider pb-1 text-xs tracking-wide text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
-            >
-              {t.other}
-            </Link>
+
           </div>
 
           <h1 className="mt-10 whitespace-pre-line text-4xl font-light leading-[1.1] tracking-[-0.03em] sm:text-5xl lg:text-6xl">

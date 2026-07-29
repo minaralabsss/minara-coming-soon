@@ -4,12 +4,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, AlertCircle } from "lucide-react";
 import { validateEmail } from "@/lib/utils";
+import { useLocale } from "@/lib/useLocale";
+import { t } from "@/content/site";
 
 interface EmailFormProps {
   onSuccess?: () => void;
 }
 
 export default function EmailForm({ onSuccess }: EmailFormProps) {
+  const locale = useLocale();
+  const c = t(locale).form;
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -84,10 +88,10 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           className="text-center"
         >
           <p className="text-lg font-light text-text mb-1">
-            Welcome to minara labs
+            {c.success}
           </p>
           <p className="text-sm text-text-secondary">
-            Check your email for exclusive updates
+            {c.successBody}
           </p>
         </motion.div>
       </motion.div>
@@ -110,7 +114,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
               setEmail(e.target.value);
               setError("");
             }}
-            placeholder="your@email.com"
+            placeholder={c.placeholder}
             disabled={isLoading}
             className="w-full px-6 py-4 text-base border border-border bg-bg-dark text-text placeholder-text-muted rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             aria-label="Email address"
@@ -144,7 +148,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
               Subscribing...
             </span>
           ) : (
-            "Join the Waitlist"
+            "{c.submit}"
           )}
         </motion.button>
 
@@ -154,7 +158,7 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           transition={{ delay: 0.6 }}
           className="text-xs text-center text-text-muted leading-relaxed"
         >
-          You'll be the first to access our red light therapy breakthrough
+          {c.helper}
         </motion.p>
       </div>
     </form>
