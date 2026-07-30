@@ -10,6 +10,9 @@ import { t } from "@/content/site";
 export default function CartDrawer() {
   const { lines, subtotal, currency, isOpen, isSyncing, checkoutUrl, close, setQuantity, remove } =
     useCart();
+  const locale = useLocale();
+  const c = t(locale).cart;
+  const dir = t(locale).dir;
 
   useEffect(() => {
     if (!isOpen) return;
