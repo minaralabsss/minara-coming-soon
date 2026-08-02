@@ -65,7 +65,8 @@ export const en: SiteContent = {
     addToCart: "Add to cart",
     viewDetails: "View full details",
     fullDetails: "Full details",
-    launchOffer: "Store opening",
+    launchOffer: "Opening price",
+    launchNote: "Introductory price to mark the opening of our store.",
   },
 
   disclaimer:
@@ -221,6 +222,20 @@ export const en: SiteContent = {
     closeTitle: "Twenty minutes,\nevery day, for a year",
     closeBody:
       "That is roughly one percent of the panel's rated life. It is built for the long version of this, not the trial.",
+    includedEyebrow: "In the box",
+    includedTitle: "Everything you need,\nfrom the first session",
+    included: [
+      { img: "panel", label: "Panel with stand" },
+      { img: "remote", label: "Remote control" },
+      { img: "glasses", label: "Eye protection glasses" },
+      { img: "cable", label: "Power cable" },
+      { img: "hook", label: "Door hook" },
+      { img: "sling", label: "Hanging sling" },
+      { img: "manual", label: "User manual" },
+    ],
+    inUseAlt: "A woman using the minara panel for a facial session",
+    sideAlt: "The minara panel, side profile",
+    emittersAlt: "Close detail of the minara emitter array and optics",
   },
 
   science: {
@@ -284,6 +299,26 @@ export const en: SiteContent = {
       "These trials tested other manufacturers' devices. They are evidence for the mechanism and for the wavelength range minara operates in. They are not measurements of the minara panel, and the figures above should not be read as results you will obtain from it.",
     wlEyebrow: "Why these wavelengths",
     wlTitle: "Depth is the\nwhole argument",
+    depthTitle: "How deep each\nwavelength reaches",
+    depthRedLabel: "Red light",
+    depthNirLabel: "Near-infrared",
+    depthAxis: "Approximate penetration depth in human tissue",
+    depthNote:
+      "Penetration depth varies with tissue type, skin characteristics and treatment conditions.",
+    skinLayers: [
+      { name: "Epidermis", range: "0.05 – 0.1 mm" },
+      { name: "Dermis", range: "0.1 – 3 mm" },
+      { name: "Subcutaneous", range: "3 – 20 mm" },
+      { name: "Muscle", range: "20 mm +" },
+    ],
+    depths: [
+      { nm: "630", group: "red", layer: "Surface skin", depth: "0.2 – 0.5 mm", reach: 0.17 },
+      { nm: "660", group: "red", layer: "Upper dermis", depth: "0.5 – 2 mm", reach: 0.3 },
+      { nm: "810", group: "nir", layer: "Mid to deep dermis", depth: "2 – 6 mm", reach: 0.47 },
+      { nm: "850", group: "nir", layer: "Deep dermis", depth: "5 – 10 mm", reach: 0.62 },
+      { nm: "940", group: "nir", layer: "Subcutaneous tissue", depth: "10 – 20 mm", reach: 0.82 },
+      { nm: "1060", group: "nir", layer: "Muscle and deep tissue", depth: "15 – 30 mm +", reach: 1 },
+    ],
     wavelengths: [
       ["630 nm", "Surface and upper dermis. The band most closely associated with tone, texture and collagen activity."],
       ["660 nm", "Reaches the fibroblast layer directly. The most studied wavelength for skin outcomes."],

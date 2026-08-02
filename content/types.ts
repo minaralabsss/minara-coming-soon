@@ -2,6 +2,18 @@ export type Stat = { value: string; unit: string; note: string };
 export type Numbered = { index: string; title: string; body: string };
 export type Row = [string, string];
 
+export type DepthBand = {
+  nm: string;
+  /** "red" | "nir" — drives the diagram colour ramp. */
+  group: "red" | "nir";
+  layer: string;
+  depth: string;
+  /** 0..1 fraction of the diagram height the beam reaches. */
+  reach: number;
+};
+
+export type IncludedItem = { img: string; label: string };
+
 export type SiteContent = {
   dir: "ltr" | "rtl";
   nav: {
@@ -50,7 +62,7 @@ export type SiteContent = {
     successBody: string;
     sending: string;
   };
-  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string };
+  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string };
   disclaimer: string;
   home: {
     eyebrow: string;
@@ -112,6 +124,12 @@ export type SiteContent = {
     specs: [string, Row[]][];
     closeTitle: string;
     closeBody: string;
+    includedEyebrow: string;
+    includedTitle: string;
+    included: IncludedItem[];
+    inUseAlt: string;
+    sideAlt: string;
+    emittersAlt: string;
   };
   science: {
     eyebrow: string;
@@ -137,6 +155,13 @@ export type SiteContent = {
     wlEyebrow: string;
     wlTitle: string;
     wavelengths: Row[];
+    depthTitle: string;
+    depthRedLabel: string;
+    depthNirLabel: string;
+    depthAxis: string;
+    depthNote: string;
+    skinLayers: { name: string; range: string }[];
+    depths: DepthBand[];
   };
   about: {
     eyebrow: string;

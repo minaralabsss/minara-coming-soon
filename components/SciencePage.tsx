@@ -2,7 +2,8 @@
 
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import { Frame, Lines } from "./ui";
+import { Lines, Photo } from "./ui";
+import DepthDiagram from "./DepthDiagram";
 import type { Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -35,7 +36,7 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
             </div>
           </div>
           <div className="lg:col-span-5 lg:col-start-8">
-            <Frame label={c.collagenFrame} ratio="aspect-[4/5]" />
+            <Photo src="/panel-emitters" alt={s.panel.emittersAlt} ratio="aspect-[4/5]" />
           </div>
         </div>
       </section>
@@ -95,6 +96,21 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
           </div>
 
           <p className="mt-14 max-w-3xl text-xs font-light leading-relaxed text-text-muted">{c.evidenceNote}</p>
+        </div>
+      </section>
+
+      {/* Penetration depth */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
+            {c.wlEyebrow}
+          </p>
+          <h2 className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+            <Lines text={c.depthTitle} />
+          </h2>
+          <div className="mt-16">
+            <DepthDiagram locale={locale} />
+          </div>
         </div>
       </section>
 

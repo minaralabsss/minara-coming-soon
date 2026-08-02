@@ -64,18 +64,66 @@ export function ProductRender({
   priority?: boolean;
   alt: string;
 }) {
+  // The panel is white on a white page, so it needs a backdrop to read
+  // as an object. A soft radial wash plus a contact shadow does it
+  // without introducing a hard-edged box.
   return (
-    <picture>
-      <source srcSet="/product-hero.webp" type="image/webp" />
-      <img
-        src="/product-hero.png"
-        alt={alt}
-        width={1337}
-        height={2000}
-        loading={priority ? "eager" : "lazy"}
-        decoding="async"
-        className={`h-auto w-full object-contain ${className}`}
+    <div className="relative isolate flex justify-center">
+      <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-1/2 -z-10 h-[86%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90 blur-2xl"
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(120,102,94,0.16), rgba(120,102,94,0.05) 62%, transparent 100%)",
+        }}
       />
-    </picture>
+      <div
+        aria-hidden="true"
+        className="absolute bottom-[6%] left-1/2 -z-10 h-6 w-[46%] -translate-x-1/2 rounded-[50%] blur-xl"
+        style={{ background: "rgba(90,74,68,0.22)" }}
+      />
+      <picture>
+        <source srcSet="/product-hero.webp" type="image/webp" />
+        <img
+          src="/product-hero.png"
+          alt={alt}
+          width={1337}
+          height={2000}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className={`h-auto w-full object-contain ${className}`}
+        />
+      </picture>
+    </div>
+  );
+}
+
+/** Photographic figure with a soft frame, used for lifestyle imagery. */
+export function Photo({
+  src,
+  alt,
+  ratio = "aspect-[4/5]",
+  className = "",
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  ratio?: string;
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <div className={`overflow-hidden rounded-sm bg-divider/30 ${ratio} ${className}`}>
+      <picture>
+        <source srcSet={`${src}.webp`} type="image/webp" />
+        <img
+          src={`${src}.png`}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+      </picture>
+    </div>
   );
 }

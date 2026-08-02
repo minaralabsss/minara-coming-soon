@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import AddToCart from "./AddToCart";
-import { Eyebrow, Frame, Lines, ProductRender, rise, stagger, viewport } from "./ui";
+import { Eyebrow, Lines, Photo, ProductRender, rise, stagger, viewport } from "./ui";
 import { products } from "@/lib/products";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
@@ -98,7 +98,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
         >
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
             <motion.div variants={rise}>
-              <Frame label={c.faceFrame} ratio="aspect-[4/5]" />
+              <Photo src="/panel-in-use" alt={s.panel.inUseAlt} ratio="aspect-[4/5]" />
             </motion.div>
             <motion.div variants={rise}>
               <Eyebrow>{c.faceEyebrow}</Eyebrow>
@@ -171,7 +171,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
             </dl>
           </motion.div>
           <motion.div variants={rise} className="order-1 lg:order-2">
-            <Frame label={c.objectFrame} ratio="aspect-[3/4]" />
+            <Photo src="/panel-side" alt={s.panel.sideAlt} ratio="aspect-[3/4]" />
           </motion.div>
         </motion.div>
       </section>

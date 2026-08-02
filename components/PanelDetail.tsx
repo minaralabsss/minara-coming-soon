@@ -9,11 +9,19 @@ import AddToCart from "./AddToCart";
 import { Lines, rise, stagger, viewport } from "./ui";
 import { findProduct } from "@/lib/products";
 import Price from "./Price";
+import IncludedKit from "./IncludedKit";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
 const galleryImages: (string | null)[] = [
-  "/product-hero.png", null, null, null, null, null, null, null,
+  "/product-hero.png",
+  "/panel-side.png",
+  "/panel-in-use.png",
+  "/panel-emitters.png",
+  null,
+  null,
+  null,
+  null,
 ];
 
 export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
@@ -34,8 +42,12 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
             <div className="flex min-h-[46vh] items-center justify-center overflow-hidden rounded-sm bg-divider/40 p-6 sm:min-h-[60vh]">
               {src ? (
                 <picture>
-                  <source srcSet="/product-hero.webp" type="image/webp" />
-                  <img src={src} alt={`${c.name} — ${c.gallery[active]}`} className="max-h-[42vh] w-auto object-contain sm:max-h-[56vh]" />
+                  <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
+                  <img
+                    src={src}
+                    alt={`${c.name} — ${c.gallery[active]}`}
+                    className="max-h-[42vh] w-auto object-contain sm:max-h-[56vh]"
+                  />
                 </picture>
               ) : (
                 <span className="text-center text-xs uppercase tracking-[0.25em] text-text-muted">
@@ -56,7 +68,10 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
                   }`}
                 >
                   {galleryImages[i] ? (
-                    <img src={galleryImages[i]!} alt="" className="h-full w-full object-contain" />
+                    <picture>
+                      <source srcSet={galleryImages[i]!.replace(".png", ".webp")} type="image/webp" />
+                      <img src={galleryImages[i]!} alt="" className="h-full w-full object-contain" />
+                    </picture>
                   ) : (
                     <span className="text-[9px] tracking-wider text-text-muted">{i + 1}</span>
                   )}
@@ -68,7 +83,7 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
           <div className="lg:col-span-5 lg:pt-6">
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.tagline}</p>
             <h1 className="mt-6 text-4xl font-light tracking-[-0.03em] sm:text-5xl">{c.name}</h1>
-            <div className="mt-8"><Price product={product} size="lg" /></div>
+            <div className="mt-8"><Price product={product} size="lg" note /></div>
             <p className="mt-8 text-base font-light leading-relaxed text-text-secondary">{c.summary}</p>
 
             <ul className="mt-10 divide-y divide-divider border-y border-divider">
@@ -186,6 +201,8 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
           </motion.p>
         </motion.div>
       </section>
+
+      <IncludedKit locale={locale} />
 
       {/* Close */}
       <section className="bg-text px-6 py-32 text-bg sm:py-40">

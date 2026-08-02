@@ -13,11 +13,14 @@ export default function Price({
   product,
   size = "md",
   showLabel = true,
+  note = false,
   className = "",
 }: {
   product: Product;
   size?: "sm" | "md" | "lg";
   showLabel?: boolean;
+  /** Show the one-line explanation of why the price is reduced. */
+  note?: boolean;
   className?: string;
 }) {
   const c = t(useLocale()).buy;
@@ -41,6 +44,11 @@ export default function Price({
       {hasOffer && showLabel && (
         <span className="text-[10px] uppercase tracking-[0.2em] text-text-muted">
           {c.launchOffer}
+        </span>
+      )}
+      {hasOffer && note && (
+        <span className="w-full text-xs font-light leading-relaxed text-text-muted">
+          {c.launchNote}
         </span>
       )}
     </span>
