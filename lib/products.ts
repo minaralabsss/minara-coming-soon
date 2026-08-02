@@ -4,6 +4,8 @@ export type Product = {
   tagline: string;
   /** Minor units, so no floating point money. */
   price: number;
+  /** Original price when a launch discount applies. */
+  compareAt?: number;
   currency: string;
   status: "available" | "waitlist" | "development";
   image: string;
@@ -12,7 +14,9 @@ export type Product = {
 };
 
 // Retail, VAT-inclusive as required for consumer display in KSA.
-export const PANEL_PRICE = 1000;
+export const PANEL_PRICE = 1999;
+/** Store-opening launch price. Remove when the offer ends. */
+export const PANEL_LAUNCH_PRICE = 1599;
 export const PANEL_CURRENCY = "SAR";
 
 export const products: Product[] = [
@@ -20,7 +24,8 @@ export const products: Product[] = [
     slug: "panel",
     name: "The Panel",
     tagline: "Full-body and facial light therapy",
-    price: PANEL_PRICE,
+    price: PANEL_LAUNCH_PRICE,
+    compareAt: PANEL_PRICE,
     currency: "SAR",
     status: "available",
     image: "/product-hero.png",
@@ -33,13 +38,13 @@ export const products: Product[] = [
 /** Announced but not yet purchasable. Keeps the collection page honest. */
 export const forthcoming = [
   {
-    name: "The Mask",
-    tagline: "Contoured facial treatment",
+    name: "The Cap",
+    tagline: "Scalp and hair therapy",
     note: "In development",
   },
   {
-    name: "The Wand",
-    tagline: "Targeted precision treatment",
+    name: "The Head Massager",
+    tagline: "Scalp stimulation and relief",
     note: "In development",
   },
 ];

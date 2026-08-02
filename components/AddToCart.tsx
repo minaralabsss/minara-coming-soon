@@ -40,8 +40,13 @@ export default function AddToCart({
     >
       <span>{c.addToCart}</span>
       {showPrice && (
-        <span className="opacity-60">
-          {formatPrice(product.price, product.currency)}
+        <span className="inline-flex items-baseline gap-2 opacity-60">
+          {product.compareAt != null && product.compareAt > product.price && (
+            <s dir="ltr" className="text-xs">
+              {formatPrice(product.compareAt, product.currency)}
+            </s>
+          )}
+          <span dir="ltr">{formatPrice(product.price, product.currency)}</span>
         </span>
       )}
     </button>

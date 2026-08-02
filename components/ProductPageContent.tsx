@@ -6,7 +6,8 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import AddToCart from "./AddToCart";
 import { Lines, rise, stagger, viewport } from "./ui";
-import { products, formatPrice } from "@/lib/products";
+import { products } from "@/lib/products";
+import Price from "./Price";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -56,7 +57,7 @@ export default function ProductPageContent({ locale = "en" }: { locale?: Locale 
                   <p className="text-xs uppercase tracking-[0.2em] text-text-muted">{c.panelTagline}</p>
                   <h3 className="mt-6 text-3xl font-light tracking-[-0.02em] sm:text-4xl">{s.panel.name}</h3>
                   <p className="mt-6 text-base font-light leading-relaxed text-text-secondary">{c.panelSummary}</p>
-                  <p className="mt-8 text-lg font-light" dir="ltr">{formatPrice(p.price, p.currency)}</p>
+                  <div className="mt-8"><Price product={p} size="md" /></div>
 
                   <div className="mt-10 flex flex-wrap items-center gap-6">
                     <AddToCart product={p} showPrice={false} />

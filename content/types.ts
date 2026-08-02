@@ -50,7 +50,7 @@ export type SiteContent = {
     successBody: string;
     sending: string;
   };
-  buy: { addToCart: string; viewDetails: string; fullDetails: string };
+  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string };
   disclaimer: string;
   home: {
     eyebrow: string;
@@ -134,11 +134,6 @@ export type SiteContent = {
       ref: string;
     }[];
     evidenceNote: string;
-    ownEyebrow: string;
-    ownTitle: string;
-    ownBody: string;
-    ownFrames: string[];
-    ownNote: string;
     wlEyebrow: string;
     wlTitle: string;
     wavelengths: Row[];
@@ -147,10 +142,15 @@ export type SiteContent = {
     eyebrow: string;
     title: string;
     intro: string;
-    statement: string;
-    statementBody: string[];
-    howEyebrow: string;
-    values: Numbered[];
+    missionEyebrow: string;
+    mission: string;
+    missionBody: string[];
+    beliefsEyebrow: string;
+    beliefsTitle: string;
+    beliefs: Numbered[];
+    promiseEyebrow: string;
+    promiseTitle: string;
+    promiseBody: string;
     nextEyebrow: string;
     nextTitle: string;
     nextBody: string;
@@ -171,15 +171,5 @@ export type SiteContent = {
     responseNote: string;
     lookingFor: string;
     bullets: string[];
-    formName: string;
-    formEmail: string;
-    formSubject: string;
-    formSubjectPlaceholder: string;
-    subjects: string[];
-    formMessage: string;
-    formMessagePlaceholder: string;
-    formSubmit: string;
-    formNote: string;
-    namePlaceholder: string;
   };
 };

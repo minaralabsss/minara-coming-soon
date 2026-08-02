@@ -7,7 +7,8 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import AddToCart from "./AddToCart";
 import { Lines, rise, stagger, viewport } from "./ui";
-import { findProduct, formatPrice } from "@/lib/products";
+import { findProduct } from "@/lib/products";
+import Price from "./Price";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -67,7 +68,7 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
           <div className="lg:col-span-5 lg:pt-6">
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.tagline}</p>
             <h1 className="mt-6 text-4xl font-light tracking-[-0.03em] sm:text-5xl">{c.name}</h1>
-            <p className="mt-8 text-xl font-light" dir="ltr">{formatPrice(product.price, product.currency)}</p>
+            <div className="mt-8"><Price product={product} size="lg" /></div>
             <p className="mt-8 text-base font-light leading-relaxed text-text-secondary">{c.summary}</p>
 
             <ul className="mt-10 divide-y divide-divider border-y border-divider">

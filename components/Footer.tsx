@@ -6,9 +6,27 @@ import Logo from "./Logo";
 import { localeFromPath, localeHref } from "@/lib/locale";
 import { t } from "@/content/site";
 
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.2" />
+      <circle cx="12" cy="12" r="4.4" />
+      <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function TikTokIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M19.9 7.4a5.6 5.6 0 0 1-3.3-1.1a5.7 5.7 0 0 1-2.1-3.1h-3v12.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.7a6.6 6.6 0 0 0-.9-.06A6 6 0 1 0 14.6 15.6V9.8a8.6 8.6 0 0 0 5.3 1.8V8.5c0-.37-.04-.74 0-1.1Z" />
+    </svg>
+  );
+}
+
 const socials = [
-  { href: "https://instagram.com/minaralabs", label: "Instagram", handle: "@minaralabs" },
-  { href: "https://tiktok.com/@minaralabs", label: "TikTok", handle: "@minaralabs" },
+  { href: "https://instagram.com/minaralabs", label: "Instagram", handle: "@minaralabs", Icon: InstagramIcon },
+  { href: "https://tiktok.com/@minaralabs", label: "TikTok", handle: "@minaralabs", Icon: TikTokIcon },
 ];
 
 export default function Footer() {
@@ -85,11 +103,12 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={s.label}
                     dir="ltr"
-                    className="group inline-block text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
+                    className="group inline-flex items-center gap-3 text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                   >
-                    {s.label}
-                    <span className="ms-2 text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
+                    <s.Icon />
+                    <span className="text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
                       {s.handle}
                     </span>
                   </a>

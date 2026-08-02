@@ -14,28 +14,28 @@ export const en: SiteContent = {
     cart: "Open cart",
     menu: "Toggle menu",
     switchLabel: "اقرأ بالعربية",
-    switchTo: "العربية",
+    switchTo: "AR",
     home: "minara labs — home",
   },
 
   footer: {
     blurb:
-      "Precision light technology, designed in Saudi Arabia for the way modern skin and modern lives are actually lived.",
+      "Precision light technology, designed in Saudi for the way modern skin and modern lives are actually lived.",
     explore: "Explore",
     policies: "Policies",
     connect: "Connect",
     returns: "Returns",
     warranty: "Warranty",
-    rights: "All rights reserved. Designed in Saudi Arabia.",
+    rights: "All rights reserved. Designed in Saudi.",
     disclaimerShort: "A wellness practice, not a medical treatment.",
   },
 
   modal: {
     eyebrow: "minara labs — 2026",
     title: "Join the\nFirst Release",
-    body: "Be among the first to experience minara. Receive launch updates, early access, and exclusive product announcements.",
+    body: "Be among the first to experience minara. Launch news and product announcements, before anyone else.",
     continue: "Continue to site",
-    origin: "Designed in Saudi Arabia",
+    origin: "Designed in Saudi",
     close: "Close",
   },
 
@@ -65,6 +65,7 @@ export const en: SiteContent = {
     addToCart: "Add to cart",
     viewDetails: "View full details",
     fullDetails: "Full details",
+    launchOffer: "Store opening",
   },
 
   disclaimer:
@@ -135,16 +136,16 @@ export const en: SiteContent = {
       { name: "The Mask", tagline: "Contoured facial treatment", note: "In development" },
       { name: "The Wand", tagline: "Targeted precision treatment", note: "In development" },
     ],
-    panelTagline: "Full-body and facial light therapy",
+    panelTagline: "For the face first, then the body",
     panelSummary:
-      "Six clinically selected wavelengths across seventy emitters, in a cold-rolled steel body built to hold its output.",
+      "Made first for the face — collagen, fine lines, tone — then sized for the whole body. Six clinical wavelengths across seventy emitters.",
   },
 
   panel: {
-    tagline: "Full-body and facial light therapy",
+    tagline: "For the face first, then the body",
     name: "The Panel",
     summary:
-      "Six clinically selected wavelengths across seventy emitters. Built for a twenty-minute daily session on the face, and sized to treat the body when you want it to.",
+      "Six clinically selected wavelengths across seventy emitters. Made first for the face — collagen, fine lines, tone — and sized to treat the whole body when you want more.",
     quickSpecs: [
       ["Treatment", "20 minutes daily, at 0–12 in"],
       ["For", "Collagen support, fine lines, tone, recovery"],
@@ -152,7 +153,7 @@ export const en: SiteContent = {
       ["Rated life", "50,000+ hours"],
     ],
     shipping:
-      "First release, 2026. Designed in Saudi Arabia. Ships worldwide on AC 100–240 V, so no adapter is required.",
+      "First release, 2026. Designed in Saudi. Ships worldwide on AC 100–240 V, so no adapter is required.",
     returnsLink: "7-day returns",
     warrantyLink: "1-year warranty",
     gallery: [
@@ -281,13 +282,6 @@ export const en: SiteContent = {
     ],
     evidenceNote:
       "These trials tested other manufacturers' devices. They are evidence for the mechanism and for the wavelength range minara operates in. They are not measurements of the minara panel, and the figures above should not be read as results you will obtain from it.",
-    ownEyebrow: "Our own results",
-    ownTitle: "Documented over\ntwelve weeks",
-    ownBody:
-      "Photographed under fixed lighting, at a fixed distance, without retouching. Published here once our own participants complete the full protocol. We would rather show you nothing than show you somebody else's face.",
-    ownFrames: ["Week 0 — baseline", "Week 4", "Week 8", "Week 12"],
-    ownNote:
-      "Results vary between individuals. Published protocols generally run two to five sessions per week across eight to twelve weeks before a visible difference is recorded.",
     wlEyebrow: "Why these wavelengths",
     wlTitle: "Depth is the\nwhole argument",
     wavelengths: [
@@ -302,34 +296,37 @@ export const en: SiteContent = {
 
   about: {
     eyebrow: "About",
-    title: "A light company,\ndesigned in Saudi Arabia",
+    title: "Light, taken\nseriously",
     intro:
-      "We make instruments that use light to support the body's own repair. The panel is the first. It will not be the last.",
-    statement:
-      "Most devices in this category are assembled to a price, then described afterwards. We work the other way around.",
-    statementBody: [
-      "Every product begins as a written specification: which wavelengths, at what irradiance, held for how long, and on what evidence. Only once that document is settled does anything get drawn.",
-      "It is a slower way to build, and it means we will release fewer things than the market expects. We would rather publish a short catalogue we can defend line by line.",
+      "minara labs designs instruments that use clinical light to help skin renew itself. Designed in Saudi, made for the world.",
+    missionEyebrow: "Our mission",
+    mission:
+      "To bring clinical light within reach of every home — so that caring for your skin no longer means a clinic appointment, a specialist, or a compromise.",
+    missionBody: [
+      "For decades, red light therapy lived in dermatology clinics and high-end spas: proven, effective, and out of reach. We exist to change where it lives.",
+      "We build instruments precise enough to take the science seriously, and beautiful enough to stay out on your dresser rather than hidden in a drawer. Twenty minutes a day, in your own home, on your own schedule.",
     ],
-    howEyebrow: "How we work",
-    values: [
-      { index: "01", title: "Evidence first", body: "If a claim cannot be traced to peer-reviewed work, it does not appear on this site or on a box." },
-      { index: "02", title: "Specified, then designed", body: "Performance requirements are fixed before industrial design begins, never adjusted afterwards to match what was built." },
-      { index: "03", title: "Materials that do work", body: "Steel because it conducts heat, not because it photographs well. Every material earns its place functionally." },
-      { index: "04", title: "Conservative numbers", body: "Published figures are stated with tolerances rather than as peaks. The number you read is the number you get." },
-      { index: "05", title: "Built to be kept", body: "Rated lives measured in decades, not warranty periods. Longevity is a design constraint from the first sketch." },
-      { index: "06", title: "Designed in Saudi Arabia", body: "Drawn, specified and refined here, for a market that has been asked to import its wellness technology for too long." },
+    beliefsEyebrow: "What we believe",
+    beliefsTitle: "Three things\nwe hold to",
+    beliefs: [
+      { index: "01", title: "Evidence over promises", body: "Every claim on this site traces back to published, peer-reviewed research. If the science does not support it, we do not say it — and we do not sell it." },
+      { index: "02", title: "Beauty and precision together", body: "An instrument you use daily should be a pleasure to own. We design objects worthy of the space they live in, without ever trading looks for performance." },
+      { index: "03", title: "Honest by design", body: "Real numbers with real tolerances. Clear pricing. A warranty we honour. If we would not accept it as customers, we do not offer it as a company." },
     ],
+    promiseEyebrow: "Designed in Saudi",
+    promiseTitle: "From here,\nfor everywhere",
+    promiseBody:
+      "minara is drawn, specified and refined in Saudi — proof that world-class wellness technology can begin here, not just arrive here. The panel is our first instrument. It will not be our last.",
     nextEyebrow: "What follows",
-    nextTitle: "A short catalogue,\nbuilt slowly",
+    nextTitle: "A growing family\nof instruments",
     nextBody:
-      "Two further instruments are in development. Each will be announced when it is ready and not before.",
+      "The Cap and The Head Massager are in development now. Each will be announced when it is ready — and not a moment before.",
   },
 
   support: {
     eyebrow: "Support",
     title: "Support & Contact",
-    intro: "Find answers to your questions or reach out to our team directly.",
+    intro: "Most questions are answered below. For anything else, our team reads every email personally.",
     faqTitle: "Frequently Asked Questions",
     faqs: [
       { q: "What is red light therapy and how does it work?", a: "Red light therapy uses specific wavelengths of light to stimulate mitochondrial function and increase cellular energy production. Our panel uses six clinically proven wavelengths, from 630 to 1060 nanometres, to deliver comprehensive benefits." },
@@ -341,38 +338,22 @@ export const en: SiteContent = {
       { q: "How long do the LEDs last?", a: "The panel is rated for more than 50,000 hours. That is over five years of continuous operation, or a lifetime of ordinary daily sessions." },
       { q: "Will it work with international outlets?", a: "Yes. The panel accepts AC 100–240 V at 50/60 Hz, so it works with electrical systems worldwide without an adapter." },
       { q: "What does IP20 protection mean?", a: "IP20 means the panel is protected against solid objects larger than 12.5 mm and requires protection from water. It is intended for indoor use in dry environments." },
-      { q: "Can I see the panel before buying?", a: "The panel is in a pre-launch phase. Join the early access list to be among the first to experience it and to receive founder pricing." },
+      { q: "Can I see the panel before buying?", a: "We are an online studio, so the panel is not on display in a showroom yet. Every order is covered by a seven-day return window, so you can experience it at home with nothing at risk." },
     ],
-    contactTitle: "Get in Touch",
+    contactTitle: "Write to us",
     email: "Email",
     location: "Location",
-    locationValue: "Saudi Arabia",
-    locationNote: "Designed in Saudi Arabia",
+    locationValue: "Saudi",
+    locationNote: "Designed in Saudi",
     response: "Response time",
     responseValue: "24 to 48 hours",
-    responseNote: "We personally review every enquiry",
-    lookingFor: "What we're looking for",
+    responseNote: "A person reads every message. No ticket numbers, no bots.",
+    lookingFor: "We can help with",
     bullets: [
-      "Early access requests and product feedback",
+      "Orders, delivery and returns",
+      "Product guidance and technical questions",
       "Distribution and partnership enquiries",
-      "Technical specifications and support",
       "Collaboration and media enquiries",
     ],
-    formName: "Name",
-    formEmail: "Email",
-    formSubject: "Subject",
-    formSubjectPlaceholder: "Select a topic",
-    subjects: [
-      "Early access request",
-      "Partnership enquiry",
-      "Support & technical",
-      "Media & press",
-      "Other",
-    ],
-    formMessage: "Message",
-    formMessagePlaceholder: "Tell us more about your interest...",
-    formSubmit: "Send Message",
-    formNote: "We'll get back to you within 24 to 48 hours",
-    namePlaceholder: "Your name",
   },
 };

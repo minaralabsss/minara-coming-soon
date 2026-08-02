@@ -23,45 +23,39 @@ export type Policy = {
 export const returns: Record<Locale, Policy> = {
   en: {
     eyebrow: "Returns",
-    title: "Seven days\nto be certain",
+    title: "Seven days\nto fall in love",
     intro:
-      "We would rather you were sure than merely committed. Every panel comes with a full seven-day return window from the day it reaches you, exactly as Saudi law provides, and we do not make it difficult.",
+      "Choosing minara should feel effortless. Live with the panel for a full week — in your light, your bathroom, your morning ritual. If it is not everything you hoped, we take it back. Simply, and without questions.",
     updated: "Last updated July 2026",
     sections: [
       {
-        heading: "Your right to return",
+        heading: "A week that belongs to you",
         body: [
-          "Under the Saudi E-Commerce Law you may cancel and return your order within seven days of receiving it. You do not need to explain why.",
-          "If the panel arrived faulty, did not match what we described, or was sent to you in error, the return costs you nothing at all. We arrange collection and refund you in full, including the original delivery charge.",
+          "From the day your panel arrives, you have seven days to decide. Use it. Feel it. Let it earn its place.",
+          "If you choose to return it, you owe us no explanation. Changing your mind is reason enough.",
         ],
       },
       {
-        heading: "If you simply changed your mind",
+        heading: "If something is not right",
         body: [
-          "That is a legitimate reason and we honour it. Return the panel within seven days in its original condition, complete with its packaging and accessories, and we will refund the purchase price.",
-          "Return shipping in this case is arranged by you, or by us at a cost quoted before collection.",
+          "Should your panel arrive with a fault, or differ from what we promised, the return costs you nothing at all. We arrange the collection, and every riyal comes back to you — the delivery included.",
+          "This is not generosity. It is simply how it should be.",
         ],
       },
       {
-        heading: "How to start a return",
+        heading: "Returning is effortless",
         list: [
-          "Email minaralabs@gmail.com with your order number",
-          "Tell us briefly what happened. A photograph helps if there is a fault",
-          "We reply within 24 to 48 hours with collection details",
-          "Once the panel reaches us, your refund is issued to the original payment method",
+          "Write to minaralabs@gmail.com with your order number",
+          "Tell us briefly what happened — a photo helps if something is wrong",
+          "Within 48 hours, we reply with collection details",
+          "The moment your panel reaches us, your refund is on its way",
         ],
-        note: "Refunds typically appear within 5 to 14 days depending on your bank.",
+        note: "Refunds arrive within 5 to 14 days, depending on your bank. Please return the panel in its original condition, with its packaging and accessories.",
       },
       {
         heading: "Keep your invoice",
         body: [
-          "Your electronic invoice is your proof of purchase and the basis of both your return rights and your warranty. We recommend keeping it for two years.",
-        ],
-      },
-      {
-        heading: "If we cannot agree",
-        body: [
-          "We would rather resolve things directly, and almost always do. If we cannot, you are entitled to raise the matter with the Saudi Ministry of Commerce through the Balagh Tijari application or by calling 1900.",
+          "Your electronic invoice is the key to both your return and your warranty. Keep it somewhere safe — we recommend two years.",
         ],
       },
     ],
@@ -74,51 +68,45 @@ export const returns: Record<Locale, Policy> = {
 
   ar: {
     eyebrow: "الإرجاع",
-    title: "سبعة أيام\nلتطمئن",
+    title: "سبعة أيام\nلتقعي في حبه",
     intro:
-      "نفضّل أن تكون واثقاً لا مجرد ملتزم. كل جهاز يأتي بفترة إرجاع كاملة مدتها سبعة أيام من يوم وصوله إليك، تماماً كما ينص النظام السعودي، ولا نُصعّب الأمر عليك.",
+      "اختيار منارا ينبغي أن يكون بلا تردد. عيشي مع الجهاز أسبوعاً كاملاً — في إضاءتك، وغرفتك، وطقس صباحك. وإن لم يكن كل ما تمنيتِ، نستعيده. ببساطة، وبلا أسئلة.",
     updated: "آخر تحديث يوليو ٢٠٢٦",
     sections: [
       {
-        heading: "حقك في الإرجاع",
+        heading: "أسبوع ملكك وحدك",
         body: [
-          "بموجب نظام التجارة الإلكترونية السعودي، يحق لك فسخ العقد وإرجاع طلبك خلال سبعة أيام من استلامه. ولست مضطراً لتوضيح السبب.",
-          "وإذا وصلك الجهاز به عيب، أو لم يطابق ما وصفناه، أو أُرسل إليك بالخطأ، فإن الإرجاع لا يكلفك شيئاً على الإطلاق. نتولى نحن ترتيب الاستلام ونعيد لك المبلغ كاملاً، بما في ذلك رسوم التوصيل الأصلية.",
+          "من يوم وصول جهازك، أمامك سبعة أيام لتقرري. استخدميه. جرّبيه. دعيه يستحق مكانه.",
+          "وإن اخترتِ إرجاعه، فلستِ مدينة لنا بأي تفسير. تغيير رأيك سببٌ كافٍ.",
         ],
       },
       {
-        heading: "إذا غيّرت رأيك فقط",
+        heading: "إن لم يكن شيء ما على ما يرام",
         body: [
-          "هذا سبب مشروع ونحترمه. أعد الجهاز خلال سبعة أيام بحالته الأصلية، مع تغليفه وملحقاته، ونعيد لك قيمة الشراء.",
-          "شحن الإرجاع في هذه الحالة يكون على عاتقك، أو نتولاه نحن بتكلفة نوضحها لك قبل الاستلام.",
+          "إذا وصلك الجهاز بعيب، أو مختلفاً عمّا وعدناك به، فالإرجاع لا يكلفك شيئاً على الإطلاق. نرتب نحن الاستلام، ويعود إليك كل ريال — حتى رسوم التوصيل.",
+          "هذا ليس كرماً منا. هذا ببساطة ما ينبغي أن يكون.",
         ],
       },
       {
-        heading: "كيف تبدأ الإرجاع",
+        heading: "الإرجاع بلا عناء",
         list: [
-          "أرسل بريداً إلى minaralabs@gmail.com مع رقم طلبك",
-          "أخبرنا باختصار بما حدث. وصورة تساعدنا إن كان هناك عيب",
-          "نرد عليك خلال ٢٤ إلى ٤٨ ساعة بتفاصيل الاستلام",
-          "بمجرد وصول الجهاز إلينا، يُصرف المبلغ إلى وسيلة الدفع الأصلية",
+          "راسلينا على minaralabs@gmail.com مع رقم طلبك",
+          "أخبرينا باختصار بما حدث — وصورة تساعد إن كان هناك خلل",
+          "خلال ٤٨ ساعة، نرد عليك بتفاصيل الاستلام",
+          "ولحظة وصول الجهاز إلينا، يكون مبلغك في طريقه إليك",
         ],
-        note: "يظهر المبلغ عادة خلال ٥ إلى ١٤ يوماً حسب بنكك.",
+        note: "يصل المبلغ خلال ٥ إلى ١٤ يوماً حسب بنكك. نرجو إعادة الجهاز بحالته الأصلية مع تغليفه وملحقاته.",
       },
       {
-        heading: "احتفظ بفاتورتك",
+        heading: "احتفظي بفاتورتك",
         body: [
-          "فاتورتك الإلكترونية هي إثبات الشراء، وأساس حقك في الإرجاع والضمان معاً. ننصح بالاحتفاظ بها لمدة سنتين.",
-        ],
-      },
-      {
-        heading: "إذا لم نتفق",
-        body: [
-          "نفضّل أن نحل الأمور مباشرة، وهذا ما يحدث في الغالب. وإن تعذّر ذلك، فمن حقك رفع الأمر إلى وزارة التجارة عبر تطبيق «بلاغ تجاري» أو بالاتصال على الرقم ١٩٠٠.",
+          "فاتورتك الإلكترونية هي مفتاح الإرجاع والضمان معاً. احتفظي بها في مكان آمن — ننصح بسنتين.",
         ],
       },
     ],
     closing: {
-      heading: "ما زلت متردداً؟",
-      body: "اسألنا عن أي شيء قبل الشراء. الإجابة الصادقة الآن أثمن عندنا من عملية بيع تندم عليها.",
+      heading: "ما زلتِ مترددة؟",
+      body: "اسألينا عن أي شيء قبل الشراء. الإجابة الصادقة الآن أثمن عندنا من عملية بيع تندمين عليها.",
       contact: "minaralabs@gmail.com",
     },
   },
