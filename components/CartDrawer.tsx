@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
 import { useLocale } from "@/lib/useLocale";
+import { localeHref } from "@/lib/locale";
 import { t } from "@/content/site";
 
 export default function CartDrawer() {
-  const { lines, subtotal, currency, isOpen, isSyncing, checkoutUrl, close, setQuantity, remove } =
+  const { lines, subtotal, currency, isOpen, close, setQuantity, remove } =
     useCart();
   const locale = useLocale();
   const c = t(locale).cart;
@@ -123,19 +125,21 @@ export default function CartDrawer() {
                 </span>
               </div>
 
-              <a
-                href={checkoutUrl ?? "mailto:minaralabs@gmail.com?subject=Order%20enquiry"}
+              <Link
+                href={localeHref("/checkout", locale)}
+                onClick={close}
+                aria-disabled={!lines.length}
                 className={`block w-full py-4 text-center text-sm tracking-wide transition-opacity duration-500 ${
-                  lines.length && !isSyncing
+                  lines.length
                     ? "bg-text text-bg hover:opacity-80"
                     : "pointer-events-none bg-divider text-text-muted"
                 }`}
               >
-                {isSyncing ? c.updating : checkoutUrl ? c.checkoutReady : c.checkout}
-              </a>
+                {c.checkout}
+              </Link>
 
               <p className="text-center text-xs font-light leading-relaxed text-text-muted">
-{checkoutUrl ? c.taxNote : c.note}
+                {c.taxNote}
               </p>
             </footer>
           </motion.aside>

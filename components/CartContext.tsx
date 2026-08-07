@@ -26,13 +26,6 @@ type CartValue = {
   subtotal: number;
   currency: string;
   isOpen: boolean;
-  /** True while a checkout session is being created. */
-  isSyncing: boolean;
-  /**
-   * Hosted checkout URL from the payment gateway.
-   * Null until a gateway is wired — see the Moyasar seam below.
-   */
-  checkoutUrl: string | null;
   add: (item: AddInput, quantity?: number) => void;
   setQuantity: (slug: string, quantity: number) => void;
   remove: (slug: string) => void;
@@ -48,20 +41,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
-  /* --------------------------------------------------------------
-   * MOYASAR SEAM
-   *
-   * Checkout is not wired yet. When the Moyasar account exists:
-   *   1. POST the cart to /api/checkout
-   *   2. That route creates a Moyasar payment and returns its URL
-   *   3. setIsSyncing(true) around the call, setCheckoutUrl(url) after
-   *
-   * CartDrawer already renders all three states, so nothing there
-   * needs to change. Required: MOYASAR_SECRET_KEY on the server, and
-   * a CR plus Maroof registration before Moyasar will onboard you.
-   * ------------------------------------------------------------- */
-  const [isSyncing] = useState(false);
-  const [checkoutUrl] = useState<string | null>(null);
+  /* Checkout now lives at /checkout, which posts the cart to
+   * /api/checkout and redirects to Moyasar's hosted page. The cart
+   * itself stays a plain local store. */
 
   useEffect(() => {
     try {
@@ -114,15 +96,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       subtotal: lines.reduce((n, l) => n + l.price * l.quantity, 0),
       currency: lines[0]?.currency ?? PANEL_CURRENCY,
       isOpen,
-      isSyncing,
-      checkoutUrl,
       add,
       setQuantity,
       remove,
       open: () => setIsOpen(true),
       close: () => setIsOpen(false),
     }),
-    [lines, isOpen, isSyncing, checkoutUrl, add, setQuantity, remove]
+    [lines, isOpen, add, setQuantity, remove]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

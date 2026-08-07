@@ -63,6 +63,43 @@ export type SiteContent = {
     sending: string;
   };
   buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string };
+  checkout: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    saudiOnly: string;
+    name: string;
+    namePh: string;
+    email: string;
+    phone: string;
+    phonePh: string;
+    city: string;
+    cityPh: string;
+    address: string;
+    addressPh: string;
+    notes: string;
+    notesPh: string;
+    optional: string;
+    summary: string;
+    qty: string;
+    total: string;
+    pay: string;
+    working: string;
+    secure: string;
+    errorGeneric: string;
+    errorFields: string;
+    testMode: string;
+    back: string;
+  };
+  order: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    refLabel: string;
+    next: string[];
+    contact: string;
+    home: string;
+  };
   disclaimer: string;
   home: {
     eyebrow: string;
