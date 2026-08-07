@@ -102,6 +102,7 @@ export type SiteContent = {
     body: string;
     refLabel: string;
     itemsLabel: string;
+    galleryLabel: string;
     next: string[];
     contact: string;
     home: string;

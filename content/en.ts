@@ -111,6 +111,7 @@ export const en: SiteContent = {
     body: "Payment received. A receipt is on its way to your email, and we have your delivery details.",
     refLabel: "Order reference",
     itemsLabel: "What you ordered",
+    galleryLabel: "What is on its way to you",
     next: [
       "You receive tracking details by email once it ships",
     ],

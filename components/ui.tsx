@@ -82,18 +82,22 @@ export function ProductRender({
         className="absolute bottom-[6%] left-1/2 -z-10 h-6 w-[46%] -translate-x-1/2 rounded-[50%] blur-xl"
         style={{ background: "rgba(90,74,68,0.22)" }}
       />
+      {/* Explicit white plate. The cutout leaves a faint shadow fringe at
+          the base, and white renders it invisible on any surrounding tone. */}
+      <div className="relative bg-white">
       <picture>
         <source srcSet="/product-hero.webp" type="image/webp" />
         <img
           src="/product-hero.png"
           alt={alt}
-          width={2568}
-          height={2450}
+          width={1571}
+          height={2344}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           className={`h-auto w-full object-contain ${className}`}
         />
       </picture>
+      </div>
     </div>
   );
 }

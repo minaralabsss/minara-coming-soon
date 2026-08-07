@@ -60,7 +60,7 @@ function OrderDetails({ locale }: { locale: Locale }) {
                     href={localeHref(`/product/${product.slug}`, locale)}
                     className="group flex items-center gap-5 py-5 transition-opacity duration-300 hover:opacity-70"
                   >
-                    <span className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm bg-divider/40">
+                    <span className="flex h-24 w-24 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm bg-white">
                       <picture>
                         <source srcSet={product.imageWebp} type="image/webp" />
                         <img
@@ -88,6 +88,39 @@ function OrderDetails({ locale }: { locale: Locale }) {
               );
             })}
           </ul>
+        </div>
+      )}
+
+      {items.length > 0 && (
+        <div className="mt-14">
+          <p className="text-xs uppercase tracking-[0.2em] text-text-muted">
+            {c.galleryLabel}
+          </p>
+          <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
+            {[
+              // The hero is a tall cutout, so it is contained rather than
+              // cropped; the two lifestyle shots fill their tiles.
+              { src: "/product-hero", alt: s.panel.name, fit: "object-contain p-2" },
+              { src: "/panel-in-use", alt: s.panel.inUseAlt, fit: "object-cover" },
+              { src: "/panel-emitters", alt: s.panel.emittersAlt, fit: "object-cover" },
+            ].map((shot) => (
+              <div
+                key={shot.src}
+                className="aspect-square overflow-hidden rounded-sm bg-white"
+              >
+                <picture>
+                  <source srcSet={`${shot.src}.webp`} type="image/webp" />
+                  <img
+                    src={`${shot.src}.png`}
+                    alt={shot.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className={`h-full w-full ${shot.fit}`}
+                  />
+                </picture>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </>
