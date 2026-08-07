@@ -87,8 +87,8 @@ export function ProductRender({
         <img
           src="/product-hero.png"
           alt={alt}
-          width={1337}
-          height={2000}
+          width={2568}
+          height={2450}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           className={`h-auto w-full object-contain ${className}`}

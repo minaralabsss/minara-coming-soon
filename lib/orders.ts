@@ -161,7 +161,9 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
     invoiceId: order.invoiceId,
     amount: `SAR ${order.amountSar.toLocaleString("en-US")}`,
     name: order.customer.name,
-    email: order.customer.email,
+    // Loops reserves `email` as a contact property, so the buyer's address
+    // travels as customerEmail in dataVariables.
+    customerEmail: order.customer.email,
     phone: order.customer.phone,
     province: order.customer.province,
     city: order.customer.city,
