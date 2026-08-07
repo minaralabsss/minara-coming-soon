@@ -56,6 +56,9 @@ export async function POST(request: NextRequest) {
     // by the client is ignored — otherwise a customer could set their own price.
     let amountSar = 0;
     const descriptions: string[] = [];
+    // Compact slug:qty pairs, so the confirmation page can list and link
+    // the items without needing any storage.
+    const itemCodes: string[] = [];
 
     for (const line of rawLines) {
       const product = findProduct(String(line.slug ?? ""));
@@ -74,6 +77,7 @@ export async function POST(request: NextRequest) {
       }
       amountSar += product.price * qty;
       descriptions.push(`${product.name} x${qty}`);
+      itemCodes.push(`${product.slug}:${qty}`);
     }
 
     if (amountSar <= 0) {
@@ -93,7 +97,9 @@ export async function POST(request: NextRequest) {
       // Server-to-server notification. This is what actually confirms payment.
       callbackUrl: `${origin}/api/moyasar/webhook`,
       // Where the customer lands afterwards.
-      successUrl: `${origin}${localePrefix}/order/complete?ref=${reference}`,
+      successUrl: `${origin}${localePrefix}/order/complete?ref=${reference}&items=${encodeURIComponent(
+        itemCodes.join(",")
+      )}`,
       backUrl: `${origin}${localePrefix}/product/panel`,
       // Metadata comes back to us on the webhook, so the shipping details
       // travel with the payment rather than needing storage in between.

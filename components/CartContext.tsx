@@ -29,6 +29,8 @@ type CartValue = {
   add: (item: AddInput, quantity?: number) => void;
   setQuantity: (slug: string, quantity: number) => void;
   remove: (slug: string) => void;
+  /** Empty the cart. Called once an order is confirmed. */
+  clear: () => void;
   open: () => void;
   close: () => void;
 };
@@ -89,6 +91,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setLines((prev) => prev.filter((l) => l.slug !== slug));
   }, []);
 
+  const clear = useCallback(() => setLines([]), []);
+
   const value = useMemo<CartValue>(
     () => ({
       lines,
@@ -99,10 +103,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       add,
       setQuantity,
       remove,
+      clear,
       open: () => setIsOpen(true),
       close: () => setIsOpen(false),
     }),
-    [lines, isOpen, add, setQuantity, remove]
+    [lines, isOpen, add, setQuantity, remove, clear]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

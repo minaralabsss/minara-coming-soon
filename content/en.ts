@@ -110,10 +110,9 @@ export const en: SiteContent = {
     title: "Your order\nis confirmed",
     body: "Payment received. A receipt is on its way to your email, and we have your delivery details.",
     refLabel: "Order reference",
+    itemsLabel: "What you ordered",
     next: [
-      "We prepare and dispatch your panel within two business days",
       "You receive tracking details by email once it ships",
-      "Seven days from delivery to decide, as always",
     ],
     contact: "Any questions, reply to your receipt or write to us directly.",
     home: "Back to home",

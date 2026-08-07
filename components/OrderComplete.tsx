@@ -1,31 +1,112 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { Lines } from "./ui";
+import { useCart } from "./CartContext";
+import { findProduct, formatPrice } from "@/lib/products";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
-function Reference({ label }: { label: string }) {
+/**
+ * Order summary, read from the query string Moyasar redirected back to.
+ * Nothing sensitive lives here — just the reference and which items were
+ * bought, so the page can link back to them.
+ */
+function OrderDetails({ locale }: { locale: Locale }) {
+  const s = t(locale);
+  const c = s.order;
   const params = useSearchParams();
-  const ref = params.get("ref");
-  if (!ref) return null;
+  const reference = params.get("ref");
+
+  const items = (params.get("items") ?? "")
+    .split(",")
+    .map((pair) => {
+      const [slug, qty] = pair.split(":");
+      const product = findProduct(slug ?? "");
+      if (!product) return null;
+      const quantity = Math.max(1, Math.floor(Number(qty)) || 1);
+      return { product, quantity };
+    })
+    .filter(Boolean) as { product: ReturnType<typeof findProduct>; quantity: number }[];
+
   return (
-    <div className="mt-12 inline-block border border-divider px-8 py-5">
-      <p className="text-xs uppercase tracking-[0.2em] text-text-muted">{label}</p>
-      <p dir="ltr" className="mt-2 text-lg font-light tracking-wide">
-        {ref}
-      </p>
-    </div>
+    <>
+      {reference && (
+        <div className="mt-12 inline-block border border-divider px-8 py-5">
+          <p className="text-xs uppercase tracking-[0.2em] text-text-muted">
+            {c.refLabel}
+          </p>
+          <p dir="ltr" className="mt-2 text-lg font-light tracking-wide">
+            {reference}
+          </p>
+        </div>
+      )}
+
+      {items.length > 0 && (
+        <div className="mt-12">
+          <p className="text-xs uppercase tracking-[0.2em] text-text-muted">
+            {c.itemsLabel}
+          </p>
+          <ul className="mt-6 divide-y divide-divider border-y border-divider">
+            {items.map(({ product, quantity }) => {
+              if (!product) return null;
+              return (
+                <li key={product.slug}>
+                  <Link
+                    href={localeHref(`/product/${product.slug}`, locale)}
+                    className="group flex items-center gap-5 py-5 transition-opacity duration-300 hover:opacity-70"
+                  >
+                    <span className="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm bg-divider/40">
+                      <picture>
+                        <source srcSet={product.imageWebp} type="image/webp" />
+                        <img
+                          src={product.image}
+                          alt=""
+                          className="h-full w-auto object-contain p-1"
+                        />
+                      </picture>
+                    </span>
+
+                    <span className="flex-1">
+                      <span className="block text-base font-light underline-offset-4 group-hover:underline">
+                        {s.panel.name}
+                      </span>
+                      <span className="mt-1 block text-xs text-text-muted">
+                        {s.checkout.qty} {quantity}
+                      </span>
+                    </span>
+
+                    <span dir="ltr" className="text-sm font-light text-text-secondary">
+                      {formatPrice(product.price * quantity, product.currency)}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }
 
 export default function OrderComplete({ locale = "en" }: { locale?: Locale }) {
   const s = t(locale);
   const c = s.order;
+  const { clear } = useCart();
+  const cleared = useRef(false);
+
+  // Payment succeeded, so the cart has served its purpose. Guarded by a ref
+  // so a re-render cannot wipe a cart the customer has started refilling.
+  useEffect(() => {
+    if (cleared.current) return;
+    cleared.current = true;
+    clear();
+  }, [clear]);
 
   return (
     <div
@@ -48,10 +129,10 @@ export default function OrderComplete({ locale = "en" }: { locale?: Locale }) {
           </p>
 
           <Suspense fallback={null}>
-            <Reference label={c.refLabel} />
+            <OrderDetails locale={locale} />
           </Suspense>
 
-          <ul className="mt-16 space-y-4 border-t border-divider pt-10">
+          <ul className="mt-14 space-y-4 border-t border-divider pt-10">
             {c.next.map((item) => (
               <li
                 key={item}

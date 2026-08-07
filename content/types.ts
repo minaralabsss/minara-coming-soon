@@ -101,6 +101,7 @@ export type SiteContent = {
     title: string;
     body: string;
     refLabel: string;
+    itemsLabel: string;
     next: string[];
     contact: string;
     home: string;
