@@ -125,7 +125,9 @@ export async function POST(request: NextRequest) {
       name: meta.name ?? "",
       email: meta.email ?? "",
       phone: meta.phone ?? "",
+      province: meta.province ?? "",
       city: meta.city ?? "",
+      shortAddress: meta.short_address ?? "",
       address: meta.address ?? "",
       notes: meta.notes ?? "",
     };

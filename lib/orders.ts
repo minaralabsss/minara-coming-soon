@@ -7,37 +7,18 @@
  * batch that is enough; add storage when volume justifies it.
  */
 
-export const MERCHANT_EMAIL = "minaralabs@gmail.com";
+import { cityBelongsTo, findProvince, normaliseShortAddress } from "./saudi";
 
-/** Saudi Arabia only at launch. */
-export const SAUDI_CITIES = [
-  "Riyadh",
-  "Jeddah",
-  "Makkah",
-  "Madinah",
-  "Dammam",
-  "Khobar",
-  "Dhahran",
-  "Jubail",
-  "Qatif",
-  "Hofuf",
-  "Taif",
-  "Tabuk",
-  "Buraidah",
-  "Khamis Mushait",
-  "Abha",
-  "Najran",
-  "Jazan",
-  "Hail",
-  "Yanbu",
-  "Other",
-] as const;
+export const MERCHANT_EMAIL = "minaralabs@gmail.com";
 
 export type Customer = {
   name: string;
   email: string;
   phone: string;
+  province: string;
   city: string;
+  /** Saudi National Address short code, e.g. RQAA2929. */
+  shortAddress: string;
   address: string;
   notes?: string;
 };
@@ -84,8 +65,16 @@ export function validateCustomer(
   const phone = normalisePhone(input.phone ?? "");
   if (!phone) fields.push("phone");
 
+  const province = (input.province ?? "").trim();
+  if (!findProvince(province)) fields.push("province");
+
   const city = (input.city ?? "").trim();
-  if (!city || city.length > 40) fields.push("city");
+  if (!city || city.length > 60 || !cityBelongsTo(province, city)) {
+    fields.push("city");
+  }
+
+  const shortAddress = normaliseShortAddress(input.shortAddress ?? "");
+  if (!shortAddress) fields.push("shortAddress");
 
   const address = (input.address ?? "").trim();
   if (address.length < 10 || address.length > 300) fields.push("address");
@@ -95,7 +84,16 @@ export function validateCustomer(
   if (fields.length) return { ok: false, fields };
   return {
     ok: true,
-    customer: { name, email, phone: phone!, city, address, notes },
+    customer: {
+      name,
+      email,
+      phone: phone!,
+      province,
+      city,
+      shortAddress: shortAddress!,
+      address,
+      notes,
+    },
   };
 }
 
@@ -165,7 +163,9 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
     name: order.customer.name,
     email: order.customer.email,
     phone: order.customer.phone,
+    province: order.customer.province,
     city: order.customer.city,
+    shortAddress: order.customer.shortAddress,
     address: order.customer.address,
     notes: order.customer.notes || "—",
     items: order.itemSummary,

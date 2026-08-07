@@ -73,8 +73,14 @@ export type SiteContent = {
     email: string;
     phone: string;
     phonePh: string;
+    province: string;
+    provincePh: string;
     city: string;
     cityPh: string;
+    cityLocked: string;
+    shortAddress: string;
+    shortAddressPh: string;
+    shortAddressHelp: string;
     address: string;
     addressPh: string;
     notes: string;
@@ -85,7 +91,6 @@ export type SiteContent = {
     total: string;
     pay: string;
     working: string;
-    secure: string;
     errorGeneric: string;
     errorFields: string;
     testMode: string;
