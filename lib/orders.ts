@@ -169,7 +169,8 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
     city: order.customer.city,
     shortAddress: order.customer.shortAddress,
     address: order.customer.address,
-    notes: order.customer.notes || "—",
+    // Loops reserves `notes` as a contact property, so it travels as deliveryNotes.
+    deliveryNotes: order.customer.notes || "—",
     items: order.itemSummary,
   };
 
