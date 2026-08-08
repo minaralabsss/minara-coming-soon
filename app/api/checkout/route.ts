@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createInvoice } from "@/lib/moyasar";
-import { findProduct } from "@/lib/products";
+import { DELIVERY_FEE, findProduct } from "@/lib/products";
 import {
   orderReference,
   validateCustomer,
@@ -59,6 +59,7 @@ export async function POST(request: NextRequest) {
     // Compact slug:qty pairs, so the confirmation page can list and link
     // the items without needing any storage.
     const itemCodes: string[] = [];
+    let firstImage = "";
 
     for (const line of rawLines) {
       const product = findProduct(String(line.slug ?? ""));
@@ -78,7 +79,12 @@ export async function POST(request: NextRequest) {
       amountSar += product.price * qty;
       descriptions.push(`${product.name} x${qty}`);
       itemCodes.push(`${product.slug}:${qty}`);
+      if (!firstImage) firstImage = product.image;
     }
+
+    // Delivery is charged on top of the goods.
+    const deliverySar = DELIVERY_FEE;
+    amountSar += deliverySar;
 
     if (amountSar <= 0) {
       return NextResponse.json(
@@ -112,6 +118,10 @@ export async function POST(request: NextRequest) {
         province: customer.province,
         city: customer.city,
         short_address: customer.shortAddress,
+        // Absolute URL so the receipt email can show the right product.
+        product_image: firstImage ? `${origin}${firstImage}` : "",
+        province_label: customer.province,
+        delivery_sar: String(deliverySar),
         address: customer.address,
         notes: customer.notes ?? "",
         items: descriptions.join(", "),

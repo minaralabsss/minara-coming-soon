@@ -6,7 +6,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { Lines } from "./ui";
 import { useCart } from "./CartContext";
-import { formatPrice } from "@/lib/products";
+import { DELIVERY_FEE, formatPrice } from "@/lib/products";
 import { PROVINCES, OTHER_CITY, findProvince } from "@/lib/saudi";
 import ProductThumb, { productName } from "./ProductThumb";
 import { localeHref, type Locale } from "@/lib/locale";
@@ -353,13 +353,23 @@ export default function CheckoutForm({
               {/* Summary */}
               <div className="lg:col-span-5">
                 <div className="border-t border-divider pt-8 lg:border-s lg:border-t-0 lg:ps-12 lg:pt-0">
-                  <div className="flex items-baseline justify-between border-t border-divider pt-8 lg:border-t-0 lg:pt-0">
-                    <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
-                      {c.total}
-                    </span>
-                    <span dir="ltr" className="text-xl font-light">
-                      {formatPrice(subtotal, currency)}
-                    </span>
+                  <div className="border-t border-divider pt-8 lg:border-t-0 lg:pt-0">
+                    <div className="flex items-baseline justify-between pb-4">
+                      <span className="text-sm font-light text-text-secondary">
+                        {c.delivery}
+                      </span>
+                      <span dir="ltr" className="text-sm font-light text-text-secondary">
+                        {DELIVERY_FEE > 0 ? formatPrice(DELIVERY_FEE, currency) : c.free}
+                      </span>
+                    </div>
+                    <div className="flex items-baseline justify-between border-t border-divider pt-4">
+                      <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
+                        {c.total}
+                      </span>
+                      <span dir="ltr" className="text-xl font-light">
+                        {formatPrice(subtotal + DELIVERY_FEE, currency)}
+                      </span>
+                    </div>
                   </div>
 
                   {error && (

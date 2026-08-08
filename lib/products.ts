@@ -19,6 +19,13 @@ export const PANEL_PRICE = 1999;
 export const PANEL_LAUNCH_PRICE = 1599;
 export const PANEL_CURRENCY = "SAR";
 
+/**
+ * Delivery charge in whole SAR. Zero means free.
+ * Change this one number and it flows through checkout, the order total
+ * and the receipt email. Nothing else needs editing.
+ */
+export const DELIVERY_FEE = 0;
+
 export const products: Product[] = [
   {
     slug: "panel",

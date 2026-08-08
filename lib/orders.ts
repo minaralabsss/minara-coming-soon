@@ -143,6 +143,10 @@ export type PaidOrder = {
   amountSar: number;
   customer: Customer;
   itemSummary: string;
+  /** Absolute URL of the first ordered product, for the receipt email. */
+  productImage?: string;
+  /** Delivery charged on this order, in whole SAR. Zero renders as "Free". */
+  deliverySar?: number;
   locale: "en" | "ar";
 };
 
@@ -172,6 +176,13 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
     // Loops reserves `notes` as a contact property, so it travels as deliveryNotes.
     deliveryNotes: order.customer.notes || "—",
     items: order.itemSummary,
+    productImage:
+      order.productImage || "https://minaralabs.shop/product-hero-email.png",
+    // Reads "Free" today; shows the amount the moment DELIVERY_FEE is non-zero.
+    delivery:
+      order.deliverySar && order.deliverySar > 0
+        ? `SAR ${order.deliverySar.toLocaleString("en-US")}`
+        : "Free",
   };
 
   // Always log the full order. If every email path fails, the order still

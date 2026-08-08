@@ -96,6 +96,8 @@ export const ar: SiteContent = {
     optional: "اختياري",
     summary: "طلبك",
     qty: "الكمية",
+    delivery: "التوصيل",
+    free: "مجاني",
     total: "الإجمالي",
     pay: "المتابعة إلى الدفع",
     working: "جاري تجهيز الدفع",

@@ -88,6 +88,8 @@ export type SiteContent = {
     optional: string;
     summary: string;
     qty: string;
+    delivery: string;
+    free: string;
     total: string;
     pay: string;
     working: string;

@@ -138,6 +138,8 @@ export async function POST(request: NextRequest) {
       amountSar: paidSar,
       customer,
       itemSummary: meta.items ?? invoice.description,
+      productImage: meta.product_image ?? "",
+      deliverySar: Number(meta.delivery_sar ?? 0),
       locale: meta.locale === "ar" ? "ar" : "en",
     });
 

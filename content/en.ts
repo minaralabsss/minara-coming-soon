@@ -96,6 +96,8 @@ export const en: SiteContent = {
     optional: "Optional",
     summary: "Your order",
     qty: "Quantity",
+    delivery: "Delivery",
+    free: "Free",
     total: "Total",
     pay: "Continue to payment",
     working: "Preparing your payment",
