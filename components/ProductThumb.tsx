@@ -41,7 +41,9 @@ export default function ProductThumb({
     <span
       className={`${box} flex flex-shrink-0 items-center justify-center overflow-hidden rounded-sm bg-white ${className}`}
     >
-      <picture>
+      {/* picture is inline by default and has no height of its own, so the
+          image is constrained with max-* rather than h-full/w-full. */}
+      <picture className="flex h-full w-full items-center justify-center p-1">
         {product.imageWebp && (
           <source srcSet={product.imageWebp} type="image/webp" />
         )}
@@ -50,7 +52,7 @@ export default function ProductThumb({
           alt={alt}
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-contain p-1"
+          className="max-h-full max-w-full object-contain"
         />
       </picture>
     </span>

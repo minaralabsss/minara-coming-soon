@@ -49,7 +49,7 @@ export default function IncludedKit({ locale = "en" }: { locale?: Locale }) {
               {rest.map((item) => (
                 <div key={item.img} className="flex flex-col items-center">
                   <div className="flex h-28 w-full items-center justify-center">
-                    <picture>
+                    <picture className="flex h-full w-full items-center justify-center">
                       <source
                         srcSet={`/included/${item.img}.webp`}
                         type="image/webp"
@@ -59,7 +59,7 @@ export default function IncludedKit({ locale = "en" }: { locale?: Locale }) {
                         alt={item.label}
                         loading="lazy"
                         decoding="async"
-                        className="max-h-28 w-auto object-contain"
+                        className="max-h-full max-w-full object-contain"
                       />
                     </picture>
                   </div>

@@ -62,12 +62,12 @@ function OrderDetails({ locale }: { locale: Locale }) {
                     className="group flex items-center gap-5 py-5 transition-opacity duration-300 hover:opacity-70"
                   >
                     <span className="flex h-24 w-24 flex-shrink-0 items-center justify-center overflow-hidden rounded-sm bg-white">
-                      <picture>
+                      <picture className="flex h-full w-full items-center justify-center p-1">
                         <source srcSet={product.imageWebp} type="image/webp" />
                         <img
                           src={product.image}
                           alt=""
-                          className="h-full w-auto object-contain p-1"
+                          className="max-h-full max-w-full object-contain"
                         />
                       </picture>
                     </span>

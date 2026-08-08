@@ -68,9 +68,13 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
                   }`}
                 >
                   {galleryImages[i] ? (
-                    <picture>
+                    <picture className="flex h-full w-full items-center justify-center">
                       <source srcSet={galleryImages[i]!.replace(".png", ".webp")} type="image/webp" />
-                      <img src={galleryImages[i]!} alt="" className="h-full w-full object-contain" />
+                      <img
+                        src={galleryImages[i]!}
+                        alt=""
+                        className="max-h-full max-w-full object-contain"
+                      />
                     </picture>
                   ) : (
                     <span className="text-[9px] tracking-wider text-text-muted">{i + 1}</span>
