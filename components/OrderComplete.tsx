@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import { Lines } from "./ui";
 import { useCart } from "./CartContext";
 import { findProduct, formatPrice } from "@/lib/products";
+import { productName } from "./ProductThumb";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -73,7 +74,7 @@ function OrderDetails({ locale }: { locale: Locale }) {
 
                     <span className="flex-1">
                       <span className="block text-base font-light underline-offset-4 group-hover:underline">
-                        {s.panel.name}
+                        {productName(locale, product.slug, product.name)}
                       </span>
                       <span className="mt-1 block text-xs text-text-muted">
                         {s.checkout.qty} {quantity}

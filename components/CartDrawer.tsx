@@ -7,6 +7,7 @@ import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
 import { useLocale } from "@/lib/useLocale";
 import { localeHref } from "@/lib/locale";
+import ProductThumb, { productName } from "./ProductThumb";
 import { t } from "@/content/site";
 
 export default function CartDrawer() {
@@ -75,8 +76,11 @@ export default function CartDrawer() {
                 <ul className="divide-y divide-divider border-y border-divider">
                   {lines.map((l) => (
                     <li key={l.slug} className="flex gap-5 py-6">
+                      <ProductThumb slug={l.slug} alt={productName(locale, l.slug, l.name)} />
                       <div className="flex-1">
-                        <p className="text-base font-light">{l.name}</p>
+                        <p className="text-base font-light">
+                          {productName(locale, l.slug, l.name)}
+                        </p>
                         <p className="mt-1 text-sm font-light text-text-secondary">
                           {formatPrice(l.price, l.currency)}
                         </p>

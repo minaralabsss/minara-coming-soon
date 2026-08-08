@@ -107,6 +107,8 @@ export type SiteContent = {
     contact: string;
     home: string;
   };
+  /** Product display names, keyed by slug. Add a key per new product. */
+  productNames: Record<string, string>;
   disclaimer: string;
   home: {
     eyebrow: string;

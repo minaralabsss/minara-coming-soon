@@ -119,6 +119,12 @@ export const en: SiteContent = {
     home: "Back to home",
   },
 
+  productNames: {
+    panel: "The Panel",
+    cap: "The Cap",
+    "head-massager": "The Head Massager",
+  },
+
   disclaimer:
     "Red light therapy is a wellness practice, not a medical treatment. minara is not intended to diagnose, treat or cure any condition. Results vary between individuals. Speak with a healthcare professional about your own circumstances.",
 

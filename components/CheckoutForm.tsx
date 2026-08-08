@@ -8,6 +8,7 @@ import { Lines } from "./ui";
 import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
 import { PROVINCES, OTHER_CITY, findProvince } from "@/lib/saudi";
+import ProductThumb, { productName } from "./ProductThumb";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -151,6 +152,35 @@ export default function CheckoutForm({
             <div className="mt-16 grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-20">
               {/* Details */}
               <div className="lg:col-span-7">
+                {/* What is being bought, before we ask where to send it. */}
+                <div className="mb-12 border-y border-divider">
+                  <p className="pt-6 text-xs uppercase tracking-[0.2em] text-text-muted">
+                    {c.summary}
+                  </p>
+                  <ul className="divide-y divide-divider">
+                    {lines.map((l) => (
+                      <li key={l.slug} className="flex items-center gap-4 py-5">
+                        <ProductThumb
+                          slug={l.slug}
+                          alt={productName(locale, l.slug, l.name)}
+                          size="sm"
+                        />
+                        <span className="flex-1">
+                          <span className="block text-sm font-light">
+                            {productName(locale, l.slug, l.name)}
+                          </span>
+                          <span className="mt-0.5 block text-xs text-text-muted">
+                            {c.qty} {l.quantity}
+                          </span>
+                        </span>
+                        <span dir="ltr" className="text-sm font-light text-text-secondary">
+                          {formatPrice(l.price * l.quantity, l.currency)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium">
@@ -323,30 +353,7 @@ export default function CheckoutForm({
               {/* Summary */}
               <div className="lg:col-span-5">
                 <div className="border-t border-divider pt-8 lg:border-s lg:border-t-0 lg:ps-12 lg:pt-0">
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-text-muted">
-                    {c.summary}
-                  </h2>
-
-                  <ul className="mt-8 divide-y divide-divider border-y border-divider">
-                    {lines.map((l) => (
-                      <li
-                        key={l.slug}
-                        className="flex items-baseline justify-between gap-6 py-5"
-                      >
-                        <span className="text-sm font-light">
-                          {s.panel.name}
-                          <span className="ms-2 text-text-muted">
-                            {c.qty} {l.quantity}
-                          </span>
-                        </span>
-                        <span dir="ltr" className="text-sm font-light">
-                          {formatPrice(l.price * l.quantity, l.currency)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-8 flex items-baseline justify-between">
+                  <div className="flex items-baseline justify-between border-t border-divider pt-8 lg:border-t-0 lg:pt-0">
                     <span className="text-xs uppercase tracking-[0.2em] text-text-muted">
                       {c.total}
                     </span>
