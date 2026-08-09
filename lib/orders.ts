@@ -111,6 +111,8 @@ async function sendViaLoops(payload: {
   transactionalId: string;
   email: string;
   dataVariables: Record<string, string | number>;
+  /** Create a Loops contact for this address if one does not exist. */
+  addToAudience?: boolean;
 }): Promise<boolean> {
   const key = process.env.LOOPS_API_KEY;
   if (!key) {
@@ -204,6 +206,9 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
       transactionalId: customerTemplate,
       email: order.customer.email,
       dataVariables: vars,
+      // Buyers become contacts in Loops. Receipts send either way —
+      // transactional email ignores subscription status.
+      addToAudience: true,
     });
   } else {
     console.error("LOOPS_RECEIPT_TEMPLATE_ID not set — customer not emailed");
