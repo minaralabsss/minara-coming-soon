@@ -140,15 +140,15 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           type="submit"
           disabled={isLoading}
           className="px-6 py-4 bg-accent text-bg text-base font-medium rounded hover:bg-accent-light transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95"
-          aria-label="Join waitlist"
+          aria-label={c.submit}
         >
           {isLoading ? (
             <span className="flex items-center justify-center gap-2">
               <span className="inline-block w-4 h-4 border-2 border-bg/30 border-t-bg rounded-full animate-spin" />
-              Subscribing...
+              {c.sending}…
             </span>
           ) : (
-            "{c.submit}"
+            c.submit
           )}
         </motion.button>
 
