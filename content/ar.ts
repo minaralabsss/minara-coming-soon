@@ -28,6 +28,8 @@ export const ar: SiteContent = {
     warranty: "الضمان",
     rights: "جميع الحقوق محفوظة. مصمم في السعودية.",
     disclaimerShort: "ممارسة عافية، وليست علاجاً طبياً.",
+    unifiedLabel: "الرقم الموحد",
+    crLabel: "السجل التجاري",
   },
 
   modal: {

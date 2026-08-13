@@ -28,6 +28,8 @@ export const en: SiteContent = {
     warranty: "Warranty",
     rights: "All rights reserved. Designed in Saudi.",
     disclaimerShort: "A wellness practice, not a medical treatment.",
+    unifiedLabel: "Unified number",
+    crLabel: "CR",
   },
 
   modal: {

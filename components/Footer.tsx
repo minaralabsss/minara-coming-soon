@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { localeFromPath, localeHref } from "@/lib/locale";
 import { t } from "@/content/site";
+import { BUSINESS } from "@/lib/business";
 
 function InstagramIcon() {
   return (
@@ -127,7 +128,26 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
+        {/* Legal identifiers. Only the numbers that are filled in appear,
+            so nothing renders as a label with an empty value. */}
+        {(BUSINESS.unifiedNumber || BUSINESS.crNumber) && (
+          <ul className="mt-20 flex flex-wrap gap-x-8 gap-y-2 border-t border-divider pt-10">
+            {BUSINESS.crNumber && (
+              <li className="text-xs font-light text-text-muted">
+                {c.footer.crLabel}{" "}
+                <span dir="ltr" className="tracking-wide">{BUSINESS.crNumber}</span>
+              </li>
+            )}
+            {BUSINESS.unifiedNumber && (
+              <li className="text-xs font-light text-text-muted">
+                {c.footer.unifiedLabel}{" "}
+                <span dir="ltr" className="tracking-wide">{BUSINESS.unifiedNumber}</span>
+              </li>
+            )}
+          </ul>
+        )}
+
+        <div className="mt-10 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-light text-text-muted">
             © {year} minara labs. {c.footer.rights}
           </p>

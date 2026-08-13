@@ -33,6 +33,10 @@ export type SiteContent = {
     warranty: string;
     rights: string;
     disclaimerShort: string;
+    /** Label for the unified national number (الرقم الموحد). */
+    unifiedLabel: string;
+    /** Label for the commercial registration number (السجل التجاري). */
+    crLabel: string;
   };
   modal: {
     eyebrow: string;
