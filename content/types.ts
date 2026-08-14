@@ -166,9 +166,6 @@ export type SiteContent = {
     faceEyebrow: string;
     faceTitle: string;
     faceBody: string[];
-    engEyebrow: string;
-    engTitle: string;
-    engineering: Numbered[];
     wlEyebrow: string;
     wlTitle: string;
     wavelengths: { nm: string; band: string; note: string }[];

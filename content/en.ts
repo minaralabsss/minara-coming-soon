@@ -234,14 +234,6 @@ export const en: SiteContent = {
       "Topicals work above that layer. Red light at 630 and 660 nanometres passes into it, and is absorbed by the fibroblasts that produce collagen in the first place. With more energy available to them, they are supported in producing more.",
       "The change is gradual and cumulative, which is the honest version. Most published protocols run several sessions a week over eight to twelve weeks before a difference is clearly visible, and individual results vary.",
     ],
-    engEyebrow: "Engineering",
-    engTitle: "Four decisions\nthat shaped everything else",
-    engineering: [
-      { index: "01", title: "Why seventy emitters", body: "Fewer, brighter emitters produce a hot centre and a dim edge. Seventy lower-driven LEDs spread the same delivered energy across the whole treatment area, which keeps the dose even across the face and lets each emitter run well below its thermal limit. Running cool is the single largest factor in how long an LED holds its rated output." },
-      { index: "02", title: "Why thirty-degree optics", body: "A bare LED throws light in a wide, uncontrolled cone. Most of it never reaches the skin, and what does arrives at an angle that reduces absorption. A 30° lens holds the beam where it is aimed, so the figure measured at the panel surface is close to the figure delivered to the dermis." },
-      { index: "03", title: "Why steel, not moulded plastic", body: "Plastic housings insulate. Heat accumulates behind the array, output drifts downward during a session, and the emitters age faster than their rating suggests. Cold-rolled SPCC steel conducts that heat into the body of the panel and away, which is why the output at minute twenty matches the output at minute one." },
-      { index: "04", title: "Why the driver sits where it does", body: "A panel used regularly sits close to the body for thousands of hours across its life. Driver placement and shielding were treated as a design constraint from the beginning rather than a figure to measure afterwards. The panel is specified as low electromagnetic field according to manufacturer testing." },
-    ],
     wlEyebrow: "Wavelength selection",
     wlTitle: "Six, because six\ncould be justified",
     wavelengths: [

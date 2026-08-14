@@ -130,27 +130,6 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
         </motion.div>
       </section>
 
-      {/* Engineering */}
-      <section className="border-t border-divider px-6 py-28 sm:py-36">
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
-            <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.engEyebrow}</motion.p>
-            <motion.h2 variants={rise} className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
-              <Lines text={c.engTitle} />
-            </motion.h2>
-          </div>
-          <div className="mt-20 grid grid-cols-1 gap-x-16 gap-y-16 lg:grid-cols-2">
-            {c.engineering.map((e) => (
-              <motion.div key={e.index} variants={rise} className="border-t border-divider pt-8">
-                <p className="text-xs tracking-[0.2em] text-text-muted">{e.index}</p>
-                <h3 className="mt-6 text-2xl font-light tracking-[-0.01em]">{e.title}</h3>
-                <p className="mt-5 text-sm font-light leading-relaxed text-text-secondary">{e.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
       {/* Wavelengths */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
