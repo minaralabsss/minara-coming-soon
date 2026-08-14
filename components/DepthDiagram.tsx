@@ -13,16 +13,37 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
   const rtl = locale === "ar";
 
   // Geometry
-  const W = 1000;
-  const H = 560;
-  const chartTop = 150;
+  const W = 1100;
+  const H = 600;
+  const chartTop = 180;
   const chartH = 300;
-  const chartLeft = 150;
+  const chartLeft = 215;
   const chartRight = W - 40;
   const chartW = chartRight - chartLeft;
 
   const bands = c.depths;
   const colW = chartW / bands.length;
+
+  // Layer names run long ("Muscle and deep tissue"), and longer again in
+  // Arabic. Split them across at most two lines so adjacent columns cannot
+  // collide, rather than relying on the label happening to be short.
+  const wrapLabel = (label: string, maxChars = 15): string[] => {
+    if (label.length <= maxChars) return [label];
+    const words = label.split(" ");
+    if (words.length === 1) return [label];
+    let best = 1;
+    let bestDiff = Infinity;
+    for (let i = 1; i < words.length; i++) {
+      const a = words.slice(0, i).join(" ").length;
+      const b = words.slice(i).join(" ").length;
+      const diff = Math.abs(a - b);
+      if (diff < bestDiff) {
+        bestDiff = diff;
+        best = i;
+      }
+    }
+    return [words.slice(0, best).join(" "), words.slice(best).join(" ")];
+  };
 
   // Skin layer bands as fractions of chart height
   const layerStops = [0.06, 0.36, 0.74, 1];
@@ -91,9 +112,9 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
               <g key={b.nm}>
                 <rect
                   x={cx - beamW / 2}
-                  y={chartTop - 42}
+                  y={chartTop - 22}
                   width={beamW}
-                  height={depth + 42}
+                  height={depth + 22}
                   fill={b.group === "red" ? "url(#beamRed)" : "url(#beamNir)"}
                   rx={beamW / 2}
                 />
@@ -109,14 +130,14 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           <line
             x1={rtl ? W - (chartLeft + colW * 2 - 10) : chartLeft + 10}
             x2={rtl ? W - (chartLeft + 10) : chartLeft + colW * 2 - 10}
-            y1="74"
-            y2="74"
+            y1="84"
+            y2="84"
             stroke="#e8323c"
             strokeWidth="1"
           />
           <text
             x={rtl ? W - (chartLeft + colW) : chartLeft + colW}
-            y="62"
+            y="72"
             textAnchor="middle"
             fill="#e8323c"
             fontSize="19"
@@ -128,14 +149,14 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           <line
             x1={rtl ? W - (chartRight - 10) : chartLeft + colW * 2 + 10}
             x2={rtl ? W - (chartLeft + colW * 2 + 10) : chartRight - 10}
-            y1="74"
-            y2="74"
+            y1="84"
+            y2="84"
             stroke="#7d1220"
             strokeWidth="1"
           />
           <text
             x={rtl ? W - (chartLeft + colW * 4) : chartLeft + colW * 4}
-            y="62"
+            y="72"
             textAnchor="middle"
             fill="#7d1220"
             fontSize="19"
@@ -153,7 +174,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
             <g key={b.nm}>
               <text
                 x={cx}
-                y="112"
+                y="122"
                 textAnchor="middle"
                 fill={b.group === "red" ? "#e8323c" : "#7d1220"}
                 fontSize="24"
@@ -162,16 +183,19 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
                 {b.nm}
                 <tspan fontSize="15"> nm</tspan>
               </text>
-              <text
-                x={cx}
-                y="134"
-                textAnchor="middle"
-                fill="currentColor"
-                opacity="0.6"
-                fontSize="13"
-              >
-                {b.layer}
-              </text>
+              {wrapLabel(b.layer).map((line, li) => (
+                <text
+                  key={li}
+                  x={cx}
+                  y={144 + li * 15}
+                  textAnchor="middle"
+                  fill="currentColor"
+                  opacity="0.6"
+                  fontSize="13"
+                >
+                  {line}
+                </text>
+              ))}
             </g>
           );
         })}
