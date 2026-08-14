@@ -18,10 +18,6 @@ const galleryImages: (string | null)[] = [
   "/panel-side.png",
   "/panel-in-use.png",
   "/panel-emitters.png",
-  null,
-  null,
-  null,
-  null,
 ];
 
 export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
