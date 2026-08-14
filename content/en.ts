@@ -171,7 +171,7 @@ export const en: SiteContent = {
     effectTitle: "What a consistent\nroutine supports",
     effects: [
       { index: "01", title: "Collagen", body: "Fibroblasts in the dermis respond to red light by supporting the production of collagen and elastin, the two proteins that keep skin firm." },
-      { index: "02", title: "Fine lines and wrinkles", body: "Supporting dermal density helps improve the appearance of fine lines and wrinkles over time, most visibly around the eyes, mouth and forehead." },
+      { index: "02", title: "Fine lines and wrinkles", body: "Supporting the density of the layer beneath the surface helps improve the appearance of fine lines and wrinkles over time, most visibly around the eyes, mouth and forehead." },
       { index: "03", title: "Skin texture", body: "Consistent use is associated with smoother-looking skin and a more refined, more even surface." },
       { index: "04", title: "Radiance", body: "A brighter, more refreshed-looking complexion — the change most people notice before any other." },
       { index: "05", title: "Elasticity", body: "Supporting the skin's natural collagen processes helps maintain the appearance of firmer, more elastic skin." },
@@ -230,7 +230,7 @@ export const en: SiteContent = {
     faceEyebrow: "For the face",
     faceTitle: "Collagen is made\nbelow the surface",
     faceBody: [
-      "Fine lines are a structural change, not a surface one. As collagen and elastin production slows, the dermis loses density, and the skin above it creases and holds the crease.",
+      "Fine lines are a structural change, not a surface one. As collagen and elastin production slows, the layer beneath the surface — the dermis — loses density, and the skin above it creases and holds the crease.",
       "Topicals work above that layer. Red light at 630 and 660 nanometres passes into it, and is absorbed by the fibroblasts that produce collagen in the first place. With more energy available to them, they are supported in producing more.",
       "The change is gradual and cumulative, which is the honest version. Most published protocols run several sessions a week over eight to twelve weeks before a difference is clearly visible, and individual results vary.",
     ],
@@ -324,7 +324,7 @@ export const en: SiteContent = {
       "These are independent studies of red light on facial skin, not minara's own. They are cited because the wavelengths and protocols overlap with ours, and because you should be able to check the claims yourself.",
     evidence: [
       {
-        headline: "Dermal density rose 47.7% over twelve weeks",
+        headline: "Density beneath the surface rose 47.7% over twelve weeks",
         detail:
           "Twenty women used a 630 nm device delivering 15.6 J/cm² for twelve minutes, twice weekly. Ultrasound measured dermal density rising 26.4% at 28 days, 41% at 56 days and 47.7% at 84 days. Crow's feet depth fell 38.3% and surface roughness 23.8% over the same period. Measurements taken 14 and 28 days after treatment stopped showed the gains held.",
         cite: "Couturaud V, Le Fur M, Pelletier M, Granotier F. Reverse skin aging signs by red light photobiomodulation. Skin Research and Technology, 2023.",
@@ -432,7 +432,7 @@ export const en: SiteContent = {
       { q: "Can I use it for recovery?", a: "Near-infrared light interacts with tissue at greater depths, and is commonly used as part of a wellness routine to support muscle relaxation and general comfort after physical activity. Keep it as part of a routine rather than a remedy." },
       { q: "Can I use it with my skincare products?", a: "minara can be used alongside most skincare products. When introducing a new product, perform a patch test and allow it to dry completely before your session. If you use prescription topicals or anything that may increase light sensitivity, consult your dermatologist or physician first." },
       { q: "Is it safe to use regularly?", a: "Red light therapy is non-invasive and has been widely studied. Follow the recommended distance and session duration, wear the supplied eye protection, and never stare directly into the LEDs. If you are photosensitive, taking medication that increases light sensitivity, pregnant, or managing a medical condition, speak with a healthcare professional first. Stop use if any unusual discomfort occurs." },
-      { q: "How many wavelengths does it use?", a: "Six: 630 and 660 nm visible red, and 810, 850, 940 and 1060 nm near-infrared. Red light works at the surface and upper dermis, where skin outcomes concentrate. Near-infrared is invisible to the eye and interacts with tissue at greater depths." },
+      { q: "How many wavelengths does it use?", a: "Six: 630 and 660 nm visible red, and 810, 850, 940 and 1060 nm near-infrared. Red light works at the surface and just beneath it, where the skin findings concentrate. Near-infrared is invisible to the eye and interacts with tissue at greater depths." },
       { q: "What distance should I sit from the panel?", a: "The panel is calibrated for 0 to 12 inches from the skin. At 0 inches the measured irradiance is 220 mW/cm² ±10%. Closer means a stronger dose in less time; further means a gentler one across a wider area." },
       { q: "How long do the LEDs last?", a: "The panel is rated for more than 50,000 hours — a lifetime of ordinary sessions rather than a few years of them." },
       { q: "Will it work with international outlets?", a: "Yes. The panel accepts AC 100–240 V at 50/60 Hz, so it works with electrical systems worldwide without an adapter." },
