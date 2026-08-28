@@ -131,11 +131,35 @@ export default function Footer() {
         {/* Legal identifiers. Only the numbers that are filled in appear,
             so nothing renders as a label with an empty value. */}
         {(BUSINESS.maroofUrl || BUSINESS.crNumber) && (
-          <ul className="mt-20 flex flex-wrap gap-x-8 gap-y-2 border-t border-divider pt-10">
+          <ul className="mt-20 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-divider pt-10">
             {BUSINESS.crNumber && (
-              <li className="text-xs font-light text-text-muted">
-                {c.footer.crLabel}{" "}
-                <span dir="ltr" className="tracking-wide">{BUSINESS.crNumber}</span>
+              <li>
+                <div className="flex items-center gap-3 border border-divider px-4 py-3">
+                  {/* Official emblem, when supplied. Save the artwork from
+                      your Ministry of Commerce or Maroof dashboard to
+                      public/commercial-register.png. Without it the badge
+                      still renders, just typographically. */}
+                  <img
+                    src="/commercial-register.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={38}
+                    height={38}
+                    loading="lazy"
+                    className="h-[38px] w-[38px] object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <span className="flex flex-col leading-tight">
+                    <span className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
+                      {c.footer.crLabel}
+                    </span>
+                    <span dir="ltr" className="mt-1 text-sm font-light tracking-[0.08em]">
+                      {BUSINESS.crNumber}
+                    </span>
+                  </span>
+                </div>
               </li>
             )}
             {BUSINESS.maroofUrl && (

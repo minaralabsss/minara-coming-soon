@@ -65,7 +65,7 @@ export type SiteContent = {
     successBody: string;
     sending: string;
   };
-  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string };
+  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string; soldOut: string };
   checkout: {
     eyebrow: string;
     title: string;
