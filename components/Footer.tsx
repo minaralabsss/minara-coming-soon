@@ -49,6 +49,60 @@ export default function Footer() {
             <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
               {c.footer.blurb}
             </p>
+
+            {/* Legal identifiers sit under the blurb in the brand column.
+                Only values that are filled in render, so nothing shows as a
+                label with an empty value. */}
+            {(BUSINESS.maroofUrl || BUSINESS.unifiedNumber) && (
+              <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+                {BUSINESS.unifiedNumber && (
+                  <li>
+                    <div className="flex items-center gap-3 border border-divider px-4 py-3">
+                      <img
+                        src="/commercial-register.png"
+                        alt=""
+                        aria-hidden="true"
+                        width={38}
+                        height={38}
+                        loading="lazy"
+                        className="h-[38px] w-[38px] object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                      <span className="flex flex-col leading-tight">
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
+                          {c.footer.unifiedLabel}
+                        </span>
+                        <span dir="ltr" className="mt-1 text-sm font-light tracking-[0.08em]">
+                          {BUSINESS.unifiedNumber}
+                        </span>
+                      </span>
+                    </div>
+                  </li>
+                )}
+                {BUSINESS.maroofUrl && (
+                  <li>
+                    <a
+                      href={BUSINESS.maroofUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs font-light text-text-muted transition-opacity duration-500 hover:opacity-60"
+                    >
+                      <img
+                        src="/maroof.png"
+                        alt={c.footer.maroofLabel}
+                        width={72}
+                        height={24}
+                        className="h-6 w-auto"
+                        loading="lazy"
+                      />
+                      <span className="sr-only">{c.footer.maroofLabel}</span>
+                    </a>
+                  </li>
+                )}
+              </ul>
+            )}
           </div>
 
           <div>
@@ -128,64 +182,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal identifiers. Only the numbers that are filled in appear,
-            so nothing renders as a label with an empty value. */}
-        {(BUSINESS.maroofUrl || BUSINESS.unifiedNumber) && (
-          <ul className="mt-20 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-divider pt-10">
-            {BUSINESS.unifiedNumber && (
-              <li>
-                <div className="flex items-center gap-3 border border-divider px-4 py-3">
-                  {/* Official emblem, when supplied. Save the artwork from
-                      your Ministry of Commerce or Maroof dashboard to
-                      public/commercial-register.png. Without it the badge
-                      still renders, just typographically. */}
-                  <img
-                    src="/commercial-register.png"
-                    alt=""
-                    aria-hidden="true"
-                    width={38}
-                    height={38}
-                    loading="lazy"
-                    className="h-[38px] w-[38px] object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                  <span className="flex flex-col leading-tight">
-                    <span className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
-                      {c.footer.unifiedLabel}
-                    </span>
-                    <span dir="ltr" className="mt-1 text-sm font-light tracking-[0.08em]">
-                      {BUSINESS.unifiedNumber}
-                    </span>
-                  </span>
-                </div>
-              </li>
-            )}
-            {BUSINESS.maroofUrl && (
-              <li>
-                <a
-                  href={BUSINESS.maroofUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs font-light text-text-muted transition-opacity duration-500 hover:opacity-60"
-                >
-                  <img
-                    src="/maroof.png"
-                    alt={c.footer.maroofLabel}
-                    width={72}
-                    height={24}
-                    className="h-6 w-auto"
-                    loading="lazy"
-                  />
-                  <span className="sr-only">{c.footer.maroofLabel}</span>
-                </a>
-              </li>
-            )}
-          </ul>
-        )}
-
-        <div className="mt-10 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-20 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-light text-text-muted">
             © {year} minara labs. {c.footer.rights}
           </p>
