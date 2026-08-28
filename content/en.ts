@@ -33,7 +33,7 @@ export const en: SiteContent = {
   modal: {
     eyebrow: "",
     title: "Where science\nmeets self-care",
-    body: "Join the minara labs world. Be the first to discover what's next.",
+    body: "join the minara labs world. be the first to discover what's next.",
     continue: "Continue to site",
     origin: "Designed in Saudi",
     close: "Close",
