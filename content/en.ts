@@ -28,7 +28,7 @@ export const en: SiteContent = {
     warranty: "Warranty",
     rights: "All rights reserved. Designed in Saudi.",
     maroofLabel: "Verified on Maroof",
-    crLabel: "Commercial Register",
+    unifiedLabel: "Unified National Number",
   },
 
   modal: {

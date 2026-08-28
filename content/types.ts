@@ -35,7 +35,7 @@ export type SiteContent = {
     /** Label for the unified national number (الرقم الموحد). */
     maroofLabel: string;
     /** Label for the commercial registration number (السجل التجاري). */
-    crLabel: string;
+    unifiedLabel: string;
   };
   modal: {
     eyebrow: string;

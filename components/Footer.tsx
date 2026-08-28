@@ -130,9 +130,9 @@ export default function Footer() {
 
         {/* Legal identifiers. Only the numbers that are filled in appear,
             so nothing renders as a label with an empty value. */}
-        {(BUSINESS.maroofUrl || BUSINESS.crNumber) && (
+        {(BUSINESS.maroofUrl || BUSINESS.unifiedNumber) && (
           <ul className="mt-20 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-divider pt-10">
-            {BUSINESS.crNumber && (
+            {BUSINESS.unifiedNumber && (
               <li>
                 <div className="flex items-center gap-3 border border-divider px-4 py-3">
                   {/* Official emblem, when supplied. Save the artwork from
@@ -153,10 +153,10 @@ export default function Footer() {
                   />
                   <span className="flex flex-col leading-tight">
                     <span className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
-                      {c.footer.crLabel}
+                      {c.footer.unifiedLabel}
                     </span>
                     <span dir="ltr" className="mt-1 text-sm font-light tracking-[0.08em]">
-                      {BUSINESS.crNumber}
+                      {BUSINESS.unifiedNumber}
                     </span>
                   </span>
                 </div>

@@ -28,7 +28,7 @@ export const ar: SiteContent = {
     warranty: "الضمان",
     rights: "جميع الحقوق محفوظة. مصمم في السعودية.",
     maroofLabel: "موثّق في معروف",
-    crLabel: "السجل التجاري",
+    unifiedLabel: "الرقم الوطني الموحد",
   },
 
   modal: {
