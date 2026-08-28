@@ -10,14 +10,28 @@ export default function AddToCart({
   variant = "solid",
   showPrice = true,
   className = "",
+  soldOut = false,
 }: {
   product: Product;
   variant?: "solid" | "outline";
   showPrice?: boolean;
   className?: string;
+  /** Server-resolved. When true the button is inert and reads as sold out. */
+  soldOut?: boolean;
 }) {
   const { add } = useCart();
   const c = t(useLocale()).buy;
+
+  if (soldOut) {
+    return (
+      <span
+        aria-disabled="true"
+        className={`inline-flex items-center justify-center px-10 py-4 text-sm tracking-wide border border-divider text-text-muted ${className}`}
+      >
+        {c.soldOut}
+      </span>
+    );
+  }
 
   const base =
     "inline-flex items-center justify-center gap-4 px-10 py-4 text-sm tracking-wide transition-opacity duration-500 hover:opacity-70";

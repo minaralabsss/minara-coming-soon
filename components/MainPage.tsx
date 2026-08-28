@@ -11,7 +11,7 @@ import { products } from "@/lib/products";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
-export default function MainPage({ locale = "en" }: { locale?: Locale }) {
+export default function MainPage({ locale = "en", soldOut = false }: { locale?: Locale; soldOut?: boolean }) {
   const s = t(locale);
   const c = s.home;
   const panel = products[0];
@@ -61,7 +61,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
           </motion.div>
 
           <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-5">
-            <AddToCart product={panel} />
+            <AddToCart product={panel} soldOut={soldOut} />
             <Link
               href={localeHref("/product/panel", locale)}
               className="border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"

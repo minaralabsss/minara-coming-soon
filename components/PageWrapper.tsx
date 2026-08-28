@@ -5,7 +5,13 @@ import ComingSoonGate from "@/components/ComingSoonGate";
 import MainPage from "@/components/MainPage";
 import type { Locale } from "@/lib/locale";
 
-export default function PageWrapper({ locale = "en" }: { locale?: Locale }) {
+export default function PageWrapper({
+  locale = "en",
+  soldOut = false,
+}: {
+  locale?: Locale;
+  soldOut?: boolean;
+}) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -21,7 +27,7 @@ export default function PageWrapper({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <>
-      <MainPage locale={locale} />
+      <MainPage locale={locale} soldOut={soldOut} />
       {hasMounted && !isUnlocked && (
         <ComingSoonGate onEmailSubmitted={handleEmailSubmitted} />
       )}

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchInvoice, fromHalalas } from "@/lib/moyasar";
 import { notifyOrder, type Customer } from "@/lib/orders";
+import { claim } from "@/lib/stock";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -119,6 +120,26 @@ export async function POST(request: NextRequest) {
         `Underpayment on ${invoiceId}: paid ${paidSar}, expected ${expectedSar}`
       );
       return NextResponse.json({ received: true });
+    }
+
+    // Take the stock now that the money is confirmed. Deliberately after the
+    // dedupe check above, so a repeated notification cannot decrement twice.
+    // item_codes looks like "panel:1,cap:2".
+    const codes = String(meta.item_codes ?? "")
+      .split(",")
+      .map((c) => c.trim())
+      .filter(Boolean);
+    for (const code of codes) {
+      const [slug, rawQty] = code.split(":");
+      const qty = Math.max(1, Math.floor(Number(rawQty)) || 1);
+      const result = await claim(slug, qty);
+      if (!result.ok) {
+        console.error(
+          `OVERSOLD ${slug} x${qty} on invoice ${invoiceId} (ref ${
+            meta.reference ?? "?"
+          }). Refund this order.`
+        );
+      }
     }
 
     const customer: Customer = {

@@ -6,6 +6,7 @@ import {
   validateCustomer,
   type OrderLine,
 } from "@/lib/orders";
+import { isTracked, remaining } from "@/lib/stock";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -76,6 +77,23 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
       }
+      // Stock gate. This is a courtesy check so nobody reaches Moyasar for
+      // a unit that is gone; the binding decrement happens in the webhook
+      // once payment actually succeeds.
+      if (isTracked(product.slug)) {
+        const left = await remaining(product.slug);
+        if (left !== null && left < qty) {
+          return NextResponse.json(
+            {
+              success: false,
+              message: left <= 0 ? "sold_out" : "insufficient_stock",
+              remaining: Math.max(left, 0),
+            },
+            { status: 409 }
+          );
+        }
+      }
+
       amountSar += product.price * qty;
       descriptions.push(`${product.name} x${qty}`);
       itemCodes.push(`${product.slug}:${qty}`);
@@ -125,6 +143,7 @@ export async function POST(request: NextRequest) {
         address: customer.address,
         notes: customer.notes ?? "",
         items: descriptions.join(", "),
+        item_codes: itemCodes.join(","),
         expected_amount_sar: String(amountSar),
       },
     });

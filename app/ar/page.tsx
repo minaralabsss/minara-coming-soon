@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import PageWrapper from "@/components/PageWrapper";
+import { isSoldOut } from "@/lib/stock";
 
 export const metadata: Metadata = {
   title: "منارا لابز",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "ضوء أحمر بأطوال موجية أثبتت الدراسات أنها تحفّز الكولاجين وتخفّف الخطوط الدقيقة. عشرون دقيقة يومياً في بيتك.",
 };
 
-export default function HomeAr() {
-  return <PageWrapper locale="ar" />;
+export default async function HomeAr() {
+  const soldOut = await isSoldOut("panel");
+  return <PageWrapper locale="ar" soldOut={soldOut} />;
 }

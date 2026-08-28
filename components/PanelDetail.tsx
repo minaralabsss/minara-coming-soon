@@ -20,7 +20,13 @@ const galleryImages: (string | null)[] = [
   "/panel-emitters.png",
 ];
 
-export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
+export default function PanelDetail({
+  locale = "en",
+  soldOut = false,
+}: {
+  locale?: Locale;
+  soldOut?: boolean;
+}) {
   const s = t(locale);
   const c = s.panel;
   const product = findProduct("panel")!;
@@ -96,7 +102,7 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
             </ul>
 
             <div className="mt-10">
-              <AddToCart product={product} showPrice={false} className="w-full" />
+              <AddToCart product={product} showPrice={false} className="w-full" soldOut={soldOut} />
             </div>
 
             <p className="mt-6 text-xs font-light leading-relaxed text-text-muted">{c.shipping}</p>
@@ -188,7 +194,7 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
           </h2>
           <p className="mx-auto mt-10 max-w-md text-base font-light leading-relaxed opacity-70">{c.closeBody}</p>
           <div className="mt-14 flex justify-center">
-            <AddToCart product={product} variant="outline" className="!border-bg !text-bg" />
+            <AddToCart product={product} variant="outline" className="!border-bg !text-bg" soldOut={soldOut} />
           </div>
         </div>
       </section>

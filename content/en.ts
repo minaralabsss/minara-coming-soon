@@ -63,6 +63,7 @@ export const en: SiteContent = {
   },
 
   buy: {
+    soldOut: "Sold out",
     addToCart: "Add to cart",
     viewDetails: "View full details",
     fullDetails: "Full details",

@@ -63,6 +63,7 @@ export const ar: SiteContent = {
   },
 
   buy: {
+    soldOut: "نفدت الكمية",
     addToCart: "الإضافة إلى السلة",
     viewDetails: "التفاصيل الكاملة",
     fullDetails: "التفاصيل الكاملة",
