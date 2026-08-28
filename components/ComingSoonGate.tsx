@@ -119,16 +119,7 @@ export default function ComingSoonGate({
                 ))}
               </h2>
 
-              {/* all-small-caps rather than small-caps: the latter leaves
-                  existing capitals at full height, which made "Join", "Be"
-                  and the wordmark spike above the rest of the line. The
-                  source text is lower case so every letter renders at the
-                  same small-capital height. Latin only; Arabic has no
-                  capital forms. */}
-              <p
-                className="mt-8 max-w-xs text-sm font-light leading-relaxed tracking-[0.06em] text-text-secondary"
-                style={locale === "ar" ? undefined : { fontVariantCaps: "all-small-caps" }}
-              >
+              <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
                 {c.body}
               </p>
 
