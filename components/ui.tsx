@@ -64,40 +64,23 @@ export function ProductRender({
   priority?: boolean;
   alt: string;
 }) {
-  // The panel is white on a white page, so it needs a backdrop to read
-  // as an object. A soft radial wash plus a contact shadow does it
-  // without introducing a hard-edged box.
+  // The photograph carries its own studio shadow, so no synthetic wash or
+  // contact shadow is added here — those read as a grey smudge under the
+  // stand on a white page. Dimensions match the normalised 3:4 asset.
   return (
-    <div className="relative isolate flex justify-center">
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-1/2 -z-10 h-[86%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90 blur-2xl"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(120,102,94,0.16), rgba(120,102,94,0.05) 62%, transparent 100%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[6%] left-1/2 -z-10 h-6 w-[46%] -translate-x-1/2 rounded-[50%] blur-xl"
-        style={{ background: "rgba(90,74,68,0.22)" }}
-      />
-      {/* Explicit white plate. The cutout leaves a faint shadow fringe at
-          the base, and white renders it invisible on any surrounding tone. */}
-      <div className="relative bg-white">
+    <div className="flex justify-center">
       <picture>
         <source srcSet="/product-hero.webp" type="image/webp" />
         <img
           src="/product-hero.png"
           alt={alt}
-          width={1571}
-          height={2344}
+          width={1200}
+          height={1600}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
           className={`h-auto w-full object-contain ${className}`}
         />
       </picture>
-      </div>
     </div>
   );
 }

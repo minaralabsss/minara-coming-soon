@@ -130,12 +130,12 @@ export const en: SiteContent = {
 
   home: {
     eyebrow: "",
-    title: "Twenty minutes.\nMost evenings.",
+    title: "Where the science of light\nmeets skincare.",
     intro:
       "Red and near-infrared light, at the wavelengths studied for collagen and skin renewal. Twenty minutes. At home. On your own schedule.",
     whyEyebrow: "Why it exists",
     whyStatement:
-      "Serums work on the surface. Collagen is made underneath it. minara was built to reach the layer where skin renews itself.",
+      "Serums work on the surface. Collagen is made underneath it. minara was built to reach the layer where skin renews itself, and at 1060 nanometres, deeper still.",
     faceEyebrow: "Skin",
     faceTitle: "Where the evidence\nis strongest",
     faceBody: [
@@ -153,14 +153,13 @@ export const en: SiteContent = {
       { value: "50,000", unit: "hours", note: "Rated life. At four sessions a week, a lifetime of use rather than a few years" },
     ],
     objectEyebrow: "The object",
-    objectTitle: "Drawn as carefully\nas it was specified",
+    objectTitle: "An object first,\nan instrument second",
     objectBody:
       "A device you are meant to use often has to earn its place in the room. minara is drawn as an object first: a clean steel body, no branding across the face, and a display that tells you what you need and nothing more.",
     objectSpecs: [
       ["Emitters", "70 high-efficiency LEDs"],
       ["Rated life", "50,000+ hours"],
       ["Body", "Cold-rolled SPCC steel"],
-      ["Optics", "30° lenses"],
     ],
     objectFrame: "Emitter array — macro",
     effectEyebrow: "The effect",

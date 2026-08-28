@@ -56,7 +56,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
           <motion.div variants={rise} className="mt-10 w-full sm:mt-12">
             <ProductRender
               alt={s.panel.name}
-              className="mx-auto max-h-[34svh] w-auto sm:max-h-[40svh]"
+              className="mx-auto max-h-[46svh] w-auto sm:max-h-[52svh]"
             />
           </motion.div>
 
@@ -111,6 +111,33 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
         </motion.div>
       </section>
 
+      {/* The effect */}
+      <section className="border-t border-divider px-6 py-32 sm:py-40 lg:py-48">
+        <motion.div
+          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
+          className="mx-auto max-w-6xl"
+        >
+          <div className="max-w-2xl">
+            <Eyebrow>{c.effectEyebrow}</Eyebrow>
+            <motion.h2
+              variants={rise}
+              className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl"
+            >
+              <Lines text={c.effectTitle} />
+            </motion.h2>
+          </div>
+
+          <div className="mt-24 grid grid-cols-1 gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+            {c.effects.map((item) => (
+              <motion.div key={item.index} variants={rise} className="border-t border-divider pt-8">
+                <p className="text-xs tracking-[0.2em] text-text-muted">{item.index}</p>
+                <h3 className="mt-6 text-xl font-light tracking-[-0.01em]">{item.title}</h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
       {/* Trust */}
       <section className="border-y border-divider px-6 py-32 sm:py-40 lg:py-48">
         <motion.div
@@ -145,33 +172,6 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
         </motion.div>
       </section>
 
-      {/* The effect */}
-      <section className="border-t border-divider px-6 py-32 sm:py-40 lg:py-48">
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
-          className="mx-auto max-w-6xl"
-        >
-          <div className="max-w-2xl">
-            <Eyebrow>{c.effectEyebrow}</Eyebrow>
-            <motion.h2
-              variants={rise}
-              className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl"
-            >
-              <Lines text={c.effectTitle} />
-            </motion.h2>
-          </div>
-
-          <div className="mt-24 grid grid-cols-1 gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
-            {c.effects.map((item) => (
-              <motion.div key={item.index} variants={rise} className="border-t border-divider pt-8">
-                <p className="text-xs tracking-[0.2em] text-text-muted">{item.index}</p>
-                <h3 className="mt-6 text-xl font-light tracking-[-0.01em]">{item.title}</h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
       {/* The object */}
       <section className="px-6 py-32 sm:py-40 lg:py-48">
         <motion.div
