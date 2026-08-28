@@ -99,6 +99,8 @@ export type SiteContent = {
     errorGeneric: string;
     errorSoldOut: string;
     errorStock: string;
+    errorQty: string;
+    errorUnavailable: string;
     errorFields: string;
     testMode: string;
     back: string;

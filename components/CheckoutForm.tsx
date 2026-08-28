@@ -103,6 +103,10 @@ export default function CheckoutForm({
           setError(
             c.errorStock.replace("{n}", String(data.remaining ?? ""))
           );
+        } else if (data.message === "invalid_quantity") {
+          setError(c.errorQty);
+        } else if (data.message === "unavailable_item") {
+          setError(c.errorUnavailable);
         } else {
           setError(data.message || c.errorGeneric);
         }

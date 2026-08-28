@@ -105,6 +105,8 @@ export const en: SiteContent = {
     errorGeneric: "Something went wrong. Please try again.",
     errorSoldOut: "This is now sold out. Nothing has been charged.",
     errorStock: "Only {n} left in stock. Please reduce the quantity. Nothing has been charged.",
+    errorQty: "Please enter a valid quantity.",
+    errorUnavailable: "That item is no longer available.",
     errorFields: "Please check the highlighted fields.",
     testMode: "Test mode — no real payment will be taken.",
     back: "Back to the panel",

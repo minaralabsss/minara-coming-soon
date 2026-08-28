@@ -11,8 +11,6 @@ import { isTracked, remaining } from "@/lib/stock";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const MAX_QTY_PER_LINE = 5;
-
 /** Absolute site origin, used to build the return URLs Moyasar redirects to. */
 function siteOrigin(request: NextRequest): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL;
@@ -66,14 +64,17 @@ export async function POST(request: NextRequest) {
       const product = findProduct(String(line.slug ?? ""));
       if (!product || product.status !== "available") {
         return NextResponse.json(
-          { success: false, message: `Unavailable item: ${line.slug}` },
+          { success: false, message: "unavailable_item" },
           { status: 400 }
         );
       }
       const qty = Math.floor(Number(line.quantity));
-      if (!Number.isFinite(qty) || qty < 1 || qty > MAX_QTY_PER_LINE) {
+      // No upper cap: how many can be bought is decided by stock, checked
+      // immediately below. This only rejects values that are not real
+      // quantities at all.
+      if (!Number.isFinite(qty) || qty < 1) {
         return NextResponse.json(
-          { success: false, message: "Invalid quantity" },
+          { success: false, message: "invalid_quantity" },
           { status: 400 }
         );
       }
