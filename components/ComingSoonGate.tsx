@@ -119,8 +119,14 @@ export default function ComingSoonGate({
                 ))}
               </h2>
 
-              <p className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary">
-{c.body}
+              {/* Small caps in Latin only. Arabic has no capital forms, so
+                  applying it there does nothing visually but would break the
+                  letterforms in some renderers. */}
+              <p
+                className="mt-8 max-w-xs text-sm font-light leading-relaxed text-text-secondary"
+                style={locale === "ar" ? undefined : { fontVariantCaps: "small-caps" }}
+              >
+                {c.body}
               </p>
 
               <div className="mt-12 w-full">
