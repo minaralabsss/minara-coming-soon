@@ -19,8 +19,7 @@ export const en: SiteContent = {
   },
 
   footer: {
-    blurb:
-      "Precision light technology, designed in Saudi for skin that is looked after rather than fussed over.",
+    blurb: "Precision light technology. Designed in Saudi.",
     explore: "Explore",
     policies: "Policies",
     connect: "Connect",
