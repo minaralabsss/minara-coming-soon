@@ -152,14 +152,6 @@ export default function EmailForm({ onSuccess }: EmailFormProps) {
           )}
         </motion.button>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-xs text-center text-text-muted leading-relaxed"
-        >
-          {c.helper}
-        </motion.p>
       </div>
     </form>
   );

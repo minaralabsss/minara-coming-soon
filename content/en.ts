@@ -31,9 +31,9 @@ export const en: SiteContent = {
   },
 
   modal: {
-    eyebrow: "minara labs",
-    title: "Light, made\nfor the home",
-    body: "Occasional letters on skin, light and what we are building next. Nothing else.",
+    eyebrow: "",
+    title: "Where science\nmeets self-care",
+    body: "A few letters a year, on what we are making and what the research actually says. Nothing more.",
     continue: "Continue to site",
     origin: "Designed in Saudi",
     close: "Close",
@@ -55,7 +55,7 @@ export const en: SiteContent = {
   form: {
     placeholder: "your@email.com",
     submit: "Subscribe",
-    helper: "Occasional letters on skin, light and new instruments",
+    helper: "",
     success: "Welcome to minara labs",
     successBody: "Look out for our next letter",
     sending: "Sending",
@@ -107,6 +107,8 @@ export const en: SiteContent = {
     errorStock: "Only {n} left in stock. Please reduce the quantity. Nothing has been charged.",
     errorQty: "Please enter a valid quantity.",
     errorUnavailable: "That item is no longer available.",
+    savedNotice: "Using your saved delivery details.",
+    savedClear: "Not you? Clear",
     errorFields: "Please check the highlighted fields.",
     testMode: "Test mode — no real payment will be taken.",
     back: "Back to the panel",

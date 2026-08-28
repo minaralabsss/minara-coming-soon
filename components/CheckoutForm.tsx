@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -24,6 +24,63 @@ function fieldClass(invalid: boolean, extra = "") {
   return `${FIELD_BASE} ${
     invalid ? "border-[#c0392b] focus:border-[#c0392b]" : "border-divider focus:border-text"
   } ${extra}`;
+}
+
+/**
+ * Delivery details are remembered in the customer's own browser so a repeat
+ * order does not mean retyping an address. Nothing is sent to us and nothing
+ * is stored on our servers; this is localStorage on their device only.
+ *
+ * Email is deliberately excluded. It is the field most likely to differ
+ * between people sharing a device, and getting a receipt sent to the wrong
+ * address is worse than typing it again.
+ */
+const SAVED_KEY = "minara.delivery.v1";
+
+type SavedFields = {
+  name: string;
+  phone: string;
+  province: string;
+  city: string;
+  shortAddress: string;
+  address: string;
+};
+
+function readSaved(): SavedFields | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(SAVED_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<SavedFields>;
+    if (!parsed || typeof parsed.name !== "string" || !parsed.name) return null;
+    return {
+      name: parsed.name ?? "",
+      phone: parsed.phone ?? "",
+      province: parsed.province ?? "",
+      city: parsed.city ?? "",
+      shortAddress: parsed.shortAddress ?? "",
+      address: parsed.address ?? "",
+    };
+  } catch {
+    // Corrupt or unavailable storage should never block a purchase.
+    return null;
+  }
+}
+
+function writeSaved(f: SavedFields): void {
+  try {
+    window.localStorage.setItem(SAVED_KEY, JSON.stringify(f));
+  } catch {
+    /* private browsing or a full quota; not worth surfacing */
+  }
+}
+
+function clearSaved(): void {
+  try {
+    window.localStorage.removeItem(SAVED_KEY);
+  } catch {
+    /* nothing to do */
+  }
 }
 
 export default function CheckoutForm({
@@ -50,6 +107,32 @@ export default function CheckoutForm({
   const [bad, setBad] = useState<string[]>([]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [usingSaved, setUsingSaved] = useState(false);
+
+  // Prefill after mount rather than in useState, so the server-rendered
+  // markup and the first client render match. Reading localStorage during
+  // render would produce a hydration mismatch.
+  useEffect(() => {
+    const saved = readSaved();
+    if (!saved) return;
+    setForm((f) => ({ ...f, ...saved }));
+    setUsingSaved(true);
+  }, []);
+
+  function forgetSaved() {
+    clearSaved();
+    setUsingSaved(false);
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      province: "",
+      city: "",
+      shortAddress: "",
+      address: "",
+      notes: "",
+    });
+  }
 
   const cities = useMemo(() => {
     const p = findProvince(form.province);
@@ -113,6 +196,17 @@ export default function CheckoutForm({
         setBusy(false);
         return;
       }
+
+      // Details are kept only once an order is actually going through, so a
+      // half-filled abandoned form never leaves anything behind.
+      writeSaved({
+        name: form.name,
+        phone: form.phone,
+        province: form.province,
+        city: form.city,
+        shortAddress: form.shortAddress,
+        address: form.address,
+      });
 
       window.location.href = data.url;
     } catch {
@@ -194,6 +288,24 @@ export default function CheckoutForm({
                 </div>
 
                 <div className="space-y-6">
+                  {/* Shown rather than filled silently: on a shared device the
+                      next person must be able to see whose details these are
+                      and wipe them in one click. */}
+                  {usingSaved && (
+                    <div className="flex flex-wrap items-center justify-between gap-3 border border-divider px-4 py-3">
+                      <span className="text-sm font-light text-text-secondary">
+                        {c.savedNotice}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={forgetSaved}
+                        className="border-b border-divider pb-0.5 text-xs uppercase tracking-[0.15em] text-text-muted transition-colors duration-300 hover:border-text hover:text-text"
+                      >
+                        {c.savedClear}
+                      </button>
+                    </div>
+                  )}
+
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium">
                       {c.name}

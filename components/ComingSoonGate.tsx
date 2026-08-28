@@ -110,13 +110,9 @@ export default function ComingSoonGate({
             <div className="flex flex-col items-center text-center">
               <Logo size="md" />
 
-              <p className="mt-12 text-xs lowercase tracking-[0.25em] text-text-muted">
-                {c.eyebrow}
-              </p>
-
               <h2
                 id="waitlist-heading"
-                className="mt-6 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl"
+                className="mt-12 text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl"
               >
                 {c.title.split('\n').map((l, i) => (
                   <span key={i} className="block">{l}</span>

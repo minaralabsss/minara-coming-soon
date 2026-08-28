@@ -101,6 +101,8 @@ export type SiteContent = {
     errorStock: string;
     errorQty: string;
     errorUnavailable: string;
+    savedNotice: string;
+    savedClear: string;
     errorFields: string;
     testMode: string;
     back: string;
