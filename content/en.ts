@@ -103,6 +103,8 @@ export const en: SiteContent = {
     pay: "Continue to payment",
     working: "Preparing your payment",
     errorGeneric: "Something went wrong. Please try again.",
+    errorSoldOut: "This is now sold out. Nothing has been charged.",
+    errorStock: "Only {n} left in stock. Please reduce the quantity. Nothing has been charged.",
     errorFields: "Please check the highlighted fields.",
     testMode: "Test mode — no real payment will be taken.",
     back: "Back to the panel",

@@ -97,6 +97,8 @@ export type SiteContent = {
     pay: string;
     working: string;
     errorGeneric: string;
+    errorSoldOut: string;
+    errorStock: string;
     errorFields: string;
     testMode: string;
     back: string;

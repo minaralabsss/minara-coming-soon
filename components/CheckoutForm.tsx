@@ -95,6 +95,14 @@ export default function CheckoutForm({
           const first = document.getElementById(data.fields[0]);
           first?.scrollIntoView({ behavior: "smooth", block: "center" });
           first?.focus({ preventScroll: true });
+        } else if (data.message === "sold_out") {
+          setError(c.errorSoldOut);
+        } else if (data.message === "insufficient_stock") {
+          // The route returns how many are actually left, so say so rather
+          // than leaving the customer to guess a quantity that will work.
+          setError(
+            c.errorStock.replace("{n}", String(data.remaining ?? ""))
+          );
         } else {
           setError(data.message || c.errorGeneric);
         }
