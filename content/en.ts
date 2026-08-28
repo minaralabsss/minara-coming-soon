@@ -135,7 +135,7 @@ export const en: SiteContent = {
       "Red and near-infrared light, at the wavelengths studied for collagen and skin renewal. Twenty minutes. At home. On your own schedule.",
     whyEyebrow: "Why it exists",
     whyStatement:
-      "Serums work on the surface. Collagen is made underneath it. minara was built to reach the layer where skin renews itself, and at 1060 nanometres, deeper still.",
+      "Serums work on the surface. Collagen is made underneath it. minara reaches that layer with red light. Its longest wavelength, 1060 nanometres, carries further again, into muscle and deep tissue.",
     faceEyebrow: "Skin",
     faceTitle: "Where the evidence\nis strongest",
     faceBody: [
