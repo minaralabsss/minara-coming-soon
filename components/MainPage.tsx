@@ -31,7 +31,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
       <Navigation />
 
       {/* Curiosity */}
-      <section ref={heroRef} className="px-6 pb-28 pt-16 sm:pb-36 sm:pt-24">
+      <section ref={heroRef} className="flex min-h-[100svh] flex-col justify-center px-6 py-16 sm:py-20">
         <motion.div
           style={{ y: heroShift }}
           variants={stagger}
@@ -39,30 +39,28 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
           animate="visible"
           className="mx-auto flex w-full max-w-4xl flex-col items-center text-center"
         >
-          <Eyebrow>{c.eyebrow}</Eyebrow>
-
           <motion.h1
             variants={rise}
-            className="mt-10 max-w-3xl text-5xl font-light leading-[1.08] tracking-[-0.03em] sm:text-6xl lg:text-7xl"
+            className="max-w-3xl text-5xl font-light leading-[1.08] tracking-[-0.03em] sm:text-6xl lg:text-7xl"
           >
             <Lines text={c.title} />
           </motion.h1>
 
           <motion.p
             variants={rise}
-            className="mt-10 max-w-lg text-base font-light leading-relaxed text-text-secondary sm:text-lg"
+            className="mt-8 max-w-lg text-base font-light leading-relaxed text-text-secondary sm:text-lg"
           >
             {c.intro}
           </motion.p>
 
-          <motion.div variants={rise} className="mt-14 w-full sm:mt-16">
+          <motion.div variants={rise} className="mt-10 w-full sm:mt-12">
             <ProductRender
               alt={s.panel.name}
-              className="mx-auto max-h-[56vh] w-auto sm:max-h-[62vh]"
+              className="mx-auto max-h-[34svh] w-auto sm:max-h-[40svh]"
             />
           </motion.div>
 
-          <motion.div variants={rise} className="mt-12 flex flex-col items-center gap-5">
+          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-5">
             <AddToCart product={panel} />
             <Link
               href={localeHref("/product/panel", locale)}
@@ -147,6 +145,33 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
         </motion.div>
       </section>
 
+      {/* The effect */}
+      <section className="border-t border-divider px-6 py-32 sm:py-40 lg:py-48">
+        <motion.div
+          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
+          className="mx-auto max-w-6xl"
+        >
+          <div className="max-w-2xl">
+            <Eyebrow>{c.effectEyebrow}</Eyebrow>
+            <motion.h2
+              variants={rise}
+              className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl"
+            >
+              <Lines text={c.effectTitle} />
+            </motion.h2>
+          </div>
+
+          <div className="mt-24 grid grid-cols-1 gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
+            {c.effects.map((item) => (
+              <motion.div key={item.index} variants={rise} className="border-t border-divider pt-8">
+                <p className="text-xs tracking-[0.2em] text-text-muted">{item.index}</p>
+                <h3 className="mt-6 text-xl font-light tracking-[-0.01em]">{item.title}</h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
       {/* The object */}
       <section className="px-6 py-32 sm:py-40 lg:py-48">
         <motion.div
@@ -176,63 +201,7 @@ export default function MainPage({ locale = "en" }: { locale?: Locale }) {
         </motion.div>
       </section>
 
-      {/* The effect */}
-      <section className="border-t border-divider px-6 py-32 sm:py-40 lg:py-48">
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
-          className="mx-auto max-w-6xl"
-        >
-          <div className="max-w-2xl">
-            <Eyebrow>{c.effectEyebrow}</Eyebrow>
-            <motion.h2
-              variants={rise}
-              className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl"
-            >
-              <Lines text={c.effectTitle} />
-            </motion.h2>
-          </div>
 
-          <div className="mt-24 grid grid-cols-1 gap-x-16 gap-y-20 sm:grid-cols-2 lg:grid-cols-3">
-            {c.effects.map((item) => (
-              <motion.div key={item.index} variants={rise} className="border-t border-divider pt-8">
-                <p className="text-xs tracking-[0.2em] text-text-muted">{item.index}</p>
-                <h3 className="mt-6 text-xl font-light tracking-[-0.01em]">{item.title}</h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p variants={rise} className="mt-24 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
-            {s.disclaimer}
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-text px-6 py-40 text-bg sm:py-48 lg:py-56">
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] opacity-50">
-            {c.ctaEyebrow}
-          </motion.p>
-          <motion.h2 variants={rise} className="mt-12 text-4xl font-light leading-[1.15] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
-            <Lines text={c.ctaTitle} />
-          </motion.h2>
-          <motion.p variants={rise} className="mx-auto mt-12 max-w-md text-base font-light leading-relaxed opacity-70">
-            {c.ctaBody}
-          </motion.p>
-          <motion.div variants={rise} className="mt-16">
-            <Link
-              href={localeHref("/product/panel", locale)}
-              className="border-b border-bg pb-1 text-sm tracking-wide transition-opacity duration-500 hover:opacity-50"
-            >
-              {c.ctaLink}
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
 
       <Footer />
     </div>

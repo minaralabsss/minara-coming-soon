@@ -32,9 +32,8 @@ export type SiteContent = {
     returns: string;
     warranty: string;
     rights: string;
-    disclaimerShort: string;
     /** Label for the unified national number (الرقم الموحد). */
-    unifiedLabel: string;
+    maroofLabel: string;
     /** Label for the commercial registration number (السجل التجاري). */
     crLabel: string;
   };
@@ -115,7 +114,6 @@ export type SiteContent = {
   };
   /** Product display names, keyed by slug. Add a key per new product. */
   productNames: Record<string, string>;
-  disclaimer: string;
   home: {
     eyebrow: string;
     title: string;
@@ -138,10 +136,6 @@ export type SiteContent = {
     effectEyebrow: string;
     effectTitle: string;
     effects: Numbered[];
-    ctaEyebrow: string;
-    ctaTitle: string;
-    ctaBody: string;
-    ctaLink: string;
   };
   product: {
     eyebrow: string;

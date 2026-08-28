@@ -130,7 +130,7 @@ export default function Footer() {
 
         {/* Legal identifiers. Only the numbers that are filled in appear,
             so nothing renders as a label with an empty value. */}
-        {(BUSINESS.unifiedNumber || BUSINESS.crNumber) && (
+        {(BUSINESS.maroofUrl || BUSINESS.crNumber) && (
           <ul className="mt-20 flex flex-wrap gap-x-8 gap-y-2 border-t border-divider pt-10">
             {BUSINESS.crNumber && (
               <li className="text-xs font-light text-text-muted">
@@ -138,10 +138,24 @@ export default function Footer() {
                 <span dir="ltr" className="tracking-wide">{BUSINESS.crNumber}</span>
               </li>
             )}
-            {BUSINESS.unifiedNumber && (
-              <li className="text-xs font-light text-text-muted">
-                {c.footer.unifiedLabel}{" "}
-                <span dir="ltr" className="tracking-wide">{BUSINESS.unifiedNumber}</span>
+            {BUSINESS.maroofUrl && (
+              <li>
+                <a
+                  href={BUSINESS.maroofUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs font-light text-text-muted transition-opacity duration-500 hover:opacity-60"
+                >
+                  <img
+                    src="/maroof.png"
+                    alt={c.footer.maroofLabel}
+                    width={72}
+                    height={24}
+                    className="h-6 w-auto"
+                    loading="lazy"
+                  />
+                  <span className="sr-only">{c.footer.maroofLabel}</span>
+                </a>
               </li>
             )}
           </ul>
@@ -150,9 +164,6 @@ export default function Footer() {
         <div className="mt-10 flex flex-col gap-4 border-t border-divider pt-10 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs font-light text-text-muted">
             © {year} minara labs. {c.footer.rights}
-          </p>
-          <p className="text-xs font-light text-text-muted">
-            {c.footer.disclaimerShort}
           </p>
         </div>
       </div>

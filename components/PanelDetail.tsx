@@ -175,9 +175,6 @@ export default function PanelDetail({ locale = "en" }: { locale?: Locale }) {
             ))}
           </div>
 
-          <motion.p variants={rise} className="mt-20 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
-            {s.disclaimer}
-          </motion.p>
         </motion.div>
       </section>
 

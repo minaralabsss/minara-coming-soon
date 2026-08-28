@@ -131,7 +131,6 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
               </div>
             ))}
           </div>
-          <p className="mt-16 max-w-2xl text-xs font-light leading-relaxed text-text-muted">{s.disclaimer}</p>
         </div>
       </section>
 

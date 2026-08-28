@@ -27,8 +27,7 @@ export const en: SiteContent = {
     returns: "Returns",
     warranty: "Warranty",
     rights: "All rights reserved. Designed in Saudi.",
-    disclaimerShort: "A wellness practice, not a medical treatment.",
-    unifiedLabel: "Unified number",
+    maroofLabel: "Verified on Maroof",
     crLabel: "CR",
   },
 
@@ -129,12 +128,9 @@ export const en: SiteContent = {
     "head-massager": "The Head Massager",
   },
 
-  disclaimer:
-    "Red light therapy is a wellness practice, not a medical treatment. minara is not intended to diagnose, treat or cure any condition. Results vary between individuals. Speak with a healthcare professional about your own circumstances.",
-
   home: {
-    eyebrow: "minara labs",
-    title: "The face you have.\nBetter rested.",
+    eyebrow: "",
+    title: "Twenty minutes.\nMost evenings.",
     intro:
       "Red and near-infrared light, at the wavelengths studied for collagen and skin renewal. Twenty minutes. At home. On your own schedule.",
     whyEyebrow: "Why it exists",
@@ -143,8 +139,8 @@ export const en: SiteContent = {
     faceEyebrow: "Skin",
     faceTitle: "Where the evidence\nis strongest",
     faceBody: [
-      "Facial skin is where light therapy has been studied most closely, and where the findings are most consistent. Fibroblasts — the cells that produce collagen — sit in the dermis, and at 630 and 660 nanometres red light reaches them directly.",
-      "What consistent use supports is measured rather than promised: collagen production, skin elasticity, the appearance of fine lines around the eyes and mouth, and a brighter, more refreshed-looking complexion. It is gradual, and it is cumulative — which is why the panel was made for a routine rather than an occasion.",
+      "Facial skin is where light therapy has been studied most closely. The cells that produce collagen sit beneath the surface, and at 630 and 660 nanometres red light reaches them directly.",
+      "Collagen, elasticity, fine lines, radiance. Gradual and cumulative, which is why the panel was made for a routine rather than an occasion.",
     ],
     faceFrame: "Facial session — in use",
     scienceEyebrow: "The technology",
@@ -152,19 +148,19 @@ export const en: SiteContent = {
     scienceBody:
       "Red light is visible. Near-infrared is not, and interacts with tissue at greater depths. Both have been studied for decades for the way they interact with the natural processes that produce collagen and renew skin.",
     stats: [
-      { value: "6", unit: "wavelengths", note: "630 to 1060 nanometres — one considered spectrum, selected against the literature" },
+      { value: "1060", unit: "nanometres", note: "The upper reach of the panel. Six wavelengths from 630 nm up, covering surface skin through to deep tissue" },
       { value: "20", unit: "minutes", note: "A single session, at a distance you choose" },
-      { value: "220", unit: "mW/cm²", note: "Measured irradiance at the panel surface, ±10%" },
+      { value: "50,000", unit: "hours", note: "Rated life. At four sessions a week, a lifetime of use rather than a few years" },
     ],
     objectEyebrow: "The object",
-    objectTitle: "Made to be left out,\nnot put away",
+    objectTitle: "Drawn as carefully\nas it was specified",
     objectBody:
       "A device you are meant to use often has to earn its place in the room. minara is drawn as an object first: a clean steel body, no branding across the face, and a display that tells you what you need and nothing more.",
     objectSpecs: [
       ["Emitters", "70 high-efficiency LEDs"],
       ["Rated life", "50,000+ hours"],
       ["Body", "Cold-rolled SPCC steel"],
-      ["Input", "AC 100–240V, 50/60Hz"],
+      ["Optics", "30° lenses"],
     ],
     objectFrame: "Emitter array — macro",
     effectEyebrow: "The effect",
@@ -177,11 +173,6 @@ export const en: SiteContent = {
       { index: "05", title: "Elasticity", body: "Supporting the skin's natural collagen processes helps maintain the appearance of firmer, more elastic skin." },
       { index: "06", title: "Hair and wellness", body: "The same wavelengths are used in hair-care routines and in recovery routines after physical activity. Supporting applications of one technology." },
     ],
-    ctaEyebrow: "The Panel",
-    ctaTitle: "One instrument,\nmade properly",
-    ctaBody:
-      "Six wavelengths across seventy emitters, in a steel body built to hold its output for years rather than months.",
-    ctaLink: "View the panel",
   },
 
   product: {
