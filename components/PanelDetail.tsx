@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import AddToCart from "./AddToCart";
@@ -42,21 +42,46 @@ export default function PanelDetail({
       <section className="px-6 pb-24 pt-14 sm:pb-32 sm:pt-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <div className="relative flex min-h-[46vh] items-center justify-center overflow-hidden rounded-sm bg-[#ECECEC] p-10 sm:min-h-[60vh]">
-              {src ? (
-                <picture>
-                  <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
-                  <img
-                    src={src}
-                    alt={`${c.name} — ${c.gallery[active]}`}
-                    className="max-h-[42vh] w-auto object-contain sm:max-h-[56vh]"
-                  />
-                </picture>
-              ) : (
-                <span className="text-center text-xs uppercase tracking-[0.25em] text-text-muted">
-                  {c.gallery[active]}
-                </span>
-              )}
+            {/*
+              Fixed aspect ratio rather than a height that follows the
+              active photo's own proportions. The four gallery images mix
+              portrait studio renders (3:4) and landscape lifestyle shots
+              (3:2), so a height that hugs the content made the frame
+              visibly resize itself on every click — which read as
+              inconsistent rather than intentional. One frame, one size,
+              every photo scales to fit inside it.
+            */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-[#ECECEC]">
+              <AnimatePresence mode="wait">
+                {src ? (
+                  <motion.picture
+                    key={src}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                    className="absolute inset-0 flex items-center justify-center p-10"
+                  >
+                    <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
+                    <img
+                      src={src}
+                      alt={`${c.name} — ${c.gallery[active]}`}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </motion.picture>
+                ) : (
+                  <motion.span
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+                    className="absolute inset-0 flex items-center justify-center text-center text-xs uppercase tracking-[0.25em] text-text-muted"
+                  >
+                    {c.gallery[active]}
+                  </motion.span>
+                )}
+              </AnimatePresence>
 
               <button
                 type="button"
