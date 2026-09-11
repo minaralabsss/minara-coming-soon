@@ -52,7 +52,7 @@ export default function PanelDetail({
               own. Arrows sit outside the frame so they never sit on top
               of the product.
             */}
-            <div className="mx-auto flex max-w-md items-center gap-4">
+            <div className="mx-auto flex max-w-md items-center gap-4 sm:max-w-xl lg:max-w-none lg:gap-6">
               <button
                 type="button"
                 onClick={() => setActive((i) => (i - 1 + c.gallery.length) % c.gallery.length)}
@@ -73,7 +73,7 @@ export default function PanelDetail({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                      className="absolute inset-0 flex items-center justify-center p-8"
+                      className="absolute inset-0 flex items-center justify-center p-8 sm:p-10 lg:p-14"
                     >
                       <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
                       <img
