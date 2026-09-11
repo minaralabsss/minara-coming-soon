@@ -54,17 +54,28 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
           </motion.p>
 
           <motion.div variants={rise} className="mt-10 w-full sm:mt-12">
-            <ProductRender
-              alt={s.panel.name}
-              className="mx-auto max-h-[46svh] w-auto sm:max-h-[52svh]"
-            />
-          </motion.div>
-
-          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-5">
-            <AddToCart product={panel} soldOut={soldOut} />
             <Link
               href={localeHref("/product/panel", locale)}
-              className="border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
+              aria-label={s.buy.viewDetails}
+              className="block transition-opacity duration-500 hover:opacity-80"
+            >
+              <ProductRender
+                alt={s.panel.name}
+                className="mx-auto max-h-[46svh] w-auto sm:max-h-[52svh]"
+              />
+            </Link>
+          </motion.div>
+
+          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-3">
+            <AddToCart product={panel} soldOut={soldOut} />
+            {panel.compareAt != null && panel.compareAt > panel.price && (
+              <p className="max-w-xs text-center text-xs font-light leading-relaxed text-text-muted">
+                {s.buy.launchNote}
+              </p>
+            )}
+            <Link
+              href={localeHref("/product/panel", locale)}
+              className="mt-2 border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
             >
               {s.buy.viewDetails}
             </Link>
@@ -196,7 +207,13 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
             </dl>
           </motion.div>
           <motion.div variants={rise} className="order-1 lg:order-2">
-            <Photo src="/panel-side" alt={s.panel.sideAlt} ratio="aspect-[3/4]" />
+            <Link
+              href={localeHref("/product/panel", locale)}
+              aria-label={s.buy.viewDetails}
+              className="block transition-opacity duration-500 hover:opacity-80"
+            >
+              <Photo src="/panel-side" alt={s.panel.sideAlt} ratio="aspect-[3/4]" />
+            </Link>
           </motion.div>
         </motion.div>
       </section>

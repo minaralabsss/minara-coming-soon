@@ -10,6 +10,7 @@ import { Lines, rise, stagger, viewport } from "./ui";
 import { findProduct } from "@/lib/products";
 import Price from "./Price";
 import IncludedKit from "./IncludedKit";
+import DepthDiagram from "./DepthDiagram";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -41,7 +42,7 @@ export default function PanelDetail({
       <section className="px-6 pb-24 pt-14 sm:pb-32 sm:pt-20">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <div className="flex min-h-[46vh] items-center justify-center overflow-hidden rounded-sm bg-divider/40 p-6 sm:min-h-[60vh]">
+            <div className="relative flex min-h-[46vh] items-center justify-center overflow-hidden rounded-sm bg-[#ECECEC] p-10 sm:min-h-[60vh]">
               {src ? (
                 <picture>
                   <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
@@ -56,6 +57,27 @@ export default function PanelDetail({
                   {c.gallery[active]}
                 </span>
               )}
+
+              <button
+                type="button"
+                onClick={() => setActive((i) => (i - 1 + c.gallery.length) % c.gallery.length)}
+                aria-label={c.prevImage}
+                className="absolute inset-y-0 start-2 flex items-center px-2 text-text-muted transition-colors duration-300 hover:text-text"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="rtl:-scale-x-100">
+                  <path d="M12.5 5L7.5 10L12.5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActive((i) => (i + 1) % c.gallery.length)}
+                aria-label={c.nextImage}
+                className="absolute inset-y-0 end-2 flex items-center px-2 text-text-muted transition-colors duration-300 hover:text-text"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="rtl:-scale-x-100">
+                  <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </div>
 
             <div className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-8">
@@ -157,6 +179,21 @@ export default function PanelDetail({
               </motion.div>
             ))}
           </div>
+        </motion.div>
+      </section>
+
+      {/* Penetration depth */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
+          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">
+            {s.science.wlEyebrow}
+          </motion.p>
+          <motion.h2 variants={rise} className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+            <Lines text={s.science.depthTitle} />
+          </motion.h2>
+          <motion.div variants={rise} className="mt-16">
+            <DepthDiagram locale={locale} />
+          </motion.div>
         </motion.div>
       </section>
 

@@ -179,6 +179,8 @@ export type SiteContent = {
     inUseAlt: string;
     sideAlt: string;
     emittersAlt: string;
+    prevImage: string;
+    nextImage: string;
   };
   science: {
     eyebrow: string;

@@ -280,6 +280,8 @@ export const en: SiteContent = {
     inUseAlt: "A woman using the minara panel for a facial session",
     sideAlt: "The minara panel, side profile",
     emittersAlt: "Close detail of the minara emitter array and optics",
+    prevImage: "Previous photo",
+    nextImage: "Next photo",
   },
 
   science: {
@@ -426,7 +428,7 @@ export const en: SiteContent = {
     contactTitle: "Write to us",
     email: "Email",
     location: "Location",
-    locationValue: "Saudi",
+    locationValue: "Saudi Arabia",
     locationNote: "Designed in Saudi",
     response: "Response time",
     responseValue: "24 to 48 hours",

@@ -55,9 +55,6 @@ export default function SupportPage({ locale = "en" }: { locale?: Locale }) {
                 >
                   minaralabs@gmail.com
                 </a>
-                <p className="mt-4 max-w-sm text-sm font-light leading-relaxed text-text-secondary">
-                  {c.responseNote}
-                </p>
               </div>
 
               <div>
@@ -68,7 +65,6 @@ export default function SupportPage({ locale = "en" }: { locale?: Locale }) {
               <div>
                 <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">{c.location}</h3>
                 <p className="mt-3 text-lg text-text">{c.locationValue}</p>
-                <p className="mt-1 text-sm text-text-secondary">{c.locationNote}</p>
               </div>
             </div>
 

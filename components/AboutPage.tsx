@@ -65,30 +65,6 @@ export default function AboutPage({ locale = "en" }: { locale?: Locale }) {
         </div>
       </section>
 
-      {/* Designed in Saudi */}
-      <section className="border-t border-divider px-6 py-28 sm:py-36">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-6">
-            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.promiseEyebrow}</p>
-            <h2 className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
-              <Lines text={c.promiseTitle} />
-            </h2>
-            <p className="mt-10 text-base font-light leading-relaxed text-text-secondary sm:text-lg">
-              {c.promiseBody}
-            </p>
-          </div>
-          <div className="lg:col-span-5 lg:col-start-8">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-divider">
-              <div className="absolute inset-0 flex items-center justify-center px-6">
-                <span className="text-center text-xs uppercase tracking-[0.25em] text-text-muted">
-                  {c.promiseEyebrow}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* What follows */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-3xl text-center">

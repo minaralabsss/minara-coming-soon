@@ -19,27 +19,20 @@ export default function ProductPageContent({ locale = "en" }: { locale?: Locale 
     <div dir={s.dir} lang={locale} className={`min-h-screen bg-bg text-text ${locale === "ar" ? "font-arabic" : ""}`}>
       <Navigation />
 
-      <section className="px-6 pb-24 pt-24 sm:pb-32 sm:pt-32">
+      <section className="px-6 pb-10 pt-24 sm:pb-14 sm:pt-28">
         <motion.div variants={stagger} initial="hidden" animate="visible" className="mx-auto max-w-6xl">
           <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">
             {c.eyebrow}
           </motion.p>
-          <motion.h1 variants={rise} className="mt-10 max-w-2xl text-4xl font-light leading-[1.12] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+          <motion.h1 variants={rise} className="mt-6 max-w-2xl text-3xl font-light leading-[1.15] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
             <Lines text={c.title} />
           </motion.h1>
-          <motion.p variants={rise} className="mt-10 max-w-lg text-base font-light leading-relaxed text-text-secondary sm:text-lg">
-            {c.intro}
-          </motion.p>
         </motion.div>
       </section>
 
-      <section className="border-t border-divider px-6 py-24 sm:py-32">
+      <section className="px-6 pb-24 sm:pb-32">
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
-          <motion.h2 variants={rise} className="text-xs uppercase tracking-[0.2em] text-text-muted">
-            {c.available}
-          </motion.h2>
-
-          <div className="mt-16 space-y-24">
+          <div className="space-y-24">
             {products.map((p) => (
               <motion.article key={p.slug} variants={rise} className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-20">
                 <Link href={localeHref(`/product/${p.slug}`, locale)} className="group block lg:col-span-6">
@@ -91,9 +84,6 @@ export default function ProductPageContent({ locale = "en" }: { locale?: Locale 
             ))}
           </div>
 
-          <motion.p variants={rise} className="mt-16 max-w-lg text-sm font-light leading-relaxed text-text-secondary">
-            {c.devNote}
-          </motion.p>
         </motion.div>
       </section>
 

@@ -280,6 +280,8 @@ export const ar: SiteContent = {
     inUseAlt: "امرأة تستخدم جهاز منارا في جلسة للوجه",
     sideAlt: "جهاز منارا من الجانب",
     emittersAlt: "تفاصيل قريبة لمصفوفة لمبات منارا وعدساتها",
+    prevImage: "الصورة السابقة",
+    nextImage: "الصورة التالية",
   },
 
   science: {
@@ -426,7 +428,7 @@ export const ar: SiteContent = {
     contactTitle: "المراسلة",
     email: "البريد الإلكتروني",
     location: "الموقع",
-    locationValue: "السعودية",
+    locationValue: "المملكة العربية السعودية",
     locationNote: "مصمم في السعودية",
     response: "مدة الرد",
     responseValue: "٢٤ إلى ٤٨ ساعة",
