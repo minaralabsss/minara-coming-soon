@@ -23,39 +23,46 @@ export type Policy = {
 export const returns: Record<Locale, Policy> = {
   en: {
     eyebrow: "Returns",
-    title: "Seven days\nto fall in love",
+    title: "Seven days,\nunopened",
     intro:
-      "Choosing minara should feel effortless. Live with the panel for a full week — in your light, your bathroom, your morning ritual. If it is not everything you hoped, we take it back. Simply, and without questions.",
-    updated: "Last updated July 2026",
+      "Saudi e-commerce law gives you seven days to change your mind, and we honour that in full. One condition, and we state it plainly: the panel must come back to us exactly as it left, sealed and completely unused.",
+    updated: "Last updated September 2026",
     sections: [
       {
-        heading: "A week that belongs to you",
+        heading: "What unopened means",
         body: [
-          "From the day your panel arrives, you have seven days to decide. Use it. Feel it. Let it earn its place.",
-          "If you choose to return it, you owe us no explanation. Changing your mind is reason enough.",
+          "The box must be sealed, with its original tape intact and unbroken. The panel must never have been powered on, and no accessory may have been removed from its wrapping.",
+          "We are specific about this because a light therapy device is a personal item. Once a panel has been used against skin, we cannot responsibly sell it to somebody else, so we do not resell it at all.",
+        ],
+      },
+      {
+        heading: "Changed your mind",
+        body: [
+          "Write to us within seven days of delivery and we will arrange the return. You owe us no explanation.",
+          "Return shipping is paid by you, as the regulations allow. Everything else comes back, and we do not charge a restocking fee.",
         ],
       },
       {
         heading: "If something is not right",
         body: [
-          "Should your panel arrive with a fault, or differ from what we promised, the return costs you nothing at all. We arrange the collection, and every riyal comes back to you — the delivery included.",
-          "This is not generosity. It is simply how it should be.",
+          "This is different, and it is not limited to seven days. If your panel arrives faulty, damaged, or not as described, open it, test it, and tell us.",
+          "We arrange the collection, we cover the shipping, and every riyal comes back to you. Your warranty covers faults that appear later. This is not generosity, it is simply how it should be.",
         ],
       },
       {
-        heading: "Returning is effortless",
+        heading: "How to return",
         list: [
-          "Write to minaralabs@gmail.com with your order number",
-          "Tell us briefly what happened — a photo helps if something is wrong",
+          "Write to minaralabs@gmail.com with your order number, within seven days of delivery",
+          "Confirm the box is sealed and the seal is unbroken. A photo helps",
           "Within 48 hours, we reply with collection details",
-          "The moment your panel reaches us, your refund is on its way",
+          "The moment your panel reaches us and we confirm it is sealed, your refund is on its way",
         ],
-        note: "Refunds arrive within 5 to 14 days, depending on your bank. Please return the panel in its original condition, with its packaging and accessories.",
+        note: "Refunds arrive within 5 to 14 days, depending on your bank.",
       },
       {
         heading: "Keep your invoice",
         body: [
-          "Your electronic invoice is the key to both your return and your warranty. Keep it somewhere safe — we recommend two years.",
+          "Your electronic invoice is the key to both your return and your warranty. Keep it somewhere safe; we recommend two years.",
         ],
       },
     ],
@@ -68,34 +75,41 @@ export const returns: Record<Locale, Policy> = {
 
   ar: {
     eyebrow: "الإرجاع",
-    title: "سبعة أيام\nمعه",
+    title: "سبعة أيام،\nدون فتح",
     intro:
-      "اختيار منارا ينبغي أن يكون بلا تردد. أسبوع كامل مع الجهاز — في إضاءتك، وغرفتك، وطقس صباحك. وإن لم يكن كل ما توقعته، نستعيده. ببساطة، وبلا أسئلة.",
-    updated: "آخر تحديث يوليو ٢٠٢٦",
+      "يمنحك نظام التجارة الإلكترونية في السعودية سبعة أيام لتغيير رأيك، ونحن نلتزم بذلك كاملاً. بشرط واحد نذكره بوضوح: أن يعود الجهاز كما خرج تماماً، مغلقاً بشريطه الأصلي ودون أي استخدام.",
+    updated: "آخر تحديث سبتمبر 2026",
     sections: [
       {
-        heading: "أسبوع ملكك وحدك",
+        heading: "ما معنى غير مفتوح",
         body: [
-          "من يوم وصول الجهاز، أمامك سبعة أيام للقرار. استخدام، وتجربة، ووقت كافٍ ليستحق مكانه.",
-          "وإن كان القرار هو الإرجاع، فلا حاجة لأي تفسير. تغيير الرأي سببٌ كافٍ.",
+          "أن يكون الصندوق مغلقاً بشريطه الأصلي سليماً دون قطع. وألا يكون الجهاز قد شُغِّل ولو مرة، وألا يكون أي ملحق قد أُخرج من غلافه.",
+          "نحن محددون في هذه النقطة لأن جهاز العلاج بالضوء غرض شخصي. وبعد استخدامه على البشرة لا يمكننا بيعه لشخص آخر بضمير مرتاح، ولذلك لا نعيد بيعه إطلاقاً.",
+        ],
+      },
+      {
+        heading: "عند تغيير الرأي",
+        body: [
+          "تكفي مراسلتنا خلال سبعة أيام من الاستلام وسنرتب الإرجاع. ولا حاجة لأي تفسير.",
+          "تكاليف شحن الإرجاع على العميل، وهو ما تتيحه الأنظمة. وما عدا ذلك يعود كاملاً، ولا نفرض أي رسوم إعادة تخزين.",
         ],
       },
       {
         heading: "إن لم يكن شيء ما على ما يرام",
         body: [
-          "إذا وصل الجهاز بعيب، أو مختلفاً عمّا وعدنا به، فالإرجاع لا يكلف شيئاً على الإطلاق. نرتب نحن الاستلام، ويعود كل ريال — حتى رسوم التوصيل.",
-          "هذا ليس كرماً منا. هذا ببساطة ما ينبغي أن يكون.",
+          "هذه حالة مختلفة، وغير مقيدة بسبعة أيام. فإذا وصل الجهاز بعيب أو تالفاً أو مخالفاً للوصف، فيمكن فتحه وتجربته وإبلاغنا.",
+          "نرتب نحن الاستلام، ونتحمل الشحن، ويعود كل ريال. والضمان يغطي الأعطال التي تظهر لاحقاً. هذا ليس كرماً منا، بل ما ينبغي أن يكون.",
         ],
       },
       {
-        heading: "الإرجاع بلا عناء",
+        heading: "طريقة الإرجاع",
         list: [
-          "مراسلتنا على minaralabs@gmail.com مع رقم الطلب",
-          "شرح مختصر لما حدث — وصورة تساعد إن كان هناك خلل",
-          "خلال ٤٨ ساعة، نرد عليك بتفاصيل الاستلام",
-          "ولحظة وصول الجهاز إلينا، يكون المبلغ في طريقه إليك",
+          "مراسلتنا على minaralabs@gmail.com مع رقم الطلب، خلال سبعة أيام من الاستلام",
+          "التأكد من أن الصندوق مغلق وشريطه سليم، وصورة تساعد في ذلك",
+          "خلال 48 ساعة، نرد بتفاصيل الاستلام",
+          "ولحظة وصول الجهاز إلينا والتأكد من أنه مغلق، يكون المبلغ في طريقه إليك",
         ],
-        note: "يصل المبلغ خلال ٥ إلى ١٤ يوماً حسب البنك. ونرجو إعادة الجهاز بحالته الأصلية مع تغليفه وملحقاته.",
+        note: "يصل المبلغ خلال 5 إلى 14 يوماً حسب البنك.",
       },
       {
         heading: "الاحتفاظ بالفاتورة",
@@ -106,7 +120,7 @@ export const returns: Record<Locale, Policy> = {
     ],
     closing: {
       heading: "ما زال هناك تردد؟",
-      body: "لا تتردد في سؤالنا عن أي شيء قبل الشراء. الإجابة الصادقة الآن أثمن عندنا من عملية بيع مؤسفة.",
+      body: "يسعدنا الرد على أي سؤال قبل الشراء. الإجابة الصادقة الآن أثمن عندنا من عملية بيع مؤسفة.",
       contact: "minaralabs@gmail.com",
     },
   },
@@ -153,7 +167,7 @@ export const warranty: Record<Locale, Policy> = {
           "Accidental damage, drops or impact",
           "Liquid exposure. The panel is rated IP20 and is intended for indoor, dry environments",
           "Use outside the stated range of −20 °C to 50 °C, or 30% to 70% relative humidity",
-          "Connection to a supply outside AC 100–240 V, 50/60 Hz",
+          "Connection to a supply outside AC 100 to 240 V, 50/60 Hz",
           "Repairs, modifications or opening of the housing by anyone other than us",
           "Normal cosmetic wear that does not affect performance",
         ],
@@ -185,7 +199,7 @@ export const warranty: Record<Locale, Policy> = {
     title: "مضمون\nلسنة كاملة",
     intro:
       "كل جهاز من منارا يحمل ضماناً لمدة اثني عشر شهراً ضد عيوب التصنيع، يبدأ من يوم وصوله إليك. وإذا كان الخلل في طريقة تصنيعه، فهذه مسؤوليتنا نحن.",
-    updated: "آخر تحديث يوليو ٢٠٢٦",
+    updated: "آخر تحديث يوليو 2026",
     sections: [
       {
         heading: "ما يغطيه الضمان",
@@ -203,7 +217,7 @@ export const warranty: Record<Locale, Policy> = {
       {
         heading: "كيف نتعامل مع طلب الضمان",
         body: [
-          "لا نحيل أحداً إلى نموذج ونتركه. مراسلتنا بشرح ما يحدث تكفي، ونرد خلال ٢٤ إلى ٤٨ ساعة بما نقترح فعله.",
+          "لا نحيل أحداً إلى نموذج ونتركه. مراسلتنا بشرح ما يحدث تكفي، ونرد خلال 24 إلى 48 ساعة بما نقترح فعله.",
           "إن كان الإصلاح ممكناً نُصلح، وإن لم يكن نستبدل. وشحن الاستلام والإرجاع في طلب الضمان الصحيح على حسابنا نحن.",
         ],
       },
@@ -215,8 +229,8 @@ export const warranty: Record<Locale, Policy> = {
         list: [
           "الضرر العَرَضي أو السقوط أو الصدمات",
           "التعرض للسوائل. الجهاز مصنّف IP20 ومخصص للأماكن الداخلية الجافة",
-          "الاستخدام خارج النطاق المحدد من −٢٠ إلى ٥٠ درجة مئوية، أو رطوبة من ٣٠٪ إلى ٧٠٪",
-          "التوصيل بمصدر كهرباء خارج نطاق ١٠٠ إلى ٢٤٠ فولت، ٥٠/٦٠ هرتز",
+          "الاستخدام خارج النطاق المحدد من −20 إلى 50 درجة مئوية، أو رطوبة من 30٪ إلى 70٪",
+          "التوصيل بمصدر كهرباء خارج نطاق 100 إلى 240 فولت، 50/60 هرتز",
           "الإصلاح أو التعديل أو فتح الهيكل من قِبل أي جهة غيرنا",
           "علامات الاستخدام الشكلية التي لا تؤثر على الأداء",
         ],
@@ -225,7 +239,7 @@ export const warranty: Record<Locale, Policy> = {
       {
         heading: "ما بعد الضمان",
         body: [
-          "الجهاز مصنّف لأكثر من ٥٠٬٠٠٠ ساعة تشغيل. واثنا عشر شهراً من جلسات يومية مدتها عشرون دقيقة تستهلك نحو واحد بالمئة من ذلك.",
+          "الجهاز مصنّف لأكثر من 50,000 ساعة تشغيل. واثنا عشر شهراً من جلسات يومية مدتها عشرون دقيقة تستهلك نحو واحد بالمئة من ذلك.",
           "مدة الضمان سنة لأن عيوب التصنيع تظهر في هذه الفترة. أما الجهاز فمبني ليعمل أطول من ذلك بكثير، وسنواصل دعمه بقطع الغيار والصيانة بعد انتهاء الضمان.",
         ],
       },

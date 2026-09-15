@@ -176,7 +176,7 @@ export async function notifyOrder(order: PaidOrder): Promise<void> {
     shortAddress: order.customer.shortAddress,
     address: order.customer.address,
     // Loops reserves `notes` as a contact property, so it travels as deliveryNotes.
-    deliveryNotes: order.customer.notes || "—",
+    deliveryNotes: order.customer.notes || "None",
     items: order.itemSummary,
     productImage:
       order.productImage || "https://minaralabs.shop/product-hero-email.png",

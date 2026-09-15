@@ -6,8 +6,8 @@ import CartDrawer from "@/components/CartDrawer";
 export const metadata: Metadata = {
   title: {
     default: "minara labs",
-    // Sub-pages read "<page> — minara labs"; the home page reads just the brand.
-    template: "%s — minara labs",
+    // Sub-pages read "<page>, minara labs"; the home page reads just the brand.
+    template: "%s, minara labs",
   },
   description:
     "Advanced red light therapy panels engineered with scientific precision to optimize your wellness. Discover the future of therapeutic light technology.",

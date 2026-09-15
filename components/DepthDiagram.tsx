@@ -112,9 +112,9 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
               <g key={b.nm}>
                 <rect
                   x={cx - beamW / 2}
-                  y={chartTop - 22}
+                  y={chartTop - 12}
                   width={beamW}
-                  height={depth + 22}
+                  height={depth + 12}
                   fill={b.group === "red" ? "url(#beamRed)" : "url(#beamNir)"}
                   rx={beamW / 2}
                 />
@@ -174,7 +174,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
             <g key={b.nm}>
               <text
                 x={cx}
-                y="122"
+                y="108"
                 textAnchor="middle"
                 fill={b.group === "red" ? "#e8323c" : "#7d1220"}
                 fontSize="24"
@@ -187,7 +187,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
                 <text
                   key={li}
                   x={cx}
-                  y={144 + li * 15}
+                  y={134 + li * 15}
                   textAnchor="middle"
                   fill="currentColor"
                   opacity="0.6"

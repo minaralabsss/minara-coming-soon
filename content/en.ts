@@ -15,7 +15,7 @@ export const en: SiteContent = {
     menu: "Toggle menu",
     switchLabel: "اقرأ بالعربية",
     switchTo: "AR",
-    home: "minara labs — home",
+    home: "minara labs, home",
   },
 
   footer: {
@@ -74,7 +74,7 @@ export const en: SiteContent = {
     eyebrow: "Checkout",
     title: "Where should\nwe send it?",
     intro:
-      "Delivery details first, payment second. Your card is entered on Moyasar's secure page — we never see or store it.",
+      "Delivery details first, payment second. Your card is entered on Moyasar's secure page; we never see or store it.",
     saudiOnly: "We currently deliver within Saudi Arabia only.",
     name: "Full name",
     namePh: "First and last name",
@@ -89,7 +89,7 @@ export const en: SiteContent = {
     shortAddress: "Short address",
     shortAddressPh: "ABCD1234",
     shortAddressHelp:
-      "Your National Address short code — four letters then four numbers. Find it in the Absher or Saudi Post app.",
+      "Your National Address short code: four letters then four numbers. Find it in the Absher or Saudi Post app.",
     address: "Delivery address",
     addressPh: "District, street, building and any landmark that helps the courier",
     notes: "Notes for delivery",
@@ -110,7 +110,7 @@ export const en: SiteContent = {
     savedNotice: "Using your saved delivery details.",
     savedClear: "Not you? Clear",
     errorFields: "Please check the highlighted fields.",
-    testMode: "Test mode — no real payment will be taken.",
+    testMode: "Test mode: no real payment will be taken.",
     back: "Back to the panel",
   },
 
@@ -148,7 +148,7 @@ export const en: SiteContent = {
       "Facial skin is where light therapy has been studied most closely. The cells that produce collagen sit beneath the surface, and at 630 and 660 nanometres red light reaches them directly.",
       "Collagen, elasticity, fine lines, radiance. Gradual and cumulative, which is why the panel was made for a routine rather than an occasion.",
     ],
-    faceFrame: "Facial session — in use",
+    faceFrame: "Facial session, in use",
     scienceEyebrow: "The technology",
     scienceTitle: "Light your cells\nalready know how to use",
     scienceBody:
@@ -167,7 +167,7 @@ export const en: SiteContent = {
       ["Rated life", "50,000+ hours"],
       ["Body", "Cold-rolled SPCC steel"],
     ],
-    objectFrame: "Emitter array — macro",
+    objectFrame: "Emitter array, macro",
     effectEyebrow: "The effect",
     effectTitle: "What a consistent\nroutine supports",
     effects: [
@@ -176,7 +176,7 @@ export const en: SiteContent = {
       { index: "03", title: "Skin texture", body: "Consistent use is associated with smoother-looking skin and a more refined, more even surface." },
       { index: "04", title: "Hair and scalp", body: "The same wavelengths are used in hair-care routines, where they may support a healthy scalp environment and the appearance of fuller, healthier-looking hair." },
       { index: "05", title: "Muscle recovery", body: "Near-infrared light is commonly used as part of a wellness routine to support muscle relaxation and general comfort after physical activity." },
-      { index: "06", title: "Rest and sleep", body: "Unlike blue light, red light does not suppress melatonin production, which is why an evening session is often used as part of a wind-down routine rather than a disruption to it." },
+      { index: "06", title: "Rest and sleep", body: "It can support a more restful nighttime routine by promoting relaxation and complementing the body's natural sleep-wake rhythm. Used as part of a consistent evening routine, it can create a calm transition toward rest and help support overall sleep quality." },
     ],
   },
 
@@ -195,39 +195,47 @@ export const en: SiteContent = {
     ],
     panelTagline: "For the face first, then the body",
     panelSummary:
-      "Made first for the face — collagen, fine lines, texture, radiance — then sized for the whole body. Six wavelengths across seventy emitters.",
+      "Made first for the face: collagen, fine lines, texture, radiance. Then sized for the whole body. Six wavelengths across seventy emitters.",
   },
 
   panel: {
     tagline: "For the face first, then the body",
     name: "The Panel",
     summary:
-      "Six carefully selected wavelengths across seventy emitters. Made first for the face — collagen, fine lines, texture and radiance — and sized to reach the whole body when you want more.",
+      "Six carefully selected wavelengths across seventy emitters. Made first for the face: collagen, fine lines, texture and radiance. Sized to reach the whole body when you want more.",
     quickSpecs: [
-      ["Session", "20–30 minutes per zone, at 0–12 in"],
+      ["Session", "20 to 30 minutes per zone, at 0 to 12 in"],
       ["Routine", "Four days a week, minimum"],
       ["Wavelengths", "630 / 660 / 810 / 850 / 940 / 1060 nm"],
       ["Rated life", "50,000+ hours"],
     ],
     shipping:
-      "Designed in Saudi. Runs on AC 100–240 V, so it works anywhere without an adapter.",
-    returnsLink: "7-day returns",
+      "Designed in Saudi.",
+    returnsLink: "7-day returns, unopened",
     warrantyLink: "1-year warranty",
     gallery: [
       "Three-quarter view",
       "Side profile",
-      "In use — facial session",
-      "Emitter array — macro",
+      "In use, facial session",
+      "Emitter array, macro",
     ],
     faceEyebrow: "For the face",
     faceTitle: "Collagen is made\nbelow the surface",
     faceBody: [
-      "Fine lines are a structural change, not a surface one. As collagen and elastin production slows, the layer beneath the surface — the dermis — loses density, and the skin above it creases and holds the crease.",
+      "Fine lines are a structural change, not a surface one. As collagen and elastin production slows, the layer beneath the surface, the dermis, loses density, and the skin above it creases and holds the crease.",
       "Topicals work above that layer. Red light at 630 and 660 nanometres passes into it, and is absorbed by the fibroblasts that produce collagen in the first place. With more energy available to them, they are supported in producing more.",
       "The change is gradual and cumulative, which is the honest version. Most published protocols run several sessions a week over eight to twelve weeks before a difference is clearly visible, and individual results vary.",
     ],
+    beyondEyebrow: "Beyond the face",
+    beyondTitle: "One instrument,\nseveral routines",
+    beyondIntro: "The same six wavelengths that reach facial skin are used across the rest of the body. Nothing changes but where the panel is pointed.",
+    beyond: [
+      { index: "01", title: "Hair and scalp", body: "Red and near-infrared light are used in hair-care routines, where they may support a healthy scalp environment and the appearance of fuller, healthier-looking hair. Direct the same session at the scalp." },
+      { index: "02", title: "Muscle recovery", body: "Near-infrared reaches deeper tissue than visible red, which is why it is commonly used to support muscle relaxation and general comfort after physical activity." },
+      { index: "03", title: "Rest and sleep", body: "It can support a more restful nighttime routine by promoting relaxation and complementing the body's natural sleep-wake rhythm. Used as part of a consistent evening routine, it can create a calm transition toward rest and help support overall sleep quality." },
+    ],
     wlEyebrow: "Wavelength selection",
-    wlTitle: "Six, because six\ncould be justified",
+    wlTitle: "Six wavelengths,\neach with a reason",
     wavelengths: [
       { nm: "630", band: "Visible red", note: "Surface skin. The band most closely associated with tone, surface texture and collagen activity." },
       { nm: "660", band: "Visible red", note: "Upper dermis, where fibroblasts sit. The most studied wavelength for skin outcomes." },
@@ -237,6 +245,12 @@ export const en: SiteContent = {
       { nm: "1060", band: "Near-infrared", note: "Muscle and deep tissue. The upper boundary of the panel, broadening coverage rather than concentrating it." },
     ],
     specsEyebrow: "Specifications",
+    marksEyebrow: "Certification",
+    markCE: "European conformity. Tested against EU health, safety and environmental requirements.",
+    markFCC: "US electromagnetic compliance, for emissions and interference.",
+    markRoHS: "Restriction of hazardous substances in electrical equipment.",
+    markIEC: "Built and tested to IEC 60598-1 and IEC 60598-2-4, the international luminaire safety standards.",
+    marksNote: "The panel is also FDA registered, meaning the manufacturing establishment is registered and the device is listed. Registration is a listing requirement, not an FDA approval or endorsement.",
     specs: [
       ["Optical", [
         ["Wavelengths", "630, 660, 810, 850, 940, 1060 nm"],
@@ -247,7 +261,7 @@ export const en: SiteContent = {
       ["Power", [
         ["LED power", "350 W"],
         ["Actual consumption", "120 W ±10%"],
-        ["Input", "AC 100–240 V, 50/60 Hz"],
+        ["Input", "AC 100 to 240 V, 50/60 Hz"],
         ["Rated life", "50,000+ hours"],
       ]],
       ["Physical", [
@@ -261,6 +275,14 @@ export const en: SiteContent = {
         ["Operating temperature", "−20 °C to 50 °C"],
         ["Relative humidity", "30% to 70%"],
         ["Intended use", "Indoor, dry environments"],
+      ]],
+      ["Compliance", [
+        ["CE", "European conformity marking"],
+        ["FCC", "US electromagnetic compliance"],
+        ["RoHS", "Restriction of hazardous substances"],
+        ["IEC 60598-1", "Luminaires: general requirements and tests"],
+        ["IEC 60598-2-4", "Portable general purpose luminaires"],
+        ["FDA", "Establishment registration and device listing"],
       ]],
     ],
     closeTitle: "Twenty minutes,\nfour days a week",
@@ -295,13 +317,13 @@ export const en: SiteContent = {
       "From the mid-twenties onward, fibroblast output declines gradually. The dermis thins, loses its scaffolding, and the skin above begins to fold along the lines your expressions use most. Those folds stop springing back. That is a wrinkle.",
       "Anything applied to the surface is working several layers above where the change is happening. That is not a criticism of skincare, it is a description of where it can reach.",
     ],
-    collagenFrame: "Dermal structure — diagram",
+    collagenFrame: "Dermal structure diagram",
     mechEyebrow: "Mechanism",
     mechTitle: "One mechanism,\nsix depths",
     mechanism: [
       { index: "01", title: "Absorption", body: "All six wavelengths are absorbed within the energy-producing structures of the cell. That part does not change across the spectrum. What changes is how far into tissue each wavelength travels before it gets there." },
       { index: "02", title: "Energy", body: "That absorption is understood to increase the cell's available energy. Fibroblasts are metabolically expensive cells, and collagen synthesis is one of the first things they scale back when energy is short." },
-      { index: "03", title: "Synthesis", body: "Visible red at 630 and 660 nanometres reaches the surface and upper dermis, where fibroblasts sit. With more energy available, they are supported in producing collagen and elastin — which is why the skin evidence concentrates in this band." },
+      { index: "03", title: "Synthesis", body: "Visible red at 630 and 660 nanometres reaches the surface and upper dermis, where fibroblasts sit. With more energy available, they are supported in producing collagen and elastin, which is why the skin evidence concentrates in this band." },
       { index: "04", title: "Depth", body: "Near-infrared at 810, 850, 940 and 1060 nanometres is invisible to the eye and interacts with tissue further down: deeper dermis, subcutaneous tissue, and muscle. The same absorption, applied to layers visible red does not reach." },
     ],
     evidenceEyebrow: "The evidence",
@@ -321,7 +343,7 @@ export const en: SiteContent = {
         headline: "Collagen density confirmed by ultrasound, not by opinion",
         detail:
           "A randomised controlled trial of 136 volunteers across four groups, treated twice weekly for 30 sessions. Outcomes were measured by blinded evaluation of clinical photography, ultrasonographic collagen density and computerised digital profilometry. Treated groups showed significant improvement in complexion, skin roughness and intradermal collagen density against controls.",
-        cite: "Wunsch A, Matuschka K. A controlled trial to determine the efficacy of red and near-infrared light treatment. Photomedicine and Laser Surgery, 2014;32(2):93–100.",
+        cite: "Wunsch A, Matuschka K. A controlled trial to determine the efficacy of red and near-infrared light treatment. Photomedicine and Laser Surgery, 2014;32(2):93-100.",
         href: "https://pubmed.ncbi.nlm.nih.gov/24286286/",
         ref: "PMID 24286286",
       },
@@ -337,7 +359,7 @@ export const en: SiteContent = {
         headline: "31% more type-1 procollagen at 660 nanometres",
         detail:
           "Pulsed 660 nm light applied to tissue-engineered human skin raised type-1 procollagen production by 31%, with the laboratory finding carried through to a single-blinded split-face clinical study where each participant served as their own control.",
-        cite: "Barolet D, Roberge CJ, Auger FA, Boucher A, Germain L. Regulation of skin collagen metabolism in vitro using a pulsed 660 nm LED light source. Journal of Investigative Dermatology, 2009;129(12):2751–2759.",
+        cite: "Barolet D, Roberge CJ, Auger FA, Boucher A, Germain L. Regulation of skin collagen metabolism in vitro using a pulsed 660 nm LED light source. Journal of Investigative Dermatology, 2009;129(12):2751-2759.",
         href: "https://pubmed.ncbi.nlm.nih.gov/19587687/",
         ref: "J Invest Dermatol 2009",
       },
@@ -353,18 +375,18 @@ export const en: SiteContent = {
     depthNote:
       "Approximate interaction depth varies according to tissue composition, wavelength, and individual factors.",
     skinLayers: [
-      { name: "Surface skin", range: "0.05 – 0.1 mm" },
-      { name: "Dermis", range: "0.1 – 3 mm" },
-      { name: "Subcutaneous tissue", range: "3 – 20 mm" },
+      { name: "Surface skin", range: "0.05 to 0.1 mm" },
+      { name: "Dermis", range: "0.1 to 3 mm" },
+      { name: "Subcutaneous tissue", range: "3 to 20 mm" },
       { name: "Muscle and deep tissue", range: "20 mm +" },
     ],
     depths: [
-      { nm: "630", group: "red", layer: "Surface skin", depth: "0.2 – 0.5 mm", reach: 0.17 },
-      { nm: "660", group: "red", layer: "Upper dermis", depth: "0.5 – 2 mm", reach: 0.3 },
-      { nm: "810", group: "nir", layer: "Mid to deep dermis", depth: "2 – 6 mm", reach: 0.47 },
-      { nm: "850", group: "nir", layer: "Deep dermis", depth: "5 – 10 mm", reach: 0.62 },
-      { nm: "940", group: "nir", layer: "Subcutaneous tissue", depth: "10 – 20 mm", reach: 0.82 },
-      { nm: "1060", group: "nir", layer: "Muscle and deep tissue", depth: "15 – 30 mm +", reach: 1 },
+      { nm: "630", group: "red", layer: "Surface skin", depth: "0.2 to 0.5 mm", reach: 0.17 },
+      { nm: "660", group: "red", layer: "Upper dermis", depth: "0.5 to 2 mm", reach: 0.3 },
+      { nm: "810", group: "nir", layer: "Mid to deep dermis", depth: "2 to 6 mm", reach: 0.47 },
+      { nm: "850", group: "nir", layer: "Deep dermis", depth: "5 to 10 mm", reach: 0.62 },
+      { nm: "940", group: "nir", layer: "Subcutaneous tissue", depth: "10 to 20 mm", reach: 0.82 },
+      { nm: "1060", group: "nir", layer: "Muscle and deep tissue", depth: "15 to 30 mm or more", reach: 1 },
     ],
     wavelengths: [
       ["630 nm", "Surface skin. The band most closely associated with tone, surface texture and collagen activity."],
@@ -383,7 +405,7 @@ export const en: SiteContent = {
       "minara labs designs instruments that use red and near-infrared light to support the way skin renews itself. Designed in Saudi, made for the world.",
     missionEyebrow: "Our mission",
     mission:
-      "To bring considered light therapy within reach of every home — so that caring for your skin no longer means a clinic appointment, a specialist, or a compromise.",
+      "To bring considered light therapy within reach of every home, so that caring for your skin no longer means a clinic appointment, a specialist, or a compromise.",
     missionBody: [
       "For decades, red light therapy lived in dermatology clinics and high-end spas: studied, refined, and out of reach. We exist to change where it lives.",
       "We build instruments precise enough to take the science seriously, and beautiful enough to stay out on your dresser rather than hidden in a drawer. Twenty minutes, in your own home, on your own schedule.",
@@ -391,18 +413,18 @@ export const en: SiteContent = {
     beliefsEyebrow: "What we believe",
     beliefsTitle: "Three things\nwe hold to",
     beliefs: [
-      { index: "01", title: "Evidence over promises", body: "Every claim on this site traces back to published, peer-reviewed research. If the science does not support it, we do not say it — and we do not sell it." },
+      { index: "01", title: "Evidence over promises", body: "Every claim on this site traces back to published, peer-reviewed research. If the science does not support it, we do not say it, and we do not sell it." },
       { index: "02", title: "Beauty and precision together", body: "An instrument you use daily should be a pleasure to own. We design objects worthy of the space they live in, without ever trading looks for performance." },
       { index: "03", title: "Honest by design", body: "Real numbers with real tolerances. Clear pricing. A warranty we honour. If we would not accept it as customers, we do not offer it as a company." },
     ],
     promiseEyebrow: "Designed in Saudi",
     promiseTitle: "From here,\nfor everywhere",
     promiseBody:
-      "minara is drawn, specified and refined in Saudi — proof that world-class wellness technology can begin here, not just arrive here. The panel is our first instrument. It will not be our last.",
+      "minara is drawn, specified and refined in Saudi: proof that world-class wellness technology can begin here, not just arrive here. The panel is our first instrument. It will not be our last.",
     nextEyebrow: "What follows",
     nextTitle: "A growing family\nof instruments",
     nextBody:
-      "The Cap and The Head Massager are in development now. Each will be announced when it is ready — and not a moment before.",
+      "The Cap and The Head Massager are in development now. Each will be announced when it is ready, and not a moment before.",
   },
 
   support: {
@@ -411,7 +433,7 @@ export const en: SiteContent = {
     intro: "Most questions are answered below. For anything else, our team reads every email personally.",
     faqTitle: "Frequently Asked Questions",
     faqs: [
-      { q: "What is red light therapy?", a: "Red light therapy uses specific wavelengths of red and near-infrared light, which have been studied for the way they interact with natural cellular processes — among them the processes that produce collagen and renew skin. Red light is visible to the eye. Near-infrared is not, and interacts with tissue at greater depths. Our panel uses six wavelengths, from 630 to 1060 nanometres." },
+      { q: "What is red light therapy?", a: "Red light therapy uses specific wavelengths of red and near-infrared light, which have been studied for the way they interact with natural cellular processes, among them the processes that produce collagen and renew skin. Red light is visible to the eye. Near-infrared is not, and interacts with tissue at greater depths. Our panel uses six wavelengths, from 630 to 1060 nanometres." },
       { q: "What can I expect for my skin?", a: "With consistent use, some people may notice improvements in the appearance of fine lines, skin texture, elasticity and radiance over time. Change is gradual: most published protocols run eight to twelve weeks before a difference is clearly visible. Individual results vary depending on personal factors and consistency of use." },
       { q: "How often should I use it?", a: "A minimum of four days a week, 20 to 30 minutes per treatment zone, at the distance given in the manual. New users should build up to the full session duration gradually rather than starting at the maximum. Do not exceed the daily threshold stated in the manual." },
       { q: "Can I use it on my scalp and hair?", a: "Yes. Red and near-infrared light are also used in hair-care routines, where they may support a healthy scalp environment and the appearance of fuller, healthier-looking hair. Direct the same session at the scalp. It is a supporting application of the technology, not a treatment for hair loss." },
@@ -420,10 +442,11 @@ export const en: SiteContent = {
       { q: "Is it safe to use regularly?", a: "Red light therapy is non-invasive and has been widely studied. Follow the recommended distance and session duration, wear the supplied eye protection, and never stare directly into the LEDs. If you are photosensitive, taking medication that increases light sensitivity, pregnant, or managing a medical condition, speak with a healthcare professional first. Stop use if any unusual discomfort occurs." },
       { q: "How many wavelengths does it use?", a: "Six: 630 and 660 nm visible red, and 810, 850, 940 and 1060 nm near-infrared. Red light works at the surface and just beneath it, where the skin findings concentrate. Near-infrared is invisible to the eye and interacts with tissue at greater depths." },
       { q: "What distance should I sit from the panel?", a: "The panel is calibrated for 0 to 12 inches from the skin. At 0 inches the measured irradiance is 220 mW/cm² ±10%. Closer means a stronger dose in less time; further means a gentler one across a wider area." },
-      { q: "How long do the LEDs last?", a: "The panel is rated for more than 50,000 hours — a lifetime of ordinary sessions rather than a few years of them." },
-      { q: "Will it work with international outlets?", a: "Yes. The panel accepts AC 100–240 V at 50/60 Hz, so it works with electrical systems worldwide without an adapter." },
+      { q: "How long do the LEDs last?", a: "The panel is rated for more than 50,000 hours: a lifetime of ordinary sessions rather than a few years of them." },
+      { q: "Will it work with international outlets?", a: "Yes. The panel accepts AC 100 to 240 V at 50/60 Hz, so it works with electrical systems worldwide without an adapter." },
+      { q: "What certifications does the panel carry?", a: "The panel carries CE marking for European conformity, FCC compliance for electromagnetic emissions, RoHS for restriction of hazardous substances, and is built and tested to IEC 60598-1 and IEC 60598-2-4, the international safety standards for luminaires and portable general purpose luminaires. It is also FDA registered, meaning the manufacturing establishment is registered and the device is listed with the FDA. Registration is a listing requirement, not an FDA approval or endorsement of the device." },
       { q: "What does IP20 protection mean?", a: "IP20 means the panel is protected against solid objects larger than 12.5 mm and requires protection from water. It is intended for indoor use in dry environments." },
-      { q: "Can I see the panel before buying?", a: "We are an online studio, so the panel is not on display in a showroom yet. Every order is covered by a seven-day return window, so you can experience it at home with nothing at risk." },
+      { q: "Can I see the panel before buying?", a: "We are an online studio, so the panel is not on display in a showroom yet. You have seven days from delivery to return it if you change your mind, provided the box is still sealed and unused. If anything arrives faulty or not as described, that is covered separately and is not limited to seven days." },
     ],
     contactTitle: "Write to us",
     email: "Email",

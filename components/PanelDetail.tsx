@@ -11,6 +11,7 @@ import { findProduct } from "@/lib/products";
 import Price from "./Price";
 import IncludedKit from "./IncludedKit";
 import DepthDiagram from "./DepthDiagram";
+import ComplianceMarks from "./ComplianceMarks";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -78,7 +79,7 @@ export default function PanelDetail({
                       <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
                       <img
                         src={src}
-                        alt={`${c.name} — ${c.gallery[active]}`}
+                        alt={`${c.name}, ${c.gallery[active]}`}
                         className="max-h-full max-w-full object-contain"
                       />
                     </motion.picture>
@@ -140,7 +141,7 @@ export default function PanelDetail({
           <div className="lg:col-span-5 lg:pt-6">
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.tagline}</p>
             <h1 className="mt-6 text-4xl font-light tracking-[-0.03em] sm:text-5xl">{c.name}</h1>
-            <div className="mt-8"><Price product={product} size="lg" note /></div>
+            <div className="mt-8"><Price product={product} size="lg" /></div>
             <p className="mt-8 text-base font-light leading-relaxed text-text-secondary">{c.summary}</p>
 
             <ul className="mt-10 divide-y divide-divider border-y border-divider">
@@ -180,6 +181,28 @@ export default function PanelDetail({
           <motion.div variants={rise} className="mt-10 space-y-6 text-base font-light leading-relaxed text-text-secondary">
             {c.faceBody.map((p, i) => <p key={i}>{p}</p>)}
           </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Beyond the face */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
+          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.beyondEyebrow}</motion.p>
+          <motion.h2 variants={rise} className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+            <Lines text={c.beyondTitle} />
+          </motion.h2>
+          <motion.p variants={rise} className="mt-10 max-w-xl text-base font-light leading-relaxed text-text-secondary">
+            {c.beyondIntro}
+          </motion.p>
+          <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-10">
+            {c.beyond.map((item) => (
+              <motion.div key={item.index} variants={rise}>
+                <span className="text-xs tracking-[0.2em] text-text-muted">{item.index}</span>
+                <h3 className="mt-5 text-lg font-light">{item.title}</h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </section>
 
@@ -246,6 +269,10 @@ export default function PanelDetail({
               </motion.div>
             ))}
           </div>
+
+          <motion.div variants={rise}>
+            <ComplianceMarks locale={locale} />
+          </motion.div>
 
         </motion.div>
       </section>
