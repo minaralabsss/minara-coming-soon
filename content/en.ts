@@ -33,7 +33,7 @@ export const en: SiteContent = {
   modal: {
     eyebrow: "",
     title: "Where science\nmeets self-care",
-    body: "join the minara labs world. be the first to discover what's next.",
+    body: "Join the minara labs world.",
     continue: "Continue to site",
     origin: "Designed in Saudi",
     close: "Close",
@@ -67,7 +67,7 @@ export const en: SiteContent = {
     viewDetails: "View full details",
     fullDetails: "Full details",
     launchOffer: "Opening price",
-    launchNote: "Introductory price to mark the opening of our store.",
+    launchNote: "A welcome price to mark our launch.",
   },
 
   checkout: {
@@ -171,12 +171,12 @@ export const en: SiteContent = {
     effectEyebrow: "The effect",
     effectTitle: "What a consistent\nroutine supports",
     effects: [
-      { index: "01", title: "Collagen", body: "Fibroblasts in the dermis respond to red light by supporting the production of collagen and elastin, the two proteins that keep skin firm." },
+      { index: "01", title: "Collagen, elasticity and radiance", body: "Fibroblasts in the dermis respond to red light by supporting the production of collagen and elastin, the two proteins that keep skin firm and elastic. A brighter, more refreshed-looking complexion is often the first change people notice." },
       { index: "02", title: "Fine lines and wrinkles", body: "Supporting the density of the layer beneath the surface helps improve the appearance of fine lines and wrinkles over time, most visibly around the eyes, mouth and forehead." },
       { index: "03", title: "Skin texture", body: "Consistent use is associated with smoother-looking skin and a more refined, more even surface." },
-      { index: "04", title: "Radiance", body: "A brighter, more refreshed-looking complexion — the change most people notice before any other." },
-      { index: "05", title: "Elasticity", body: "Supporting the skin's natural collagen processes helps maintain the appearance of firmer, more elastic skin." },
-      { index: "06", title: "Hair and wellness", body: "The same wavelengths are used in hair-care routines and in recovery routines after physical activity. Supporting applications of one technology." },
+      { index: "04", title: "Hair and scalp", body: "The same wavelengths are used in hair-care routines, where they may support a healthy scalp environment and the appearance of fuller, healthier-looking hair." },
+      { index: "05", title: "Muscle recovery", body: "Near-infrared light is commonly used as part of a wellness routine to support muscle relaxation and general comfort after physical activity." },
+      { index: "06", title: "Rest and sleep", body: "Unlike blue light, red light does not suppress melatonin production, which is why an evening session is often used as part of a wind-down routine rather than a disruption to it." },
     ],
   },
 
