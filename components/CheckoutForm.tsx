@@ -234,12 +234,8 @@ export default function CheckoutForm({
           <h1 className="mt-8 max-w-xl text-4xl font-light leading-[1.12] tracking-[-0.03em] sm:text-5xl">
             <Lines text={c.title} />
           </h1>
-          <p className="mt-8 max-w-lg text-base font-light leading-relaxed text-text-secondary">
-            {c.intro}
-          </p>
-
           {testMode && (
-            <p className="mt-6 inline-block rounded-sm border border-divider px-4 py-2 text-xs tracking-wide text-text-muted">
+            <p className="mt-8 inline-block rounded-sm border border-divider px-4 py-2 text-xs tracking-wide text-text-muted">
               {c.testMode}
             </p>
           )}
@@ -467,7 +463,6 @@ export default function CheckoutForm({
                       rows={2}
                       value={form.notes}
                       onChange={(e) => set("notes")(e.target.value)}
-                      placeholder={c.notesPh}
                       className={fieldClass(false, "resize-none")}
                     />
                   </div>

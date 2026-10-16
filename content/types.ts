@@ -68,7 +68,6 @@ export type SiteContent = {
   checkout: {
     eyebrow: string;
     title: string;
-    intro: string;
     saudiOnly: string;
     name: string;
     namePh: string;
@@ -86,7 +85,6 @@ export type SiteContent = {
     address: string;
     addressPh: string;
     notes: string;
-    notesPh: string;
     optional: string;
     summary: string;
     qty: string;

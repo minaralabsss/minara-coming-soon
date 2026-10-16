@@ -73,8 +73,6 @@ export const en: SiteContent = {
   checkout: {
     eyebrow: "Checkout",
     title: "Where should\nwe send it?",
-    intro:
-      "Delivery details first, payment second. Your card is entered on Moyasar's secure page; we never see or store it.",
     saudiOnly: "We currently deliver within Saudi Arabia only.",
     name: "Full name",
     namePh: "First and last name",
@@ -93,7 +91,6 @@ export const en: SiteContent = {
     address: "Delivery address",
     addressPh: "District, street, building and any landmark that helps the courier",
     notes: "Notes for delivery",
-    notesPh: "Preferred delivery time, gate code, anything useful",
     optional: "Optional",
     summary: "Your order",
     qty: "Quantity",
