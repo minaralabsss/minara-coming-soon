@@ -15,11 +15,17 @@ import ComplianceMarks from "./ComplianceMarks";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
+// Gallery uses the photographed set. product-hero.png is deliberately NOT
+// in here: that file is the white-ground render used by the home page hero
+// and, via product-hero-email.png, by the transactional emails. Those two
+// need a subject floating on white, which a steel-table photograph is not.
 const galleryImages: (string | null)[] = [
-  "/product-hero.png",
+  "/panel-three-quarter.png",
   "/panel-side.png",
   "/panel-in-use.png",
   "/panel-emitters.png",
+  "/panel-remote.png",
+  "/panel-eyewear.png",
 ];
 
 export default function PanelDetail({
@@ -110,7 +116,7 @@ export default function PanelDetail({
               </button>
             </div>
 
-            <div className="mt-4 grid grid-cols-4 gap-3 sm:grid-cols-8">
+            <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
               {c.gallery.map((label, i) => (
                 <button
                   key={label}
@@ -127,7 +133,7 @@ export default function PanelDetail({
                       <img
                         src={galleryImages[i]!}
                         alt=""
-                        className="max-h-full max-w-full object-contain"
+                        className="h-full w-full object-cover"
                       />
                     </picture>
                   ) : (

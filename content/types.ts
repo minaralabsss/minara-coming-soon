@@ -175,6 +175,7 @@ export type SiteContent = {
     wavelengths: { nm: string; band: string; note: string }[];
     specsEyebrow: string;
     marksEyebrow: string;
+    markFDA: string;
     markCE: string;
     markFCC: string;
     markRoHS: string;

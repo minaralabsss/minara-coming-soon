@@ -8,10 +8,10 @@ import type { Locale } from "@/lib/locale";
  *
  * Two deliberate constraints:
  *
- * 1. No FDA logo. The FDA logo is reserved for official FDA communications
- *    and using it commercially implies an endorsement that establishment
- *    registration explicitly is not. FDA status is stated in words only,
- *    in the specifications table and the FAQ.
+ * 1. No FDA logo. The FDA logo itself is reserved for official FDA
+ *    communications, so the FDA mark here is set typographically like FCC
+ *    and IEC. The wording stays factual: "registered" and "listed" are
+ *    what is true, and the page never says or implies "approved".
  *
  * 2. Monochrome. The official CE, FCC and RoHS marks may be reproduced in
  *    a single colour provided the proportions are kept, so drawing them in
@@ -84,18 +84,21 @@ function WordMark({ label, className = "" }: { label: string; className?: string
 export default function ComplianceMarks({ locale }: { locale: Locale }) {
   const c = t(locale).panel;
 
+  // FDA leads the row: it is the strongest credential in the category and
+  // was previously buried as grey footnote text below the strip.
   const marks = [
-    { key: "ce", node: <CEMark className="h-7 w-auto" />, caption: c.markCE },
-    { key: "fcc", node: <WordMark label="FCC" className="h-7 w-auto" />, caption: c.markFCC },
-    { key: "rohs", node: <RoHSMark className="h-7 w-auto" />, caption: c.markRoHS },
-    { key: "iec", node: <WordMark label="IEC" className="h-7 w-auto" />, caption: c.markIEC },
+    { key: "fda", node: <WordMark label="FDA" className="h-9 w-auto" />, caption: c.markFDA },
+    { key: "ce", node: <CEMark className="h-9 w-auto" />, caption: c.markCE },
+    { key: "fcc", node: <WordMark label="FCC" className="h-9 w-auto" />, caption: c.markFCC },
+    { key: "rohs", node: <RoHSMark className="h-9 w-auto" />, caption: c.markRoHS },
+    { key: "iec", node: <WordMark label="IEC" className="h-9 w-auto" />, caption: c.markIEC },
   ];
 
   return (
     <div className="mt-20 border-t border-divider pt-12">
       <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.marksEyebrow}</p>
 
-      <ul className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+      <ul className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-5">
         {marks.map((m) => (
           <li key={m.key} className="flex flex-col items-start gap-4">
             <span className="text-text">{m.node}</span>
