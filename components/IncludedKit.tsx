@@ -5,13 +5,17 @@ import { t } from "@/content/site";
 import { Lines } from "./ui";
 
 /**
- * What's in the box. Item images are language-agnostic, so labels come
- * from the content contract and translate with the rest of the site.
+ * What's in the box: one flat-lay photograph, with the contents set as a
+ * plain list beside it.
+ *
+ * This replaced a grid of individually cut-out item thumbnails. Six small
+ * cut-outs on a tinted tile read as a parts diagram, and they could never
+ * quite match each other's lighting. One photograph of the real contents
+ * does the showing, and the list does the naming, which is the division
+ * of labour the rest of the site already uses.
  */
 export default function IncludedKit({ locale = "en" }: { locale?: Locale }) {
-  const s = t(locale);
-  const c = s.panel;
-  const [hero, ...rest] = c.included;
+  const c = t(locale).panel;
 
   return (
     <section className="border-t border-divider px-6 py-28 sm:py-36">
@@ -23,52 +27,35 @@ export default function IncludedKit({ locale = "en" }: { locale?: Locale }) {
           <Lines text={c.includedTitle} />
         </h2>
 
-        <div className="mt-20 grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-20">
-          {/* Panel */}
-          <div className="lg:col-span-5">
-            <div className="flex items-center justify-center rounded-sm bg-divider/30 p-10">
+        <div className="mt-20 grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-7">
+            <div className="overflow-hidden rounded-sm border border-divider">
               <picture>
-                <source srcSet={`/included/${hero.img}.webp`} type="image/webp" />
+                <source srcSet="/included/in-the-box.webp" type="image/webp" />
                 <img
-                  src={`/included/${hero.img}.png`}
-                  alt={hero.label}
+                  src="/included/in-the-box.png"
+                  alt={c.includedTitle.replace("\n", " ")}
                   loading="lazy"
                   decoding="async"
-                  className="h-auto max-h-[46vh] w-auto object-contain"
+                  className="block h-auto w-full"
                 />
               </picture>
             </div>
-            <p className="mt-5 text-center text-xs uppercase tracking-[0.2em] text-text-muted">
-              {hero.label}
-            </p>
           </div>
 
-          {/* Accessories */}
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3">
-              {rest.map((item) => (
-                <div key={item.img} className="flex flex-col items-center">
-                  <div className="flex h-28 w-full items-center justify-center">
-                    <picture className="flex h-full w-full items-center justify-center">
-                      <source
-                        srcSet={`/included/${item.img}.webp`}
-                        type="image/webp"
-                      />
-                      <img
-                        src={`/included/${item.img}.png`}
-                        alt={item.label}
-                        loading="lazy"
-                        decoding="async"
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </picture>
-                  </div>
-                  <p className="mt-4 text-center text-xs font-light leading-relaxed text-text-secondary">
-                    {item.label}
-                  </p>
-                </div>
+          <div className="lg:col-span-5">
+            {/* Hairline-divided rows, the same treatment as the
+                specifications table, so the two read as one system. */}
+            <ul className="divide-y divide-divider border-y border-divider">
+              {c.included.map((item) => (
+                <li
+                  key={item}
+                  className="py-5 text-base font-light leading-relaxed text-text-secondary"
+                >
+                  {item}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

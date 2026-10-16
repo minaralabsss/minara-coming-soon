@@ -12,7 +12,6 @@ export type DepthBand = {
   reach: number;
 };
 
-export type IncludedItem = { img: string; label: string };
 
 export type SiteContent = {
   dir: "ltr" | "rtl";
@@ -186,7 +185,7 @@ export type SiteContent = {
     closeBody: string;
     includedEyebrow: string;
     includedTitle: string;
-    included: IncludedItem[];
+    included: string[];
     inUseAlt: string;
     sideAlt: string;
     emittersAlt: string;
