@@ -296,10 +296,9 @@ export const en: SiteContent = {
     included: [
       { img: "panel", label: "Panel with stand" },
       { img: "remote", label: "Remote control" },
-      { img: "glasses", label: "Eye protection glasses" },
+      { img: "goggles", label: "Protective glasses" },
+      { img: "glasses", label: "Eye shields" },
       { img: "cable", label: "Power cable" },
-      { img: "hook", label: "Door hook" },
-      { img: "sling", label: "Hanging sling" },
       { img: "manual", label: "User manual" },
     ],
     inUseAlt: "A woman using the minara panel for a facial session",

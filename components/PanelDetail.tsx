@@ -50,16 +50,15 @@ export default function PanelDetail({
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             {/*
-              A capped max-width keeps the frame from towering over the
-              copy column, and a square-ish ratio (rather than 4/5) reads
-              as a considered product shot instead of a full-bleed hero.
-              White fill with a hairline border, matching the thumbnail
-              strip below, rather than a solid gray block — the frame
-              should read as a mount for the photo, not a shape of its
-              own. Arrows sit outside the frame so they never sit on top
-              of the product.
+              The frame matches the photographs' own 3:4 ratio and they
+              fill it edge to edge. Previously it was a padded square with
+              object-contain, which left every portrait photo shrunken
+              between two white bars, with its own grey studio background
+              floating inside a white box. Each photo now carries the
+              frame itself; the hairline border is the only chrome.
+              Arrows sit outside so they never cover the product.
             */}
-            <div className="mx-auto flex max-w-md items-center gap-4 sm:max-w-xl lg:max-w-none lg:gap-6">
+            <div className="mx-auto flex max-w-sm items-center gap-4 sm:max-w-md lg:max-w-xl lg:gap-6">
               <button
                 type="button"
                 onClick={() => setActive((i) => (i - 1 + c.gallery.length) % c.gallery.length)}
@@ -71,7 +70,7 @@ export default function PanelDetail({
                 </svg>
               </button>
 
-              <div className="relative aspect-square flex-1 overflow-hidden rounded-sm border border-divider bg-white">
+              <div className="relative aspect-[3/4] flex-1 overflow-hidden rounded-sm border border-divider bg-white">
                 <AnimatePresence mode="wait">
                   {src ? (
                     <motion.picture
@@ -80,13 +79,13 @@ export default function PanelDetail({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-                      className="absolute inset-0 flex items-center justify-center p-8 sm:p-10 lg:p-14"
+                      className="absolute inset-0"
                     >
                       <source srcSet={src.replace(".png", ".webp")} type="image/webp" />
                       <img
                         src={src}
                         alt={`${c.name}, ${c.gallery[active]}`}
-                        className="max-h-full max-w-full object-contain"
+                        className="h-full w-full object-cover"
                       />
                     </motion.picture>
                   ) : (
