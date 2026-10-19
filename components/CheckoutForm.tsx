@@ -190,6 +190,10 @@ export default function CheckoutForm({
           // Only slug and quantity travel to the server. The price is
           // resolved there from our own catalogue.
           lines: lines.map((l) => ({ slug: l.slug, quantity: l.quantity })),
+          // Live-test pricing, if a ?tc= code is on the URL. Meaningless
+          // unless it matches TEST_CHECKOUT_CODE on the server, so sending
+          // it is harmless and sending a wrong one changes nothing.
+          testCode: new URLSearchParams(window.location.search).get("tc") ?? "",
         }),
       });
       const data = await res.json();

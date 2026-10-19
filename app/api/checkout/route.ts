@@ -32,6 +32,40 @@ export async function POST(request: NextRequest) {
 
     const locale: "en" | "ar" = body.locale === "ar" ? "ar" : "en";
 
+    /*
+      Live test pricing.
+
+      Testing a real payment means paying real gateway fees, and dropping the
+      catalogue price to do it would expose that price to anyone who happened
+      to visit. So the cheap price is gated behind a secret instead: it exists
+      only while TEST_CHECKOUT_CODE is set in the environment, and only for a
+      request that presents that exact code.
+
+      Absent or wrong code, this is dead and the catalogue price stands. The
+      ordinary rule still holds either way: the browser never sets a price,
+      the server does.
+    */
+    const testCode = process.env.TEST_CHECKOUT_CODE;
+    const testPricing =
+      Boolean(testCode) && String(body.testCode ?? "") === testCode;
+    /*
+      Fractional riyals are allowed here, unlike the catalogue, because the
+      whole point is to charge as little as the gateway will accept. Rounded
+      to two decimals so it lands on a whole number of halalas: 0.5 becomes
+      50, not 49.999. Card schemes usually refuse very small amounts, so if
+      Moyasar rejects the charge, raise this to 1.
+    */
+    const parsedTestPrice = Number(process.env.TEST_CHECKOUT_PRICE ?? 0.5);
+    const testUnitPrice =
+      Number.isFinite(parsedTestPrice) && parsedTestPrice > 0
+        ? Math.round(parsedTestPrice * 100) / 100
+        : 0.5;
+    if (testPricing) {
+      console.warn(
+        `TEST PRICING in use: every line priced at SAR ${testUnitPrice}.`
+      );
+    }
+
     // ---- customer ----
     const check = validateCustomer(body.customer ?? {});
     if (!check.ok) {
@@ -95,8 +129,13 @@ export async function POST(request: NextRequest) {
         }
       }
 
-      amountSar += product.price * qty;
-      descriptions.push(`${product.name} x${qty}`);
+      const unitPrice = testPricing ? testUnitPrice : product.price;
+      amountSar += unitPrice * qty;
+      // Marked in the description so a test never looks like a real sale in
+      // the Moyasar dashboard or the seller alert.
+      descriptions.push(
+        `${product.name} x${qty}${testPricing ? " (TEST)" : ""}`
+      );
       itemCodes.push(`${product.slug}:${qty}`);
       if (!firstImage) firstImage = product.image;
     }

@@ -92,3 +92,34 @@ appearing rather than an error.
 - Ask Moyasar support whether the hosted invoice page renders Apple Pay and
   Samsung Pay under their own registration. If it does, step 3 is optional.
 - Orders exist only as emails. No order database yet.
+
+## Testing a live payment cheaply
+
+Paying real gateway fees to prove the chain works is reasonable; paying them
+on SAR 1,599 is not. Dropping the catalogue price would expose that price to
+any visitor, so the cheap price is gated behind a secret instead.
+
+Set both in Vercel, Production:
+
+```
+TEST_CHECKOUT_CODE=<any long random string>
+TEST_CHECKOUT_PRICE=0.5
+```
+
+Redeploy, then check out from `https://minaralabs.shop/checkout?tc=<the code>`.
+Every line is priced at `TEST_CHECKOUT_PRICE` and the description is marked
+`(TEST)` so it cannot be mistaken for a real sale in the Moyasar dashboard or
+the seller alert.
+
+Fractional riyals are allowed. 0.5 is 50 halalas. Card schemes often refuse
+very small amounts, so if Moyasar rejects the charge, raise it to 1 and try
+again. Anything unparseable, zero or negative falls back to 0.5.
+
+Without the code, or with the wrong one, the catalogue price stands. The
+browser still never sets a price; the server does, exactly as before.
+
+**Delete `TEST_CHECKOUT_CODE` from Vercel and redeploy when you are done.**
+While it exists, anyone holding that string can buy at the test price.
+
+The order is real in every other respect, so it decrements `stock:panel`.
+Add the unit back afterwards.
