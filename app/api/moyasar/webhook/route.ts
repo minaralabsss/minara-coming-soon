@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchInvoice, fromHalalas } from "@/lib/moyasar";
 import { notifyOrder, type Customer } from "@/lib/orders";
-import { claim } from "@/lib/stock";
+import { claim, firstSighting } from "@/lib/stock";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,12 +26,11 @@ export const dynamic = "force-dynamic";
  */
 
 /**
- * Best-effort duplicate guard.
+ * Second-line duplicate guard, behind the Redis one in firstSighting().
  *
- * We register a callback_url on each invoice and the dashboard webhook may
- * be configured too, so the same payment can notify us twice within seconds.
- * A warm serverless instance catches that here. It is not a guarantee — a
- * cold start clears this — but it removes the common double-email case.
+ * This only catches repeats that land on the same warm instance, which a
+ * cold start clears. It still earns its place as the fallback for when
+ * Redis is unreachable and firstSighting() has no opinion.
  */
 const recentlyHandled = new Map<string, number>();
 const DEDUPE_WINDOW_MS = 5 * 60 * 1000;
@@ -105,6 +104,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
+    // Durable guard first. The in-memory Map below only sees duplicates that
+    // land on the same warm instance, and a retry a minute later usually does
+    // not. On live keys that gap is the difference between a second email and
+    // a second stock decrement against real money, so Redis settles it.
+    const first = await firstSighting(`invoice:${invoiceId}`);
+    if (first === false) {
+      console.log(`Invoice ${invoiceId} already handled; skipping duplicate.`);
+      return NextResponse.json({ received: true });
+    }
+    // first === null means Redis could not be reached. Carry on: a duplicate
+    // email is recoverable, a dropped paid order is not.
     if (alreadyHandled(invoiceId)) {
       console.log(`Invoice ${invoiceId} already handled; skipping duplicate.`);
       return NextResponse.json({ received: true });

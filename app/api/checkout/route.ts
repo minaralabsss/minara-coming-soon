@@ -154,6 +154,16 @@ export async function POST(request: NextRequest) {
       url: invoice.url,
       reference,
       amountSar,
+      // Everything below is for the on-site wallet form. The redirect to
+      // invoice.url ignores it, so it is inert unless NEXT_PUBLIC_WALLET_CHECKOUT
+      // is on. The form is initialised against this same invoice, which is
+      // why the webhook, the stock decrement and both emails are unaffected
+      // by which of the two paths the customer takes.
+      invoiceId: invoice.id,
+      amountHalalas: invoice.amount,
+      successUrl: `${origin}${localePrefix}/order/complete?ref=${reference}&items=${encodeURIComponent(
+        itemCodes.join(",")
+      )}`,
     });
   } catch (error) {
     console.error("Checkout error:", error);

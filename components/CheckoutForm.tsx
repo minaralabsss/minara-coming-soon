@@ -11,6 +11,30 @@ import { PROVINCES, OTHER_CITY, findProvince } from "@/lib/saudi";
 import ProductThumb, { productName } from "./ProductThumb";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
+import WalletCheckout from "./WalletCheckout";
+
+/**
+ * Two ways out of this form, chosen by one environment variable.
+ *
+ * Off (today): the customer is sent to Moyasar's hosted invoice page.
+ * On: Moyasar's form is rendered here instead, on our own domain, which is
+ * the only place Apple Pay and Samsung Pay can be offered.
+ *
+ * Either way /api/checkout has already created the same invoice, so nothing
+ * downstream of payment knows or cares which path was taken. If the form
+ * fails to load for any reason, onUnavailable falls back to the redirect.
+ */
+const WALLET_CHECKOUT = process.env.NEXT_PUBLIC_WALLET_CHECKOUT === "true";
+
+type PendingInvoice = {
+  invoiceId: string;
+  amountHalalas: number;
+  description: string;
+  reference: string;
+  callbackUrl: string;
+  /** Kept so the fallback has somewhere to go. */
+  hostedUrl: string;
+};
 
 /**
  * Border colour is swapped rather than appended. Appending a second border
@@ -108,6 +132,7 @@ export default function CheckoutForm({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [usingSaved, setUsingSaved] = useState(false);
+  const [pending, setPending] = useState<PendingInvoice | null>(null);
 
   // Prefill after mount rather than in useState, so the server-rendered
   // markup and the first client render match. Reading localStorage during
@@ -207,6 +232,21 @@ export default function CheckoutForm({
         shortAddress: form.shortAddress,
         address: form.address,
       });
+
+      if (WALLET_CHECKOUT && data.invoiceId && data.amountHalalas) {
+        // Stay on our domain and let Moyasar's form pay the invoice that was
+        // just created. busy stays true so the details above cannot be
+        // edited underneath a live payment form.
+        setPending({
+          invoiceId: data.invoiceId,
+          amountHalalas: data.amountHalalas,
+          description: `minara labs ${data.reference}`,
+          reference: data.reference,
+          callbackUrl: data.successUrl || data.url,
+          hostedUrl: data.url,
+        });
+        return;
+      }
 
       window.location.href = data.url;
     } catch {
@@ -497,14 +537,28 @@ export default function CheckoutForm({
                     </p>
                   )}
 
-                  <button
-                    type="button"
-                    onClick={submit}
-                    disabled={busy}
-                    className="mt-8 w-full bg-text px-6 py-4 text-sm tracking-wide text-bg transition-opacity duration-300 hover:opacity-80 disabled:opacity-40"
-                  >
-                    {busy ? `${c.working}…` : c.pay}
-                  </button>
+                  {pending ? (
+                    <WalletCheckout
+                      invoiceId={pending.invoiceId}
+                      amountHalalas={pending.amountHalalas}
+                      description={pending.description}
+                      reference={pending.reference}
+                      callbackUrl={pending.callbackUrl}
+                      locale={locale}
+                      onUnavailable={() => {
+                        window.location.href = pending.hostedUrl;
+                      }}
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={submit}
+                      disabled={busy}
+                      className="mt-8 w-full bg-text px-6 py-4 text-sm tracking-wide text-bg transition-opacity duration-300 hover:opacity-80 disabled:opacity-40"
+                    >
+                      {busy ? `${c.working}…` : c.pay}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

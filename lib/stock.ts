@@ -66,6 +66,42 @@ export function isTracked(slug: string): boolean {
 }
 
 /**
+ * Durable once-only guard, used to stop a repeated webhook from decrementing
+ * stock or sending a second set of emails.
+ *
+ * SET ... NX is atomic: the first caller to claim a token gets OK back, every
+ * later caller gets nothing. Unlike an in-process Map this survives a cold
+ * start, which is the case that actually matters — a duplicate notification
+ * arriving a minute later almost always lands on a fresh instance.
+ *
+ * Returns true on the first sighting, false on a repeat, and null when Redis
+ * cannot be reached. Null means "no opinion": the caller should carry on,
+ * because dropping a real paid order is worse than a duplicate email.
+ */
+export async function firstSighting(token: string): Promise<boolean | null> {
+  if (!BASE || !TOKEN) return null;
+  // Held for a week. Long enough to cover any retry Moyasar might make,
+  // short enough that these never accumulate.
+  const path = `set/seen:${encodeURIComponent(token)}/1/NX/EX/604800`;
+  try {
+    const res = await fetch(`${BASE}/${path}`, {
+      headers: { Authorization: `Bearer ${TOKEN}` },
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      console.error(`Upstash dedupe failed: ${res.status}`);
+      return null;
+    }
+    const json = (await res.json()) as { result: unknown };
+    // "OK" when the key was created, null when it already existed.
+    return json.result !== null && json.result !== undefined;
+  } catch (error) {
+    console.error("Upstash dedupe error:", error);
+    return null;
+  }
+}
+
+/**
  * Units remaining, or null when this slug is not tracked or Redis is
  * unreachable. Null means "no opinion" — never treat it as zero.
  */
