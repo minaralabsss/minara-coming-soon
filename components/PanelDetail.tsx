@@ -115,14 +115,21 @@ export default function PanelDetail({
               </button>
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
+            {/*
+              One row of six, at every width, inset by exactly the arrow
+              column plus its gap so the strip ends where the photograph
+              ends. On mobile this used to be 3 across at full container
+              width: two rows of large tiles, wider than the photo above
+              them, competing with it rather than indexing it.
+            */}
+            <div className="mx-auto mt-3 grid max-w-sm grid-cols-6 gap-2 px-9 sm:max-w-md lg:max-w-xl lg:gap-3 lg:px-11">
               {c.gallery.map((label, i) => (
                 <button
                   key={label}
                   onClick={() => setActive(i)}
                   aria-label={label}
                   aria-current={i === active}
-                  className={`flex aspect-square items-center justify-center overflow-hidden rounded-sm border p-1 transition-colors duration-300 ${
+                  className={`flex aspect-square items-center justify-center overflow-hidden rounded-sm border transition-colors duration-300 ${
                     i === active ? "border-text" : "border-divider hover:border-text-muted"
                   }`}
                 >
