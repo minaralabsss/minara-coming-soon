@@ -180,7 +180,6 @@ export type SiteContent = {
     markFCC: string;
     markRoHS: string;
     markIEC: string;
-    marksNote: string;
     specs: [string, Row[]][];
     closeTitle: string;
     closeBody: string;

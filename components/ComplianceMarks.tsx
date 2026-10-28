@@ -10,8 +10,16 @@ import type { Locale } from "@/lib/locale";
  *
  * 1. No FDA logo. The FDA logo itself is reserved for official FDA
  *    communications, so the FDA mark here is set typographically like FCC
- *    and IEC. The wording stays factual: "registered" and "listed" are
- *    what is true, and the page never says or implies "approved".
+ *    and IEC.
+ *
+ *    The caption carries the whole compliance burden now, so it must stay
+ *    exactly as worded: "Establishment registration and device listing".
+ *    21 CFR 807.97 prohibits any representation creating an impression of
+ *    official approval through registration or listing, and the explicit
+ *    disclaimer that used to sit below this row has been removed because
+ *    the caption already states what it is and never says "approved" or
+ *    "cleared". If that caption is ever loosened to a bare "FDA", the
+ *    disclaimer has to come back.
  *
  * 2. Monochrome. The official CE, FCC and RoHS marks may be reproduced in
  *    a single colour provided the proportions are kept, so drawing them in
@@ -77,9 +85,6 @@ export default function ComplianceMarks({ locale }: { locale: Locale }) {
         ))}
       </ul>
 
-      <p className="mt-14 max-w-2xl text-xs font-light leading-relaxed text-text-muted">
-        {c.marksNote}
-      </p>
     </div>
   );
 }

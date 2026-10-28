@@ -259,7 +259,6 @@ export const en: SiteContent = {
     markFCC: "US electromagnetic compliance, for emissions and interference.",
     markRoHS: "Restriction of hazardous substances in electrical equipment.",
     markIEC: "Built and tested to IEC 60598-1 and IEC 60598-2-4, the international luminaire safety standards.",
-    marksNote: "Registration and listing are not an FDA approval.",
     specs: [
       ["Optical", [
         ["Wavelengths", "630, 660, 810, 850, 940, 1060 nm"],
