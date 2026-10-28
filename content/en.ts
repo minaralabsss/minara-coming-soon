@@ -339,23 +339,7 @@ export const en: SiteContent = {
         cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
         href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
       },
-      {
-        value: "25%",
-        unit: "over four decades",
-        note: "The cumulative result. Skin collagen content peaks between 25 and 34, then declines by roughly a quarter across the forty years that follow.",
-        cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
-        href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
-      },
-      {
-        value: "a third",
-        unit: "less procollagen",
-        note: "Produced by fibroblasts taken from donors over eighty, measured against fibroblasts from donors in their twenties.",
-        cite: "Varani J, et al. Decreased collagen production in chronologically aged skin. American Journal of Pathology, 2006;168(6):1861-1868.",
-        href: "https://pubmed.ncbi.nlm.nih.gov/16723701/",
-      },
     ],
-    declineClose:
-      "All of it happens in the dermis, below the surface that creams reach. That is not a criticism of skincare, it is a description of depth. The dermis is also where red light at 630 and 660 nanometres is absorbed, and it is the reason this panel exists.",
     mechEyebrow: "Mechanism",
     mechTitle: "One mechanism,\nfour stages",
     mechanism: [

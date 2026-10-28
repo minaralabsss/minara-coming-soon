@@ -211,7 +211,6 @@ export type SiteContent = {
       cite: string;
       href: string;
     }[];
-    declineClose: string;
     mechEyebrow: string;
     mechTitle: string;
     mechanism: Numbered[];

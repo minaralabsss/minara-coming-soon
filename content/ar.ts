@@ -339,23 +339,7 @@ export const ar: SiteContent = {
         cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
         href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
       },
-      {
-        value: "25%",
-        unit: "خلال أربعة عقود",
-        note: "الحصيلة التراكمية. يبلغ محتوى الكولاجين في الجلد ذروته بين 25 و34 عاماً، ثم يتراجع نحو الربع على مدى الأربعين سنة التالية.",
-        cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
-        href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
-      },
-      {
-        value: "الثلث",
-        unit: "أقل من طليعة الكولاجين",
-        note: "تنتجه الخلايا الليفية المأخوذة من متبرعين تجاوزوا الثمانين، مقارنةً بخلايا من متبرعين في العشرينات.",
-        cite: "Varani J, et al. Decreased collagen production in chronologically aged skin. American Journal of Pathology, 2006;168(6):1861-1868.",
-        href: "https://pubmed.ncbi.nlm.nih.gov/16723701/",
-      },
     ],
-    declineClose:
-      "كل ذلك يجري في الأدمة، تحت السطح الذي تبلغه الكريمات. وليس في هذا انتقاص للعناية بالبشرة، بل وصف للعمق. والأدمة هي أيضاً حيث يُمتص الضوء الأحمر عند 630 و660 نانومتر، وهي سبب وجود هذا الجهاز.",
     mechEyebrow: "الآلية",
     mechTitle: "تقنية واحدة،\nأربع مراحل",
     mechanism: [
@@ -485,8 +469,8 @@ export const ar: SiteContent = {
       { index: "02", title: "الجمال والدقة معاً", body: "الجهاز الذي يُستخدم يومياً ينبغي أن يكون اقتناؤه متعة. نصمم قطعاً تستحق المكان الذي تعيش فيه، دون مقايضة الأداء بالمظهر أبداً." },
       { index: "03", title: "الصدق بالتصميم", body: "أرقام حقيقية بهوامش حقيقية. وسعر واضح. وضمان نفي به. وما لا نقبله كعملاء لا نقدمه كشركة." },
     ],
-    nextEyebrow: "ما يلي",
-    nextTitle: "عائلة أجهزة\nآخذة في النمو",
+    nextEyebrow: "القادم",
+    nextTitle: "أجهزة أخرى\nفي الطريق",
     nextBody:
       "جهاز السفر والقبعة وجهاز مساج الرأس جميعها قيد التطوير. ويمكن الانضمام إلى قائمتنا البريدية ليصل خبر كل واحد منها حين يجهز.",
     waitlistCta: "الانضمام إلى القائمة البريدية",

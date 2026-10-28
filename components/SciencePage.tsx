@@ -60,7 +60,19 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
             <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">{c.declineIntro}</p>
           </div>
 
-          <div className="mt-20 grid grid-cols-1 gap-px border-t border-divider sm:grid-cols-3">
+          {/*
+            Column count follows the number of figures rather than being
+            fixed at three, so dropping one does not leave empty cells
+            stretched across the row. Tailwind cannot build a class name at
+            runtime, hence the lookup rather than a template string.
+          */}
+          <div
+            className={`mt-20 grid grid-cols-1 gap-px border-t border-divider ${
+              { 1: "max-w-2xl", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3" }[
+                Math.min(c.declineStats.length, 3) as 1 | 2 | 3
+              ] ?? "sm:grid-cols-3"
+            }`}
+          >
             {c.declineStats.map((st) => (
               <div key={st.note} className="flex flex-col border-b border-divider py-12 sm:pe-10">
                 <p className="text-5xl font-light tracking-[-0.03em] sm:text-6xl">{st.value}</p>
@@ -81,9 +93,6 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
             ))}
           </div>
 
-          <p className="mt-16 max-w-2xl text-base font-light leading-relaxed text-text-secondary">
-            {c.declineClose}
-          </p>
         </div>
       </section>
 
