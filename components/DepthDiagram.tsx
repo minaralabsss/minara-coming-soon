@@ -62,7 +62,12 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
         edge is itself the signal that there is more. From sm upward the
         chart fits, and all of this switches off.
       */}
-      <div className="-mx-6 overflow-x-auto px-6 sm:mx-0 sm:overflow-x-visible sm:px-0">
+      <div className="relative -mx-6 sm:mx-0">
+        <div
+          className="overflow-x-auto px-6 sm:overflow-x-visible sm:px-0"
+          role="group"
+          aria-label={c.depthScrollHint}
+        >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         className="h-auto w-full min-w-[880px] sm:min-w-0"
@@ -223,7 +228,22 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           );
         })}
 
-        {/* Skin layer labels */}
+        {/*
+          Skin layer labels, in the gutter beside the chart.
+
+          text-anchor is direction-aware, not geometric: it aligns to the
+          inline-progression direction, and this SVG inherits dir="rtl" from
+          the Arabic document. So "start" anchors the RIGHT edge of the text
+          and the words grow leftward. Setting "start" for RTL, which looks
+          like the obvious way to mirror it, pushed every label backwards
+          into the tissue block.
+
+          "end" is correct in both directions. In LTR it pins the right edge
+          at x and the text runs left into the left gutter. In RTL it pins
+          the left edge at x and the text runs right into the right gutter.
+          The direction flip does the mirroring on its own; the anchor must
+          not try to help.
+        */}
         {c.skinLayers.map((l, i) => {
           const prev = i === 0 ? 0 : layerStops[i - 1];
           const mid = chartTop + chartH * ((prev + layerStops[i]) / 2);
@@ -233,7 +253,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
               <text
                 x={x}
                 y={mid - 4}
-                textAnchor={rtl ? "start" : "end"}
+                textAnchor="end"
                 fill="currentColor"
                 fontSize="14"
                 fontWeight="500"
@@ -243,7 +263,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
               <text
                 x={x}
                 y={mid + 14}
-                textAnchor={rtl ? "start" : "end"}
+                textAnchor="end"
                 fill="currentColor"
                 opacity="0.5"
                 fontSize="12"
@@ -293,13 +313,45 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           );
         })}
       </svg>
+        </div>
+
+        {/*
+          Swipe affordance, phone only.
+
+          A line of text saying "scroll sideways" is the weakest version of
+          this: it asks to be read, and it sits below the thing it describes
+          so it arrives after the confusion. A fade at the trailing edge
+          shows the chart continuing past the screen, and the chevron
+          nudging into that fade says which way. Both sit on the end side,
+          which is the right edge in English and the left in Arabic, because
+          that is where the overflow actually is in each direction.
+
+          pointer-events-none throughout, so neither can swallow a swipe.
+          The hint string survives as the scroll region's aria-label, so the
+          instruction still exists for a screen reader.
+        */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 end-0 w-20 bg-gradient-to-r from-transparent to-bg rtl:bg-gradient-to-l sm:hidden"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute end-1 top-1/2 -translate-y-1/2 animate-nudge text-text-muted motion-reduce:animate-none sm:hidden"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="rtl:-scale-x-100">
+            <path
+              d="M9 5l7 7-7 7"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </div>
 
-      <p className="mt-4 text-xs font-light text-text-muted sm:hidden">
-        {c.depthScrollHint}
-      </p>
-
-      <figcaption className="mt-6 text-xs font-light leading-relaxed text-text-muted">
+      {/* Caption is desktop only: see the note in the commit for why. */}
+      <figcaption className="mt-6 hidden text-xs font-light leading-relaxed text-text-muted sm:block">
         {c.depthNote}
       </figcaption>
     </figure>

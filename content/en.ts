@@ -208,7 +208,7 @@ export const en: SiteContent = {
     tagline: "For the face first, then the body",
     name: "The Panel",
     summary:
-      "Six carefully selected wavelengths across seventy emitters. Made first for the face: collagen, fine lines, texture and radiance. Sized to reach the whole body when you want more.",
+      "Six carefully selected wavelengths across seventy emitters. Made for the face and body.",
     quickSpecs: [
       ["Session", "20 to 30 minutes per zone, at 0 to 12 in"],
       ["Routine", "Four days a week, minimum"],

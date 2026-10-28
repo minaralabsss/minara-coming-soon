@@ -130,6 +130,7 @@ const config: Config = {
         fadeIn: "fadeIn 0.6s ease-out",
         slideUp: "slideUp 0.6s ease-out",
         slideDown: "slideDown 0.4s ease-out",
+        nudge: "nudge 1.6s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -143,6 +144,11 @@ const config: Config = {
         slideDown: {
           "0%": { opacity: "1", transform: "translateY(0)" },
           "100%": { opacity: "0", transform: "translateY(12px)" },
+        },
+        /* A short sideways nudge, for the swipe hint on the depth chart. */
+        nudge: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(-5px)" },
         },
       },
     },

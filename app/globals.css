@@ -137,7 +137,24 @@ input:focus-visible {
   font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
 }
 
-[dir="rtl"] {
+/*
+  Arabic is cursive: the letters join. Any letter-spacing pulls those joins
+  apart and the word renders as a row of disconnected glyphs.
+
+  This rule existed, but it matched only the element actually carrying
+  dir="rtl", which is the page wrapper. Letter-spacing inherits, so that
+  looked right until a descendant set its own: the eyebrows use
+  tracking-[0.25em], which at 12px puts 3px between every letter, and the
+  Tailwind utility on the element beat the inherited value from the
+  ancestor. Hence the gaps in the tagline and the price label.
+
+  The universal selector extends it to every descendant, so a tracking
+  utility cannot shear Arabic apart. Latin runs inside an Arabic page, the
+  SAR figures and nm units, lose their tracking too, which is invisible at
+  these sizes and the right trade.
+*/
+[dir="rtl"],
+[dir="rtl"] * {
   letter-spacing: 0 !important;
 }
 
