@@ -6,14 +6,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import { Eyebrow, Lines, Photo, ProductRender, rise, stagger, viewport } from "./ui";
-import { formatPrice, products } from "@/lib/products";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
 export default function MainPage({ locale = "en", soldOut = false }: { locale?: Locale; soldOut?: boolean }) {
   const s = t(locale);
   const c = s.home;
-  const panel = products[0];
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -67,13 +65,14 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
 
           {/*
             The hero sells the visit to the product page, not the panel.
-            Buying from here asked for a decision before anything had been
-            explained, so the primary action is now Learn more and the
-            price sits below it as information rather than as a button.
-            Add to cart lives on the product page, where the case for it
-            has actually been made.
+            No price here on purpose: a figure shown before anything has
+            been explained is only ever a reason to leave. Price and Add to
+            cart both live on the product page, where the case for them has
+            been made. Sold out is the one exception, because letting
+            someone read the whole product page for something they cannot
+            buy is worse than telling them early.
           */}
-          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-5">
+          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-4">
             <Link
               href={localeHref("/product/panel", locale)}
               className="inline-flex items-center justify-center bg-text px-10 py-4 text-sm tracking-wide text-bg transition-opacity duration-500 hover:opacity-70"
@@ -81,25 +80,9 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
               {s.buy.learnMore}
             </Link>
 
-            <div className="flex flex-col items-center gap-2">
-              {soldOut ? (
-                <p className="text-sm font-light text-text-muted">{s.buy.soldOut}</p>
-              ) : (
-                <p className="flex items-baseline gap-3 text-sm font-light text-text-secondary">
-                  {panel.compareAt != null && panel.compareAt > panel.price && (
-                    <s dir="ltr" className="text-xs text-text-muted">
-                      {formatPrice(panel.compareAt, panel.currency)}
-                    </s>
-                  )}
-                  <span dir="ltr">{formatPrice(panel.price, panel.currency)}</span>
-                </p>
-              )}
-              {!soldOut && panel.compareAt != null && panel.compareAt > panel.price && (
-                <p className="max-w-xs text-center text-xs font-light leading-relaxed text-text-muted">
-                  {s.buy.launchNote}
-                </p>
-              )}
-            </div>
+            {soldOut && (
+              <p className="text-sm font-light text-text-muted">{s.buy.soldOut}</p>
+            )}
           </motion.div>
         </motion.div>
       </section>

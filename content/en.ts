@@ -136,7 +136,7 @@ export const en: SiteContent = {
     eyebrow: "",
     title: "Where the science of light\nmeets skincare.",
     intro:
-      "Red and near-infrared light, at the wavelengths studied for collagen and skin renewal. Twenty minutes. At home. On your own schedule.",
+      "Red and near-infrared light, at wavelengths reaching 1060 nanometres, studied for collagen and skin renewal. Twenty minutes. At home. On your own schedule.",
     whyEyebrow: "Why it exists",
     whyStatement:
       "Serums work on the surface. Collagen is made underneath it. minara reaches that layer with red light. Its longest wavelength, 1060 nanometres, carries further again, into muscle and deep tissue.",
@@ -320,7 +320,7 @@ export const en: SiteContent = {
     ],
     collagenFrame: "Dermal structure diagram",
     mechEyebrow: "Mechanism",
-    mechTitle: "One mechanism,\nsix depths",
+    mechTitle: "One mechanism,\nfour stages",
     mechanism: [
       { index: "01", title: "Absorption", body: "All six wavelengths are absorbed within the energy-producing structures of the cell. That part does not change across the spectrum. What changes is how far into tissue each wavelength travels before it gets there." },
       { index: "02", title: "Energy", body: "That absorption is understood to increase the cell's available energy. Fibroblasts are metabolically expensive cells, and collagen synthesis is one of the first things they scale back when energy is short." },
