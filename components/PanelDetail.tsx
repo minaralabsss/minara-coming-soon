@@ -216,7 +216,7 @@ export default function PanelDetail({
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
           <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">
-            {s.science.wlEyebrow}
+            {s.science.depthEyebrow}
           </motion.p>
           <motion.h2 variants={rise} className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
             <Lines text={s.science.depthTitle} />

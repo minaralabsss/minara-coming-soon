@@ -41,6 +41,52 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
         </div>
       </section>
 
+      {/*
+        The numbers.
+
+        Set large and plainly, with each figure carrying its own citation
+        rather than a single disclaimer at the foot of the block. The point
+        is that a reader can check any one of them in a click, which is what
+        separates this from the same statistics used as pressure elsewhere
+        in the category. No adjectives, no "shocking", no countdown.
+      */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.declineEyebrow}</p>
+            <h2 className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              <Lines text={c.declineTitle} />
+            </h2>
+            <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">{c.declineIntro}</p>
+          </div>
+
+          <div className="mt-20 grid grid-cols-1 gap-px border-t border-divider sm:grid-cols-3">
+            {c.declineStats.map((st) => (
+              <div key={st.note} className="flex flex-col border-b border-divider py-12 sm:pe-10">
+                <p className="text-5xl font-light tracking-[-0.03em] sm:text-6xl">{st.value}</p>
+                <p className="mt-3 text-xs uppercase tracking-[0.2em] text-text-muted">{st.unit}</p>
+                <p className="mt-6 max-w-[34ch] flex-1 text-sm font-light leading-relaxed text-text-secondary">
+                  {st.note}
+                </p>
+                <a
+                  href={st.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir="ltr"
+                  className="mt-6 block text-xs font-light leading-relaxed text-text-muted underline-offset-4 transition-colors duration-300 hover:text-text hover:underline"
+                >
+                  {st.cite}
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-16 max-w-2xl text-base font-light leading-relaxed text-text-secondary">
+            {c.declineClose}
+          </p>
+        </div>
+      </section>
+
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
@@ -146,7 +192,7 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs uppercase tracking-[0.25em] text-text-muted">
-            {c.wlEyebrow}
+            {c.depthEyebrow}
           </p>
           <h2 className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
             <Lines text={c.depthTitle} />

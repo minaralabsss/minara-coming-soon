@@ -200,6 +200,18 @@ export type SiteContent = {
     collagenTitle: string;
     collagenBody: string[];
     collagenFrame: string;
+    declineEyebrow: string;
+    declineTitle: string;
+    declineIntro: string;
+    /** Each figure carries its own source, so no number sits unattributed. */
+    declineStats: {
+      value: string;
+      unit: string;
+      note: string;
+      cite: string;
+      href: string;
+    }[];
+    declineClose: string;
     mechEyebrow: string;
     mechTitle: string;
     mechanism: Numbered[];
@@ -228,7 +240,9 @@ export type SiteContent = {
     wlEyebrow: string;
     wlTitle: string;
     wavelengths: Row[];
+    depthEyebrow: string;
     depthTitle: string;
+    depthScrollHint: string;
     depthRedLabel: string;
     depthNirLabel: string;
     depthAxis: string;
@@ -252,6 +266,9 @@ export type SiteContent = {
     nextEyebrow: string;
     nextTitle: string;
     nextBody: string;
+    waitlistCta: string;
+    waitlistInvalid: string;
+    waitlistError: string;
   };
   support: {
     eyebrow: string;

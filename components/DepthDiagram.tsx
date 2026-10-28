@@ -50,9 +50,22 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
 
   return (
     <figure className="not-prose w-full">
+      {/*
+        On a phone this used to shrink the whole 1100-unit chart into about
+        375px, which rendered the 13-unit labels at roughly 4px. Legible to
+        nobody. SVG scales uniformly, so there is no way to hold the type up
+        while the drawing comes down.
+
+        So on small screens the chart keeps a usable width and the container
+        scrolls sideways instead. It bleeds to the screen edges with -mx-6 so
+        the full viewport is available to scroll in, and the cut-off at the
+        edge is itself the signal that there is more. From sm upward the
+        chart fits, and all of this switches off.
+      */}
+      <div className="-mx-6 overflow-x-auto px-6 sm:mx-0 sm:overflow-x-visible sm:px-0">
       <svg
         viewBox={`0 0 ${W} ${H}`}
-        className="h-auto w-full"
+        className="h-auto w-full min-w-[880px] sm:min-w-0"
         role="img"
         aria-label={c.depthAxis}
       >
@@ -280,6 +293,11 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           );
         })}
       </svg>
+      </div>
+
+      <p className="mt-4 text-xs font-light text-text-muted sm:hidden">
+        {c.depthScrollHint}
+      </p>
 
       <figcaption className="mt-6 text-xs font-light leading-relaxed text-text-muted">
         {c.depthNote}

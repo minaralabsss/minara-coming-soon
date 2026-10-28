@@ -6,6 +6,7 @@ import { Lines } from "./ui";
 import type { Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 import { SUPPORT_EMAIL } from "@/lib/business";
+import WaitlistSignup from "./WaitlistSignup";
 
 /**
  * About.
@@ -102,11 +103,22 @@ export default function AboutPage({ locale = "en" }: { locale?: Locale }) {
           <p className="mx-auto mt-8 max-w-lg text-base font-light leading-relaxed text-text-secondary">
             {c.nextBody}
           </p>
-          <div className="mt-12">
+          {/*
+            Signing up is the primary action here now, since this section is
+            about things that do not exist yet and the only useful thing a
+            reader can do is ask to be told. The support address stays, one
+            step quieter, because removing the only contact point from the
+            page to make room for a marketing button would be a poor trade.
+          */}
+          <div className="mt-12 flex min-h-[56px] items-center justify-center">
+            <WaitlistSignup locale={locale} />
+          </div>
+
+          <div className="mt-10">
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
               dir="ltr"
-              className="border-b border-text pb-1 text-sm tracking-wide transition-opacity duration-500 hover:opacity-50"
+              className="border-b border-divider pb-1 text-xs tracking-wide text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
             >
               {SUPPORT_EMAIL}
             </a>

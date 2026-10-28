@@ -25,7 +25,7 @@ export const en: SiteContent = {
     connect: "Connect",
     returns: "Returns",
     warranty: "Warranty",
-    rights: "All rights reserved. Designed in Saudi.",
+    rights: "All rights reserved.",
     maroofLabel: "Verified on Maroof",
     unifiedLabel: "Unified National Number",
   },
@@ -195,6 +195,7 @@ export const en: SiteContent = {
     devNote:
       "Announced when they are ready and not before. Subscribe on any page and you will hear about each release first.",
     forthcoming: [
+      { name: "The Travel Panel", tagline: "Full output, packed down", note: "In development" },
       { name: "The Cap", tagline: "Scalp and hair routine", note: "In development" },
       { name: "The Head Massager", tagline: "Scalp stimulation and calm", note: "In development" },
     ],
@@ -326,6 +327,35 @@ export const en: SiteContent = {
       "Anything applied to the surface is working several layers above where the change is happening. That is not a criticism of skincare, it is a description of where it can reach.",
     ],
     collagenFrame: "Dermal structure diagram",
+    declineEyebrow: "The numbers",
+    declineTitle: "What the measurements\nactually show",
+    declineIntro:
+      "These are the figures from the published literature on collagen and age. They are not ours and they are not about our panel. They are here because they describe the problem precisely, and because a number you can check is worth more than an adjective.",
+    declineStats: [
+      {
+        value: "1 to 1.5%",
+        unit: "a year",
+        note: "The rate at which collagen production falls once fibroblasts begin to slow, from early adulthood onward.",
+        cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
+        href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
+      },
+      {
+        value: "25%",
+        unit: "over four decades",
+        note: "The cumulative result. Skin collagen content peaks between 25 and 34, then declines by roughly a quarter across the forty years that follow.",
+        cite: "Reilly DM, Lozano J. Skin collagen through the lifestages. Plastic and Aesthetic Research, 2021;8:2.",
+        href: "https://www.oaepublish.com/articles/2347-9264.2020.153",
+      },
+      {
+        value: "a third",
+        unit: "less procollagen",
+        note: "Produced by fibroblasts taken from donors over eighty, measured against fibroblasts from donors in their twenties.",
+        cite: "Varani J, et al. Decreased collagen production in chronologically aged skin. American Journal of Pathology, 2006;168(6):1861-1868.",
+        href: "https://pubmed.ncbi.nlm.nih.gov/16723701/",
+      },
+    ],
+    declineClose:
+      "All of it happens in the dermis, below the surface that creams reach. That is not a criticism of skincare, it is a description of depth. The dermis is also where red light at 630 and 660 nanometres is absorbed, and it is the reason this panel exists.",
     mechEyebrow: "Mechanism",
     mechTitle: "One mechanism,\nfour stages",
     mechanism: [
@@ -400,7 +430,9 @@ export const en: SiteContent = {
       "Both reviews describe the evidence as promising rather than settled, and both call for better-designed trials. They tested a range of devices and protocols, none of them minara\u2019s. They are given here as the honest state of the research, not as a claim about what the panel will do for you.",
     wlEyebrow: "Why these wavelengths",
     wlTitle: "Depth is the\nwhole argument",
+    depthEyebrow: "Penetration depth",
     depthTitle: "How deep each\nwavelength reaches",
+    depthScrollHint: "Scroll the chart sideways to see every wavelength",
     depthRedLabel: "Red light",
     depthNirLabel: "Near-infrared",
     depthAxis: "Approximate interaction depth in human tissue",
@@ -435,16 +467,16 @@ export const en: SiteContent = {
     eyebrow: "About",
     title: "Light, taken\nseriously",
     intro:
-      "minara labs designs instruments that use red and near-infrared light to support the way skin renews itself. Designed in Saudi, made for the world.",
+      "minara labs designs instruments that use red and near-infrared light to support the way skin renews itself.",
     missionEyebrow: "Our mission",
     mission:
-      "To move the treatment room into the home, so that looking after your skin asks for twenty minutes rather than an afternoon.",
+      "Wellness you own rather than book. In your own home, at your own time, at your own pace.",
     homeEyebrow: "The spa, at home",
-    homeTitle: "The hour that used\nto mean leaving",
+    homeTitle: "What it used\nto take",
     missionBody: [
-      "In Saudi, looking after your skin properly has always meant going out to do it. A booking made weeks ahead, a drive across the city, an hour in someone else's chair, then the same again next month.",
-      "minara exists to bring that hour home. Twenty minutes in your own room, in your own privacy, at whatever time suits you. No appointment to keep, no traffic, no waiting.",
-      "For decades this light lived in dermatology clinics and high-end spas: studied, refined, and out of reach. We build it to the specifications the research describes, and finish it to sit out on a dresser rather than be hidden in a drawer.",
+      "In Saudi, looking after your skin properly has meant going out to do it. A booking made weeks ahead, a drive across town through the traffic, an hour in a clinic chair, and the same again next month.",
+      "What changes at home is not only the convenience. This kind of light works by accumulation, so consistency matters more than any single session, and a routine you can keep is worth more than an appointment you reschedule.",
+      "So we build the panel to the specifications the research describes, and finish it to sit out on a dresser rather than be hidden in a drawer. A device you actually reach for is the only kind that does anything at all.",
     ],
     beliefsEyebrow: "What we believe",
     beliefsTitle: "Three things\nwe hold to",
@@ -456,7 +488,10 @@ export const en: SiteContent = {
     nextEyebrow: "What follows",
     nextTitle: "A growing family\nof instruments",
     nextBody:
-      "The Cap and The Head Massager are in development now. Each will be announced when it is ready, and not a moment before.",
+      "The Travel Panel, The Cap and The Head Massager are all in development. Join our mailing list and you will hear about each one as it arrives.",
+    waitlistCta: "Join the mailing list",
+    waitlistInvalid: "Please check that email address.",
+    waitlistError: "Could not sign you up just now. Please try again.",
   },
 
   support: {
