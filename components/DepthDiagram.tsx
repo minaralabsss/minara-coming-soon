@@ -172,6 +172,16 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
           const cx = rtl ? W - cxRaw : cxRaw;
           return (
             <g key={b.nm}>
+              {/*
+                The unit comes from content, not from a hardcoded " nm".
+
+                On the Arabic page the SVG inherits dir="rtl" from the
+                document, and the bidi algorithm reordered a Latin "nm"
+                sitting after Western digits, so "1060 nm" was rendering as
+                "nm 1060". Using the Arabic unit removes the mixed-script
+                run entirely: digits followed by Arabic read correctly
+                right-to-left with no override needed.
+              */}
               <text
                 x={cx}
                 y="108"
@@ -181,7 +191,7 @@ export default function DepthDiagram({ locale = "en" }: { locale?: Locale }) {
                 fontWeight="500"
               >
                 {b.nm}
-                <tspan fontSize="15"> nm</tspan>
+                <tspan fontSize={rtl ? "14" : "15"}> {c.nmUnit}</tspan>
               </text>
               {wrapLabel(b.layer).map((line, li) => (
                 <text

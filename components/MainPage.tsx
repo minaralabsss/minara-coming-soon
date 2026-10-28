@@ -126,6 +126,42 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
         </motion.div>
       </section>
 
+      {/*
+        Body.
+
+        Mirrors the skin section above, flipped. On desktop the photograph
+        sits on the right so the two sections alternate rather than marching
+        down the same edge. On a phone the order classes put the photograph
+        first in both sections, because a heading arriving before its image
+        reads as a different kind of section, and the two should feel like a
+        pair.
+
+        Ratio is 3/4 here rather than the 4/5 used above, because that is the
+        photograph's own shape and object-cover would otherwise crop the legs
+        out of a picture whose whole point is the legs.
+      */}
+      <section className="px-6 pb-32 sm:pb-40 lg:pb-48">
+        <motion.div
+          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
+          className="mx-auto max-w-6xl"
+        >
+          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
+            <motion.div variants={rise} className="order-2 lg:order-1">
+              <Eyebrow>{c.bodyEyebrow}</Eyebrow>
+              <h2 className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+                <Lines text={c.bodyTitle} />
+              </h2>
+              <div className="mt-10 space-y-6 text-base font-light leading-relaxed text-text-secondary">
+                {c.bodyBody.map((p, i) => <p key={i}>{p}</p>)}
+              </div>
+            </motion.div>
+            <motion.div variants={rise} className="order-1 lg:order-2">
+              <Photo src="/panel-recovery" alt={s.panel.recoveryAlt} ratio="aspect-[3/4]" />
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* The effect */}
       <section className="border-t border-divider px-6 py-32 sm:py-40 lg:py-48">
         <motion.div

@@ -24,10 +24,20 @@ export default function Navigation() {
   // Compare against the path with any /ar prefix removed.
   const bare = pathname === "/ar" ? "/" : pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
 
+  /*
+    The bar is opaque, not frosted.
+
+    It was bg-bg/90 with a 4px backdrop blur. At 90% opacity a large
+    headline scrolling underneath stays legible through the bar, and on the
+    Arabic pages, where the headings are heavy and sit on the same side as
+    the logo, it read as text printed over the wordmark rather than as a
+    glass effect. A solid bar costs nothing here: the palette is pure white
+    anyway, so there was no colour to let through.
+  */
   return (
     <nav
       dir={c.dir}
-      className={`sticky top-0 z-40 border-b border-divider bg-bg/90 backdrop-blur-sm ${
+      className={`sticky top-0 z-40 border-b border-divider bg-bg ${
         locale === "ar" ? "font-arabic" : ""
       }`}
     >

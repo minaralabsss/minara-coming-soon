@@ -146,6 +146,13 @@ export const en: SiteContent = {
       "Facial skin is where light therapy has been studied most closely. The cells that produce collagen sit beneath the surface, and at 630 and 660 nanometres red light reaches them directly.",
       "Collagen, elasticity, fine lines, radiance. Gradual and cumulative, which is why the panel was made for a routine rather than an occasion.",
     ],
+    bodyEyebrow: "Body",
+    bodyTitle: "Deeper than\nthe skin",
+    bodyBody: [
+      "Near-infrared at 810, 850, 940 and 1060 nanometres is invisible to the eye and travels further than red light does. It passes the skin and interacts with the tissue underneath: deeper dermis, and the muscle below it.",
+      "That is why the second body of research on this light is about recovery rather than appearance. Pooled analyses of controlled trials report longer time to exhaustion and more repetitions against placebo, with the clearest results when the light is applied before training rather than after.",
+      "In practice it is the same session, pointed somewhere else. Twenty to thirty minutes on legs, shoulders or lower back, at the distance in the manual. The evidence here is promising rather than settled, and we would rather say so than overstate it.",
+    ],
     faceFrame: "Facial session, in use",
     scienceEyebrow: "The technology",
     scienceTitle: "Light your cells\nalready know how to use",
@@ -301,6 +308,7 @@ export const en: SiteContent = {
       "User manual",
     ],
     inUseAlt: "A woman using the minara panel for a facial session",
+    recoveryAlt: "A man using the minara panel on his legs after training",
     sideAlt: "The minara panel, side profile",
     emittersAlt: "Close detail of the minara emitter array and optics",
     prevImage: "Previous photo",
@@ -397,6 +405,7 @@ export const en: SiteContent = {
     depthRedLabel: "Red light",
     depthNirLabel: "Near-infrared",
     depthAxis: "Approximate interaction depth in human tissue",
+    nmUnit: "nm",
     depthNote:
       "Approximate interaction depth varies according to tissue composition, wavelength, and individual factors.",
     skinLayers: [

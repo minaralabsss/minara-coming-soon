@@ -127,6 +127,9 @@ export type SiteContent = {
     faceTitle: string;
     faceBody: string[];
     faceFrame: string;
+    bodyEyebrow: string;
+    bodyTitle: string;
+    bodyBody: string[];
     scienceEyebrow: string;
     scienceTitle: string;
     scienceBody: string;
@@ -185,6 +188,7 @@ export type SiteContent = {
     includedTitle: string;
     included: string[];
     inUseAlt: string;
+    recoveryAlt: string;
     sideAlt: string;
     emittersAlt: string;
     prevImage: string;
@@ -229,6 +233,7 @@ export type SiteContent = {
     depthRedLabel: string;
     depthNirLabel: string;
     depthAxis: string;
+    nmUnit: string;
     depthNote: string;
     skinLayers: { name: string; range: string }[];
     depths: DepthBand[];
