@@ -51,8 +51,21 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
         in the category. No adjectives, no "shocking", no countdown.
       */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
-        <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
+        {/*
+          Side by side rather than stacked.
+
+          This was a three-column grid under a max-w-2xl heading block. With
+          three figures that filled the row. With one it left a single narrow
+          column hugging one edge and the other half of the screen empty,
+          which reads as a layout that failed to load rather than as a
+          deliberately spare one.
+
+          Text on one side, figures on the other, uses the full measure at
+          any count: one figure sits opposite the argument, and further ones
+          stack beneath it without the layout changing shape.
+        */}
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-6">
             <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.declineEyebrow}</p>
             <h2 className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
               <Lines text={c.declineTitle} />
@@ -60,24 +73,12 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
             <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">{c.declineIntro}</p>
           </div>
 
-          {/*
-            Column count follows the number of figures rather than being
-            fixed at three, so dropping one does not leave empty cells
-            stretched across the row. Tailwind cannot build a class name at
-            runtime, hence the lookup rather than a template string.
-          */}
-          <div
-            className={`mt-20 grid grid-cols-1 gap-px border-t border-divider ${
-              { 1: "max-w-2xl", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3" }[
-                Math.min(c.declineStats.length, 3) as 1 | 2 | 3
-              ] ?? "sm:grid-cols-3"
-            }`}
-          >
+          <div className="divide-y divide-divider border-y border-divider lg:col-span-5 lg:col-start-8">
             {c.declineStats.map((st) => (
-              <div key={st.note} className="flex flex-col border-b border-divider py-12 sm:pe-10">
+              <div key={st.note} className="py-12">
                 <p className="text-5xl font-light tracking-[-0.03em] sm:text-6xl">{st.value}</p>
                 <p className="mt-3 text-xs uppercase tracking-[0.2em] text-text-muted">{st.unit}</p>
-                <p className="mt-6 max-w-[34ch] flex-1 text-sm font-light leading-relaxed text-text-secondary">
+                <p className="mt-6 text-sm font-light leading-relaxed text-text-secondary">
                   {st.note}
                 </p>
                 <a
