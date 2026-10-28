@@ -30,7 +30,8 @@ Set in Vercel, Settings, Environment Variables.
 | `NEXT_PUBLIC_MOYASAR_PK` | public | `pk_live_...`. Only used by the on-site form. |
 | `NEXT_PUBLIC_WALLET_CHECKOUT` | public | `true` renders the on-site form. Anything else keeps the hosted redirect. |
 | `NEXT_PUBLIC_SAMSUNG_SERVICE_ID` | public | `44b6f26ed1f4443dbf2d13` |
-| `NEXT_PUBLIC_SAMSUNG_PAY` | public | `true` adds Samsung Pay to the form. Leave off until Samsung approves the service. |
+| `NEXT_PUBLIC_SAMSUNG_PAY` | public | `true` adds Samsung Pay to the form. Needs Samsung to have approved the service. |
+| `NEXT_PUBLIC_APPLE_PAY` | public | `true` adds Apple Pay to the form. Needs the domain validated and registered in the Moyasar dashboard first. |
 | `NEXT_PUBLIC_SITE_URL` | public | Used to build the return URLs. |
 
 The payments handoff note called the secret key `MOYASAR_SK`. The code does

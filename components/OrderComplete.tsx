@@ -11,6 +11,7 @@ import { findProduct, formatPrice } from "@/lib/products";
 import { productName } from "./ProductThumb";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
+import { SUPPORT_EMAIL } from "@/lib/business";
 
 /**
  * Order summary, read from the query string Moyasar redirected back to.
@@ -181,11 +182,11 @@ export default function OrderComplete({ locale = "en" }: { locale?: Locale }) {
           <p className="mt-12 text-sm font-light leading-relaxed text-text-secondary">
             {c.contact}{" "}
             <a
-              href="mailto:minaralabs@gmail.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               dir="ltr"
               className="border-b border-divider pb-0.5 transition-colors duration-300 hover:border-text hover:text-text"
             >
-              minaralabs@gmail.com
+              {SUPPORT_EMAIL}
             </a>
           </p>
 

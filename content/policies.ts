@@ -1,3 +1,5 @@
+import { SUPPORT_EMAIL } from "@/lib/business";
+
 export type Locale = "en" | "ar";
 
 export type PolicySection = {
@@ -52,7 +54,7 @@ export const returns: Record<Locale, Policy> = {
       {
         heading: "How to return",
         list: [
-          "Write to minaralabs@gmail.com with your order number, within seven days of delivery",
+          `Write to ${SUPPORT_EMAIL} with your order number, within seven days of delivery`,
           "Confirm the box is sealed and the seal is unbroken. A photo helps",
           "Within 48 hours, we reply with collection details",
           "The moment your panel reaches us and we confirm it is sealed, your refund is on its way",
@@ -69,7 +71,7 @@ export const returns: Record<Locale, Policy> = {
     closing: {
       heading: "Still deciding?",
       body: "Ask us anything before you buy. An honest answer now is worth more to us than a sale you regret.",
-      contact: "minaralabs@gmail.com",
+      contact: SUPPORT_EMAIL,
     },
   },
 
@@ -104,7 +106,7 @@ export const returns: Record<Locale, Policy> = {
       {
         heading: "طريقة الإرجاع",
         list: [
-          "مراسلتنا على minaralabs@gmail.com مع رقم الطلب، خلال سبعة أيام من الاستلام",
+          `مراسلتنا على ${SUPPORT_EMAIL} مع رقم الطلب، خلال سبعة أيام من الاستلام`,
           "التأكد من أن الصندوق مغلق وشريطه سليم، وصورة تساعد في ذلك",
           "خلال 48 ساعة، نرد بتفاصيل الاستلام",
           "ولحظة وصول الجهاز إلينا والتأكد من أنه مغلق، يكون المبلغ في طريقه إليك",
@@ -121,7 +123,7 @@ export const returns: Record<Locale, Policy> = {
     closing: {
       heading: "ما زال هناك تردد؟",
       body: "يسعدنا الرد على أي سؤال قبل الشراء. الإجابة الصادقة الآن أثمن عندنا من عملية بيع مؤسفة.",
-      contact: "minaralabs@gmail.com",
+      contact: SUPPORT_EMAIL,
     },
   },
 };
@@ -190,7 +192,7 @@ export const warranty: Record<Locale, Policy> = {
     closing: {
       heading: "Something wrong?",
       body: "Tell us early. Most issues are simpler to fix than people expect, and we would rather hear about a small problem than a large one.",
-      contact: "minaralabs@gmail.com",
+      contact: SUPPORT_EMAIL,
     },
   },
 
@@ -253,7 +255,7 @@ export const warranty: Record<Locale, Policy> = {
     closing: {
       heading: "فيه شي غير طبيعي؟",
       body: "أخبرنا مبكراً. أغلب المشاكل أسهل في الحل مما يتوقع الناس، ونفضّل أن نسمع عن مشكلة صغيرة بدل كبيرة.",
-      contact: "minaralabs@gmail.com",
+      contact: SUPPORT_EMAIL,
     },
   },
 };

@@ -23,6 +23,7 @@ const galleryImages: (string | null)[] = [
   "/panel-three-quarter.png",
   "/panel-side.png",
   "/panel-in-use.png",
+  "/panel-recovery.png",
   "/panel-emitters.png",
   "/panel-remote.png",
   "/panel-eyewear.png",
@@ -122,7 +123,7 @@ export default function PanelDetail({
               width: two rows of large tiles, wider than the photo above
               them, competing with it rather than indexing it.
             */}
-            <div className="mx-auto mt-3 grid max-w-sm grid-cols-6 gap-2 px-9 sm:max-w-md lg:max-w-xl lg:gap-3 lg:px-11">
+            <div className="mx-auto mt-3 grid max-w-sm grid-cols-4 gap-2 px-9 sm:max-w-md sm:grid-cols-7 lg:max-w-xl lg:gap-3 lg:px-11">
               {c.gallery.map((label, i) => (
                 <button
                   key={label}
@@ -183,41 +184,6 @@ export default function PanelDetail({
         </div>
       </section>
 
-      {/* For the face */}
-      <section className="border-t border-divider px-6 py-28 sm:py-36">
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-3xl">
-          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.faceEyebrow}</motion.p>
-          <motion.h2 variants={rise} className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
-            <Lines text={c.faceTitle} />
-          </motion.h2>
-          <motion.div variants={rise} className="mt-10 space-y-6 text-base font-light leading-relaxed text-text-secondary">
-            {c.faceBody.map((p, i) => <p key={i}>{p}</p>)}
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Beyond the face */}
-      <section className="border-t border-divider px-6 py-28 sm:py-36">
-        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
-          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.beyondEyebrow}</motion.p>
-          <motion.h2 variants={rise} className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
-            <Lines text={c.beyondTitle} />
-          </motion.h2>
-          <motion.p variants={rise} className="mt-10 max-w-xl text-base font-light leading-relaxed text-text-secondary">
-            {c.beyondIntro}
-          </motion.p>
-          <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-10">
-            {c.beyond.map((item) => (
-              <motion.div key={item.index} variants={rise}>
-                <span className="text-xs tracking-[0.2em] text-text-muted">{item.index}</span>
-                <h3 className="mt-5 text-lg font-light">{item.title}</h3>
-                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
       {/* Wavelengths */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
@@ -261,6 +227,55 @@ export default function PanelDetail({
         </motion.div>
       </section>
 
+      {/*
+        Certifications used to sit at the foot of the specifications table,
+        which is the least-read part of the page. They are a reason to trust
+        the product, so they now follow the wavelength evidence rather than
+        trailing it by two screens.
+      */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
+          <motion.div variants={rise}>
+            <ComplianceMarks locale={locale} />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* For the face */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-3xl">
+          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.faceEyebrow}</motion.p>
+          <motion.h2 variants={rise} className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+            <Lines text={c.faceTitle} />
+          </motion.h2>
+          <motion.div variants={rise} className="mt-10 space-y-6 text-base font-light leading-relaxed text-text-secondary">
+            {c.faceBody.map((p, i) => <p key={i}>{p}</p>)}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Beyond the face */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
+          <motion.p variants={rise} className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.beyondEyebrow}</motion.p>
+          <motion.h2 variants={rise} className="mt-10 max-w-2xl text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl">
+            <Lines text={c.beyondTitle} />
+          </motion.h2>
+          <motion.p variants={rise} className="mt-10 max-w-xl text-base font-light leading-relaxed text-text-secondary">
+            {c.beyondIntro}
+          </motion.p>
+          <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-10">
+            {c.beyond.map((item) => (
+              <motion.div key={item.index} variants={rise}>
+                <span className="text-xs tracking-[0.2em] text-text-muted">{item.index}</span>
+                <h3 className="mt-5 text-lg font-light">{item.title}</h3>
+                <p className="mt-4 text-sm font-light leading-relaxed text-text-secondary">{item.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Specifications */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport} className="mx-auto max-w-6xl">
@@ -281,10 +296,6 @@ export default function PanelDetail({
               </motion.div>
             ))}
           </div>
-
-          <motion.div variants={rise}>
-            <ComplianceMarks locale={locale} />
-          </motion.div>
 
         </motion.div>
       </section>

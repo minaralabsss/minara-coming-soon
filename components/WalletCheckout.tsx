@@ -103,6 +103,12 @@ export default function WalletCheckout({
     const pk = process.env.NEXT_PUBLIC_MOYASAR_PK;
     const samsungServiceId = process.env.NEXT_PUBLIC_SAMSUNG_SERVICE_ID;
     const samsungOn = process.env.NEXT_PUBLIC_SAMSUNG_PAY === "true";
+    // Apple Pay has its own switch because its prerequisite is different:
+    // the domain has to be validated and registered with Apple through the
+    // Moyasar dashboard first. Offering it before that is at best a button
+    // that does nothing. The two wallets can therefore be turned on
+    // independently, in whichever order their approvals land.
+    const appleOn = process.env.NEXT_PUBLIC_APPLE_PAY === "true";
 
     if (!pk) {
       // Without a publishable key there is no form to render.
@@ -115,7 +121,8 @@ export default function WalletCheckout({
       if (!cancelled && !window.Moyasar) onUnavailable();
     }, LOAD_TIMEOUT_MS);
 
-    const methods: string[] = ["creditcard", "applepay"];
+    const methods: string[] = ["creditcard"];
+    if (appleOn) methods.push("applepay");
     if (samsungOn && samsungServiceId) methods.push("samsungpay");
 
     Promise.all([loadOnce("link", MOYASAR_CSS), loadOnce("script", MOYASAR_JS)])

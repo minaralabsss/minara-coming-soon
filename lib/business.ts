@@ -14,6 +14,16 @@
  *               official badge artwork from the Maroof dashboard to
  *               public/maroof.png; the footer links the badge to this URL.
  */
+/**
+ * The address customers are told to write to. Kept here rather than typed
+ * into each page, because it was previously hardcoded in five components
+ * and four policy entries and they drift apart the moment one is missed.
+ *
+ * This is NOT where order alerts are delivered; that is MERCHANT_EMAIL in
+ * lib/orders.ts and it stays separate on purpose.
+ */
+export const SUPPORT_EMAIL = "support@minaralabs.shop";
+
 export const BUSINESS = {
   /** Unified national number (الرقم الوطني الموحد للمنشأة), 700-series.
    *  This is NOT the commercial register number; they are separate fields

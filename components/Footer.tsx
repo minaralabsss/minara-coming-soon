@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import { localeFromPath, localeHref } from "@/lib/locale";
 import { t } from "@/content/site";
 import { BUSINESS } from "@/lib/business";
+import { SUPPORT_EMAIL } from "@/lib/business";
 
 function InstagramIcon() {
   return (
@@ -171,11 +172,11 @@ export default function Footer() {
               ))}
               <li>
                 <a
-                  href="mailto:minaralabs@gmail.com"
+                  href={`mailto:${SUPPORT_EMAIL}`}
                   dir="ltr"
                   className="inline-block text-sm font-light text-text-secondary transition-colors duration-300 hover:text-text"
                 >
-                  minaralabs@gmail.com
+                  {SUPPORT_EMAIL}
                 </a>
               </li>
             </ul>

@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import type { Locale } from "@/lib/locale";
 import { t } from "@/content/site";
+import { SUPPORT_EMAIL } from "@/lib/business";
 
 export default function SupportPage({ locale = "en" }: { locale?: Locale }) {
   const s = t(locale);
@@ -49,11 +50,11 @@ export default function SupportPage({ locale = "en" }: { locale?: Locale }) {
               <div>
                 <h3 className="text-xs uppercase tracking-[0.2em] text-text-muted">{c.email}</h3>
                 <a
-                  href="mailto:minaralabs@gmail.com"
+                  href={`mailto:${SUPPORT_EMAIL}`}
                   dir="ltr"
                   className="mt-3 inline-block border-b border-text pb-1 text-xl font-light text-text transition-opacity duration-300 hover:opacity-60 sm:text-2xl"
                 >
-                  minaralabs@gmail.com
+                  {SUPPORT_EMAIL}
                 </a>
               </div>
 

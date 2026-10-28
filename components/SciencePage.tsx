@@ -99,6 +99,49 @@ export default function SciencePage({ locale = "en" }: { locale?: Locale }) {
         </div>
       </section>
 
+      {/*
+        Muscle recovery, kept as its own section rather than folded into the
+        skin evidence above. The two bodies of research are not equally
+        strong, and mixing them would let the weaker one borrow credibility
+        from the better one. Same layout, separate framing and its own note.
+      */}
+      <section className="border-t border-divider px-6 py-28 sm:py-36">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-text-muted">{c.recoveryEyebrow}</p>
+            <h2 className="mt-10 text-3xl font-light leading-[1.2] tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              <Lines text={c.recoveryTitle} />
+            </h2>
+            <p className="mt-10 text-base font-light leading-relaxed text-text-secondary">{c.recoveryIntro}</p>
+          </div>
+
+          <div className="mt-20 space-y-px border-t border-divider">
+            {c.recovery.map((e, i) => (
+              <div key={e.headline} className="grid grid-cols-1 gap-6 border-b border-divider py-12 lg:grid-cols-12 lg:gap-12">
+                <p className="text-xs tracking-[0.2em] text-text-muted lg:col-span-1">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="text-xl font-light leading-snug tracking-[-0.01em] lg:col-span-5 lg:pe-8">{e.headline}</h3>
+                <div className="lg:col-span-6">
+                  <p className="text-sm font-light leading-relaxed text-text-secondary">{e.detail}</p>
+                  <a
+                    href={e.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    dir="ltr"
+                    className="mt-5 block text-xs font-light leading-relaxed text-text-muted underline-offset-4 transition-colors duration-300 hover:text-text hover:underline"
+                  >
+                    {e.cite} <span className="whitespace-nowrap">[{e.ref}]</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-14 max-w-3xl text-xs font-light leading-relaxed text-text-muted">{c.recoveryNote}</p>
+        </div>
+      </section>
+
       {/* Penetration depth */}
       <section className="border-t border-divider px-6 py-28 sm:py-36">
         <div className="mx-auto max-w-6xl">

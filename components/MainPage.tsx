@@ -5,9 +5,8 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import AddToCart from "./AddToCart";
 import { Eyebrow, Lines, Photo, ProductRender, rise, stagger, viewport } from "./ui";
-import { products } from "@/lib/products";
+import { formatPrice, products } from "@/lib/products";
 import { localeHref, type Locale } from "@/lib/locale";
 import { t } from "@/content/site";
 
@@ -66,19 +65,41 @@ export default function MainPage({ locale = "en", soldOut = false }: { locale?: 
             </Link>
           </motion.div>
 
-          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-3">
-            <AddToCart product={panel} soldOut={soldOut} />
-            {panel.compareAt != null && panel.compareAt > panel.price && (
-              <p className="max-w-xs text-center text-xs font-light leading-relaxed text-text-muted">
-                {s.buy.launchNote}
-              </p>
-            )}
+          {/*
+            The hero sells the visit to the product page, not the panel.
+            Buying from here asked for a decision before anything had been
+            explained, so the primary action is now Learn more and the
+            price sits below it as information rather than as a button.
+            Add to cart lives on the product page, where the case for it
+            has actually been made.
+          */}
+          <motion.div variants={rise} className="mt-10 flex flex-col items-center gap-5">
             <Link
               href={localeHref("/product/panel", locale)}
-              className="mt-2 border-b border-divider pb-1 text-xs uppercase tracking-[0.2em] text-text-muted transition-colors duration-500 hover:border-text hover:text-text"
+              className="inline-flex items-center justify-center bg-text px-10 py-4 text-sm tracking-wide text-bg transition-opacity duration-500 hover:opacity-70"
             >
-              {s.buy.viewDetails}
+              {s.buy.learnMore}
             </Link>
+
+            <div className="flex flex-col items-center gap-2">
+              {soldOut ? (
+                <p className="text-sm font-light text-text-muted">{s.buy.soldOut}</p>
+              ) : (
+                <p className="flex items-baseline gap-3 text-sm font-light text-text-secondary">
+                  {panel.compareAt != null && panel.compareAt > panel.price && (
+                    <s dir="ltr" className="text-xs text-text-muted">
+                      {formatPrice(panel.compareAt, panel.currency)}
+                    </s>
+                  )}
+                  <span dir="ltr">{formatPrice(panel.price, panel.currency)}</span>
+                </p>
+              )}
+              {!soldOut && panel.compareAt != null && panel.compareAt > panel.price && (
+                <p className="max-w-xs text-center text-xs font-light leading-relaxed text-text-muted">
+                  {s.buy.launchNote}
+                </p>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       </section>

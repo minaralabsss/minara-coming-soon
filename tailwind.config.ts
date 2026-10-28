@@ -35,11 +35,37 @@ const config: Config = {
         display: ['"IBM Plex Sans"', "sans-serif"],
       },
       fontSize: {
-        // Premium typography hierarchy
-        xs: ["12px", { lineHeight: "16px", letterSpacing: "0.5px" }],
-        sm: ["14px", { lineHeight: "20px", letterSpacing: "0.3px" }],
-        base: ["16px", { lineHeight: "26px", letterSpacing: "0.2px" }],
-        lg: ["18px", { lineHeight: "28px", letterSpacing: "0.1px" }],
+        /*
+          Premium typography hierarchy.
+
+          The four body sizes below are fluid, and they run the opposite way
+          to the usual fluid scale: they are LARGER on a phone and settle to
+          their original desktop values at 640px and above. The desktop
+          numbers are unchanged, so nothing on a laptop moves.
+
+          The reason is that this design leans on 12px and 14px text heavily,
+          87 and 57 uses respectively, for eyebrows, captions, specs and
+          citations. At arm's length on a desktop that reads as restraint.
+          Held in one hand it reads as unreadable, which is what it was
+          doing. Arabic suffers most, since IBM Plex Sans Arabic carries
+          less x-height at the same nominal size.
+
+          Each clamp is a straight line through two anchor points: the
+          mobile size at a 375px viewport, and the desktop size at 640px,
+          where the min clamp takes over and holds it flat. So:
+            xs    13.5px on a phone, 12px from 640px up
+            sm    15.5px on a phone, 14px from 640px up
+            base  17.5px on a phone, 16px from 640px up
+            lg    19px   on a phone, 18px from 640px up
+
+          Line heights are ratios rather than pixels so they scale with the
+          font rather than crushing it. The ratios are exactly the old pixel
+          pairs, so desktop rendering is identical to before.
+        */
+        xs: ["clamp(12px, 15.62px - 0.566vw, 14px)", { lineHeight: "1.3333", letterSpacing: "0.5px" }],
+        sm: ["clamp(14px, 17.62px - 0.566vw, 16px)", { lineHeight: "1.4286", letterSpacing: "0.3px" }],
+        base: ["clamp(16px, 19.62px - 0.566vw, 18px)", { lineHeight: "1.625", letterSpacing: "0.2px" }],
+        lg: ["clamp(18px, 20.41px - 0.377vw, 20px)", { lineHeight: "1.5556", letterSpacing: "0.1px" }],
         xl: ["20px", { lineHeight: "30px" }],
         "2xl": ["24px", { lineHeight: "32px" }],
         "3xl": ["30px", { lineHeight: "38px" }],

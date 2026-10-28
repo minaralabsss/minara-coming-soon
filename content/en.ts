@@ -63,6 +63,7 @@ export const en: SiteContent = {
 
   buy: {
     soldOut: "Sold out",
+    learnMore: "Learn more",
     addToCart: "Add to cart",
     viewDetails: "View full details",
     fullDetails: "Full details",
@@ -214,6 +215,7 @@ export const en: SiteContent = {
       "Three-quarter view",
       "Side profile",
       "In use, facial session",
+      "In use, muscle recovery",
       "Emitter array, macro",
       "Remote control",
       "Eye protection",
@@ -365,6 +367,30 @@ export const en: SiteContent = {
     ],
     evidenceNote:
       "These trials tested other manufacturers' devices. They are evidence for the mechanism and for the wavelength range minara operates in. They are not measurements of the minara panel, and the figures above should not be read as results you will obtain from it.",
+    recoveryEyebrow: "Beyond the face",
+    recoveryTitle: "What the evidence says\nabout muscle recovery",
+    recoveryIntro:
+      "Near-infrared reaches past skin into muscle, which is why recovery is the second area where this has been studied seriously. The literature here is larger but more mixed than the skin literature, so what follows is two pooled analyses rather than individual trials, and both are quoted with the caution their own authors used.",
+    recovery: [
+      {
+        headline: "More repetitions and longer to exhaustion, pooled across trials",
+        detail:
+          "A systematic review with meta-analysis of randomised trials comparing light therapy against placebo. Pooled results showed time to exhaustion increased by 4.12 seconds and repetitions by 5.47 against placebo, both statistically significant. The most consistent results came from red and infrared wavelengths applied before exercise. The authors concluded that phototherapy improves muscular performance and accelerates recovery, mainly when applied beforehand.",
+        cite: "Leal-Junior ECP, Vanin AA, Miranda EF, de Carvalho PTC, Dal Corso S, Bjordal JM. Effect of phototherapy on exercise performance and markers of exercise recovery: a systematic review with meta-analysis. Lasers in Medical Science, 2015;30(2):925-939.",
+        href: "https://link.springer.com/article/10.1007/s10103-013-1465-4",
+        ref: "doi:10.1007/s10103-013-1465-4",
+      },
+      {
+        headline: "Thirty-nine trials, a modest effect, and the dose range that produced it",
+        detail:
+          "A later and larger review pooled 39 randomised trials covering 861 participants, measuring time to exhaustion, repetitions, peak torque and blood lactate. It found an effect in favour of phototherapy, while rating the quality of evidence from very low to moderate and noting wide variation in protocols. Positive outcomes clustered in the 655 to 950 nanometre range, which is where four of the panel\u2019s six wavelengths sit.",
+        cite: "Vanin AA, Verhagen E, Barboza SD, Costa LOP, Leal-Junior ECP. Photobiomodulation therapy for the improvement of muscular performance and reduction of muscular fatigue associated with exercise in healthy people: a systematic review and meta-analysis. Lasers in Medical Science, 2018;33(1):181-214.",
+        href: "https://doi.org/10.1007/s10103-017-2368-6",
+        ref: "doi:10.1007/s10103-017-2368-6",
+      },
+    ],
+    recoveryNote:
+      "Both reviews describe the evidence as promising rather than settled, and both call for better-designed trials. They tested a range of devices and protocols, none of them minara\u2019s. They are given here as the honest state of the research, not as a claim about what the panel will do for you.",
     wlEyebrow: "Why these wavelengths",
     wlTitle: "Depth is the\nwhole argument",
     depthTitle: "How deep each\nwavelength reaches",
@@ -404,10 +430,13 @@ export const en: SiteContent = {
       "minara labs designs instruments that use red and near-infrared light to support the way skin renews itself. Designed in Saudi, made for the world.",
     missionEyebrow: "Our mission",
     mission:
-      "To bring considered light therapy within reach of every home, so that caring for your skin no longer means a clinic appointment, a specialist, or a compromise.",
+      "To move the treatment room into the home, so that looking after your skin asks for twenty minutes rather than an afternoon.",
+    homeEyebrow: "The spa, at home",
+    homeTitle: "The hour that used\nto mean leaving",
     missionBody: [
-      "For decades, red light therapy lived in dermatology clinics and high-end spas: studied, refined, and out of reach. We exist to change where it lives.",
-      "We build instruments precise enough to take the science seriously, and beautiful enough to stay out on your dresser rather than hidden in a drawer. Twenty minutes, in your own home, on your own schedule.",
+      "In Saudi, looking after your skin properly has always meant going out to do it. A booking made weeks ahead, a drive across the city, an hour in someone else's chair, then the same again next month.",
+      "minara exists to bring that hour home. Twenty minutes in your own room, in your own privacy, at whatever time suits you. No appointment to keep, no traffic, no waiting.",
+      "For decades this light lived in dermatology clinics and high-end spas: studied, refined, and out of reach. We build it to the specifications the research describes, and finish it to sit out on a dresser rather than be hidden in a drawer.",
     ],
     beliefsEyebrow: "What we believe",
     beliefsTitle: "Three things\nwe hold to",
@@ -416,10 +445,6 @@ export const en: SiteContent = {
       { index: "02", title: "Beauty and precision together", body: "An instrument you use daily should be a pleasure to own. We design objects worthy of the space they live in, without ever trading looks for performance." },
       { index: "03", title: "Honest by design", body: "Real numbers with real tolerances. Clear pricing. A warranty we honour. If we would not accept it as customers, we do not offer it as a company." },
     ],
-    promiseEyebrow: "Designed in Saudi",
-    promiseTitle: "From here,\nfor everywhere",
-    promiseBody:
-      "minara is drawn, specified and refined in Saudi: proof that world-class wellness technology can begin here, not just arrive here. The panel is our first instrument. It will not be our last.",
     nextEyebrow: "What follows",
     nextTitle: "A growing family\nof instruments",
     nextBody:

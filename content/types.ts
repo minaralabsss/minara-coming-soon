@@ -64,7 +64,7 @@ export type SiteContent = {
     successBody: string;
     sending: string;
   };
-  buy: { addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string; soldOut: string };
+  buy: { learnMore: string; addToCart: string; viewDetails: string; fullDetails: string; launchOffer: string; launchNote: string; soldOut: string };
   checkout: {
     eyebrow: string;
     title: string;
@@ -211,6 +211,17 @@ export type SiteContent = {
       ref: string;
     }[];
     evidenceNote: string;
+    recoveryEyebrow: string;
+    recoveryTitle: string;
+    recoveryIntro: string;
+    recovery: {
+      headline: string;
+      detail: string;
+      cite: string;
+      href: string;
+      ref: string;
+    }[];
+    recoveryNote: string;
     wlEyebrow: string;
     wlTitle: string;
     wavelengths: Row[];
@@ -232,9 +243,8 @@ export type SiteContent = {
     beliefsEyebrow: string;
     beliefsTitle: string;
     beliefs: Numbered[];
-    promiseEyebrow: string;
-    promiseTitle: string;
-    promiseBody: string;
+    homeEyebrow: string;
+    homeTitle: string;
     nextEyebrow: string;
     nextTitle: string;
     nextBody: string;
